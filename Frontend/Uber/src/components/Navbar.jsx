@@ -5,6 +5,8 @@ import { Globe } from 'lucide-react';
 
 const Navbar = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  console.log("hello world");
+
   return (
     <div className="lg:px-22 w-full h-16 flex flex-row items-center bg-black px-6 justify-between">
       {/* left section of navbar */}
@@ -38,7 +40,7 @@ const Navbar = () => {
             <div className={`absolute top-10.5 bg-white left-0  text-black shadow-lg  w-48 z-50 ${isAboutOpen ? "block" : "hidden"}`}>
               <a href="" className="block px-4 py-2 text-gray-500 hover:bg-gray-100 font-extralight">About us</a>
               <a href="" className="block px-4 py-2 hover:bg-gray-100 font-normal">About us</a>
-              <a href="" className="block px-4 py-2 hover:bg-gray-100 font-extralight">About us</a>
+              <a href="" className="block px-4 py-2 hover:bg-gray-100 font-extralight">Our offerings</a>
               <a href="" className="block px-4 py-2 hover:bg-gray-100 font-extralight">About us</a>
               <a href="" className="block px-4 py-2 hover:bg-gray-100 font-extralight">About us</a>
               <a href="" className="block px-4 py-2 hover:bg-gray-100 font-extralight">About us</a>
