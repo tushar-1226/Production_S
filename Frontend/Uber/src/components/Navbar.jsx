@@ -10,7 +10,6 @@ const Navbar = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
 
-
   return (
     <div className="lg:px-22 w-full h-16 flex flex-row items-center bg-black px-6 justify-between">
       {/* left section of navbar */}
