@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isExploreOpen, setIsExploreOpen] = useState(false);
 
   return (
-    <div className="lg:px-22 w-full h-16 flex flex-row items-center bg-black px-6 justify-between">
+    <div className="lg:px-22 w-full h-16 flex flex-row items-center bg-black px-6 justify-between fixed top-0 left-0 z-10">
       {/* left section of navbar */}
       <div className="flex items-center gap-7">
         <a href="">
