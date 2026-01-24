@@ -16,7 +16,7 @@ const Hero = () => {
                         <span className='text-base hover:bg-gray-100 hover:rounded-full cursor-pointer'><u>Change city</u></span>
                     </div>
                     <div className='flex flex-col gap-3' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
-                        <div className='text-5xl font-extrabold'>Request a ride for</div>
+                        <div className='text-5xl font-extrabold whitespace-nowrap'>Request a ride for</div>
                         <div className='text-5xl font-extrabold'>now or later</div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-138 w-750 bg-amber-400'>
+            <div className='h-138 w-750'>
                 <img src={Page} className='object-cover'/>
             </div>
         </div>
