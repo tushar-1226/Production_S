@@ -46,7 +46,7 @@ const SuggCards = () => {
             {
                 CardImage.map((item, index) => {
                     return (
-                        <div className='h-40 w-92 bg-gray-100 p-4 flex gap-3 rounded-[10px]'>
+                        <div className='h-40 w-92 bg-gray-100 p-4 flex justify-between items-center rounded-[10px]'>
                             <div className='flex flex-col gap-6'>
                                 <div className='flex flex-col gap-2'>
                                     <div className='font-semibold text-base'>{item.Heading}</div>
@@ -55,7 +55,7 @@ const SuggCards = () => {
                                 <button className='bg-white rounded-full px-1 py-2 w-18 font-medium text-sm'>Details</button>
                             </div>
                             <div>
-                                <img src={item.image} />
+                                <img src={item.image} height={100} width={200} />
                             </div>
                         </div>
                     )
