@@ -4,7 +4,7 @@ import { CalendarIcon } from "@heroicons/react/24/solid";
 
 
 const Plan = () => {
-
+        console.log("hello");
 
 
     return (
