@@ -7,6 +7,7 @@ import CreditCard from '../assets/CreditCard.svg';
 
 const Plan = () => {
     console.log("hello");
+    console.log("hello");
 
 
     return (
