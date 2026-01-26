@@ -9,6 +9,7 @@ const Plan = () => {
     console.log("hello");
     console.log("hello");
     console.log("yoo")
+    console.log("hellooooo")
 
 
     return (
