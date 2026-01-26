@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/clock</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon/clock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5" fill="#000000">
+            <path d="M12,0 C5.37272727,0 0,5.37272727 0,12 C0,18.6272727 5.37272727,24 12,24 C18.6272727,24 24,18.6272727 24,12 C24,5.37272727 18.6272727,0 12,0 M12,3.27272727 C16.812,3.27272727 20.7272727,7.188 20.7272727,12 C20.7272727,16.812 16.812,20.7272727 12,20.7272727 C7.188,20.7272727 3.27272727,16.812 3.27272727,12 C3.27272727,7.188 7.188,3.27272727 12,3.27272727" id="Fill-1"></path>
+            <polygon id="Fill-3" points="17.4546545 14.7273818 10.3637455 14.7273818 10.3637455 6.54556364 13.6364727 6.54556364 13.6364727 11.4546545 17.4546545 11.4546545"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Credit card (filled)</title>
+  <g transform="matrix(
+          1 0
+          0 1
+          1 4
+        )"><path fill-rule="evenodd" clip-rule="evenodd" d="M 0 0 L 22 0 L 22 4 L 0 4 L 0 0 Z M 0 7 L 22 7 L 22 16 L 0 16 L 0 7 Z" fill="currentColor"/></g>
+</svg>
