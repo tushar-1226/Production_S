@@ -6,6 +6,9 @@ import Plan from './Plan.jsx'
 
 const Container = () => {
   console.log("Container");
+  console.log("Container");
+  console.log("Container");
+
   return (
     <div className='px-40'>
       <Page/>
