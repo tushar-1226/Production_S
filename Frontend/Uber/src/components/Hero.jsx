@@ -5,6 +5,8 @@ import { Navigation } from 'lucide-react';
 import Page from "../assets/page.png";
 
 const Hero = () => {
+    console.log("Hero");
+    
     return (
         <div className='flex gap-50'>
             <div className='pt-6 flex flex-col gap-15'>
