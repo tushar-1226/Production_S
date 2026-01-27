@@ -7,6 +7,7 @@ import Card5 from '../assets/card5.png'
 import Card6 from '../assets/card6.png'
 
 const SuggCards = () => {
+    console.log("CardSection");
 
     const CardImage = [
         {
