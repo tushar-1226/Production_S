@@ -9,6 +9,7 @@ const Hero = () => {
     console.log("hero2")
     console.log("hero3")
     console.log("hero4")
+    console.log("hero6")
     console.log("hero5")
     
     return (
