@@ -7,6 +7,7 @@ import Page from "../assets/page.png";
 const Hero = () => {
     console.log("Hero");
     console.log("hero2")
+    console.log("hero3")
     
     return (
         <div className='flex gap-50'>
