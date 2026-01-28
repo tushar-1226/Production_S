@@ -10,6 +10,7 @@ const Hero = () => {
     console.log("hero3")
     console.log("hero4")
     console.log("hero6")
+    console.log("hero7")
     console.log("hero5")
     
     return (
