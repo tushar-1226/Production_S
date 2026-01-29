@@ -29,6 +29,9 @@ const CardCompoTravel = () => {
     ]
     console.log("CardCompoTravel");
     console.log("CardCompoTravel");
+    console.log("CardCompoTravel"); 
+    console.log("CardCompoTravel");
+
 
 
     return (
