@@ -3,7 +3,7 @@ import Navbar from './components/Navbar.jsx'
 import SubNav from './components/SubNav.jsx'
 import Container from './components/Container.jsx'
 import SeePrices from './components/SeePrices.jsx'
-import Calender from './components/Calender.jsx'
+
 
 
 

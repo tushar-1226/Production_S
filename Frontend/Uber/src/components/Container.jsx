@@ -2,6 +2,7 @@ import React from 'react'
 import Page from './Page.jsx'
 import Suggestion from './Suggestion.jsx'
 import Plan from './Plan.jsx'
+import TravelCards from './TravelCards.jsx'
 
 
 const Container = () => {
@@ -14,6 +15,7 @@ const Container = () => {
       <Page/>
       <Suggestion/>
       <Plan/>
+      <TravelCards/>
     </div>
   )
 }
