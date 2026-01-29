@@ -27,6 +27,9 @@ const CardCompoTravel = () => {
             button: "Search cities"
         }
     ]
+    console.log("CardCompoTravel");
+    console.log("CardCompoTravel");
+
 
     return (
         <div className='flex'>
