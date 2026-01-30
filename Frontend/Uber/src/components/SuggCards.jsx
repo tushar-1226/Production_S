@@ -41,6 +41,8 @@ const SuggCards = () => {
             Description: "Get affordable motorbike rides in minutes at your doorstep."
         }
     ];
+    console.log("CardSection");
+
 
     return (
         <div className='flex flex-wrap justify-between gap-5'>
