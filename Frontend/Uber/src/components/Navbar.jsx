@@ -7,6 +7,7 @@ import RightNav from "./RightNav";
 
 
 const Navbar = () => {
+  console.log("hello")
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
 

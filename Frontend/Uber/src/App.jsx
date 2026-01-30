@@ -4,13 +4,6 @@ import SubNav from './components/SubNav.jsx'
 import Container from './components/Container.jsx'
 import SeePrices from './components/SeePrices.jsx'
 
-
-
-
-
-
-
-
 const App = () => {
   return (
     <div className='pt-16'>
