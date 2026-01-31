@@ -6,6 +6,7 @@ const Buisness = () => {
   console.log("Buisness");
   console.log("Buisness");
   console.log("Buisness");
+  console.log("Buisness");
   
 
   return (
