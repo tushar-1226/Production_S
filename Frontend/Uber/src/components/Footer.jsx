@@ -7,16 +7,15 @@ import { Linkedin } from 'lucide-react';
 import XLogo from './XLogo';
 import { Globe } from 'lucide-react';
 import { MapPinIcon } from "@heroicons/react/24/solid";
-import AppleStore from "../assets/AppleStore.svg"
-import PlayStore from "../assets/PlayStore.svg"
-
+import PlayStore from '../assets/PlayStore.svg';
+import AppleStore from '../assets/AppleStore.svg';
 
 
 
 
 const Footer = () => {
     return (
-        <div className='h-230 w-full bg-black px-40 py-16 text-white flex flex-col gap-20 '>
+        <div className='h-230 w-full bg-black px-40 pt-16  text-white flex flex-col gap-20 '>
             <div className='flex flex-col gap-5'>
                 <div>
                     <img className='h-17 w-17' src={logo} alt="" />
@@ -114,11 +113,11 @@ const Footer = () => {
                 </div>
             </div>
             <div className='flex justify-between'>
-                <div className='flex gap-5'>
-                    <div><Linkedin /></div>
-                    <div><Youtube /></div>
-                    <div><Instagram /></div>
-                    <div><XLogo /></div>
+                <div className='flex items-center gap-10'>
+                    <div><i class="fa-brands fa-linkedin-in text-black text-xs p-[1px] rounded-[2px] bg-white "></i></div>
+                    <div><i class="fa-brands fa-youtube font-xs h-4 w-3"></i></div>
+                    <div><Instagram className='h-4 w-5' /></div>
+                    <div><XLogo className='h-4 w-5' /></div>
                 </div>
                 <div className='flex gap-5 items-center'>
                     <div>
@@ -133,8 +132,22 @@ const Footer = () => {
                 </div>
             </div>
             <div className='flex gap-3'>
-                {/* <PlayStore/>
-                <AppleStore/> */}
+                <div>
+                    <img className='h-10 w-33' src={PlayStore} alt="" />
+                </div>
+                <div>
+                    <img className='h-10 w-33' src={AppleStore} alt="" />
+                </div>
+            </div>
+            <div className='w-full flex justify-between text-[#AFAFAF] text-xs'>
+                <div>
+                    © 2026 Uber Technologies Inc.
+                </div>
+                <div className='flex gap-8'>
+                    <div>Privacy</div>
+                    <div>Accessibility</div>
+                    <div>Terms</div>
+                </div>
             </div>
 
         </div>
