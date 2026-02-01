@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { ChevronDown } from 'lucide-react';
-import { Globe } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 import RightNav from "./RightNav";
 

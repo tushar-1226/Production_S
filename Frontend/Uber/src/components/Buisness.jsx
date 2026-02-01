@@ -11,7 +11,7 @@ const Buisness = () => {
   
 
   return (
-    <div className='px-40 h-140 w-full bg-black my-17 py-15 text-white flex items-center justify-between'>
+    <div className='px-40 h-140 w-full bg-black my-17 py-16 text-white flex items-center justify-between'>
         <div className='h-full flex flex-col justify-between'>
 
             <div className='text-white font-bold text-4xl w-100'>
