@@ -19,6 +19,11 @@ const Footer = () => {
     console.log('footer')
     console.log('footer')
     console.log('footer')
+    console.log('footer')
+    console.log('footer')
+    console.log('footer')
+    console.log('footer')
+    console.log('footer')
 
     return (
         <div className='h-230 w-full bg-black px-40 pt-16  text-white flex flex-col gap-20 '>
