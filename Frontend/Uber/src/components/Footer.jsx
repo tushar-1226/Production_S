@@ -1,9 +1,6 @@
 import React from 'react'
 import logo from "../assets/logo.svg";
 import { Instagram } from 'lucide-react';
-import { Youtube } from 'lucide-react';
-import { Twitter } from 'lucide-react';
-import { Linkedin } from 'lucide-react';
 import XLogo from './XLogo';
 import { Globe } from 'lucide-react';
 import { MapPinIcon } from "@heroicons/react/24/solid";
@@ -14,6 +11,7 @@ import AppleStore from '../assets/AppleStore.svg';
 
 
 const Footer = () => {
+    console.log("Footer")
     return (
         <div className='h-230 w-full bg-black px-40 pt-16  text-white flex flex-col gap-20 '>
             <div className='flex flex-col gap-5'>
