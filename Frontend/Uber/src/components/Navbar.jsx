@@ -11,32 +11,34 @@ const Navbar = () => {
   const [isExploreOpen, setIsExploreOpen] = useState(false);
 
   return (
-    <div className="lg:px-22 w-full h-16 flex flex-row items-center bg-black px-6 justify-between fixed top-0 left-0 z-10">
+    <div className="lg:px-22 w-full lg:h-16 h-50 flex flex-row items-center bg-black px-10 justify-between fixed top-0 left-0 z-10">
       {/* left section of navbar */}
       <div className="flex items-center gap-7">
         <a href="">
-          <img height={50} width={64} src={logo} alt="logo" />
+          <div className="lg:h-15 lg:w-15 h-40 w-40  flex items-center">
+            <img className="object-cover w-full h-full" src={logo} alt="logo" />
+          </div>
         </a>
-        <ul className="flex items-center gap-7 text-sm font-medium text-white">
+        <ul className=" flex items-center gap-7 text-sm font-medium text-white">
           <li>
-            <a href="" className="text-white">
+            <a href="" className="text-white hidden lg:block">
               Ride
             </a>
           </li>
 
           <li>
-            <a href="" className="text-white">
+            <a href="" className="text-white hidden lg:block">
               Drive
             </a>
           </li>
 
           <li>
-            <a href="" className="text-white">
+            <a href="" className="text-white hidden lg:block">
               Business
             </a>
           </li>
 
-          <li className="relative">
+          <li className="relative hidden lg:block">
             <button onClick={() => setIsAboutOpen(!isAboutOpen)} className="text-white flex items-center gap-2">
               <span>About</span> <ChevronDown className={`${isAboutOpen ? "rotate-180" : ""}`} size={15} strokeWidth={4} />
             </button>
@@ -102,7 +104,7 @@ const Navbar = () => {
         </ul>
       </div>
       {/* right section of nav */}
-      <RightNav/>
+      <RightNav />
     </div>
   );
 };

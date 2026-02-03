@@ -6,13 +6,13 @@ const RightNav = () => {
     return (
         <div>
             <ul className="flex items-center gap-6 text-sm font-medium text-white">
-                <li>
+                <li className='lg:block hidden'>
                     <a href="" className="text-white flex items-center gap-2">
                         <Globe className="rotate-130" size={15} strokeWidth={3.5} /><span>EN</span>
                     </a>
                 </li>
 
-                <li>
+                <li className='lg:block hidden'>
                     <a href="" className="text-white">
                         Help
                     </a>

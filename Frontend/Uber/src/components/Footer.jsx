@@ -1,8 +1,7 @@
 import React from 'react'
 import logo from "../assets/logo.svg";
-import { Instagram } from 'lucide-react';
+import { Instagram, Globe } from 'lucide-react';
 import XLogo from './XLogo';
-import { Globe } from 'lucide-react';
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import PlayStore from '../assets/PlayStore.svg';
 import AppleStore from '../assets/AppleStore.svg';
@@ -10,23 +9,9 @@ import AppleStore from '../assets/AppleStore.svg';
 
 
 
-const Footer = () => {
-    console.log("Footer")
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')
-    console.log('footer')   
 
+const Footer = () => {
+    
     return (
         <div className='h-230 w-full bg-black px-40 pt-16  text-white flex flex-col gap-20 '>
             <div className='flex flex-col gap-5'>
@@ -34,7 +19,7 @@ const Footer = () => {
                     <img className='h-17 w-17' src={logo} alt="" />
                 </div>
                 <div>
-                    Visit help center
+                    Visit Help Center
                 </div>
             </div>
             <div className='flex w-full gap-45'>
@@ -127,8 +112,8 @@ const Footer = () => {
             </div>
             <div className='flex justify-between'>
                 <div className='flex items-center gap-10'>
-                    <div><i class="fa-brands fa-linkedin-in text-black text-xs p-[1px] rounded-[2px] bg-white "></i></div>
-                    <div><i class="fa-brands fa-youtube font-xs h-4 w-3"></i></div>
+                    <div><i className="fa-brands fa-linkedin"></i></div>
+                    <div><i className="fa-brands fa-youtube font-xs h-4 w-3"></i></div>
                     <div><Instagram className='h-4 w-5' /></div>
                     <div><XLogo className='h-4 w-5' /></div>
                 </div>
@@ -152,17 +137,16 @@ const Footer = () => {
                     <img className='h-10 w-33' src={AppleStore} alt="" />
                 </div>
             </div>
-            <div className='w-full flex justify-between text-[#AFAFAF] text-xs'>
+            <div className='w-full flex justify-between text-[#AFAFAF] text-xs pb-30 items-center'>
                 <div>
                     © 2026 Uber Technologies Inc.
                 </div>
-                <div className='flex gap-8'>
+                <div className='flex gap-8 items-center'>
                     <div>Privacy</div>
                     <div>Accessibility</div>
                     <div>Terms</div>
                 </div>
             </div>
-
         </div>
     )
 }
