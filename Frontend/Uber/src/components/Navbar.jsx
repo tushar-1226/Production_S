@@ -13,6 +13,8 @@ const Navbar = () => {
   console.log("hello")
   console.log("hello")
   console.log("hello")
+    console.log("hello")
+  console.log("hello")
 
 
   const [isAboutOpen, setIsAboutOpen] = useState(false);
