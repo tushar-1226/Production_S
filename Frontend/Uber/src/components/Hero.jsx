@@ -7,10 +7,10 @@ import Page from "../assets/page.png";
 const Hero = () => {
     
     return (
-        <div className='flex flex-col lg:flex-row gap-8 lg:gap-50 w-full  lg:px-0'>
-            <div className='flex flex-col gap-15 w-full lg:w-auto'>
+        <div className='flex flex-col lg:flex-row gap-8 lg:gap-50 w-full lg:px-0'>
+            <div className='flex flex-col gap-5 lg:gap-15 w-full lg:w-auto'>
                 {/* Hero text */}
-                <div className='flex flex-col gap-3 sm:w-full'>
+                <div className='flex flex-col gap-2 lg:gap-3 sm:w-full'>
                     <div className='flex items-center gap-2 lg:gap-3 sm:w-full'>
                         <MapPinIcon className="lg:h-5 lg:w-5 h-3 w-3 text-black" />
                         <span className='text-sm lg:text-base lg:text-font-medium'>Lucknow, IN</span>
@@ -30,11 +30,12 @@ const Hero = () => {
                                 <TagIcon className="h-4 w-4 text-green-600" />
                             </span>
 
-                            <span className='text-sm'>
-                                <span className='font-medium'>Up to 50% off your first 5 Uber rides.</span> T&Cs apply.*
+                            <span className='text-xs lg:text-sm'>
+                                <span className='font-medium'>Up to 50% off your first 5 Uber rides.</span> 
+                                <span className='text-xs lg:text-sm'>T&Cs apply.*</span>
                             </span>
                         </div>
-                        <span className='pl-6 text-sm'>
+                        <span className='pl-6 text-xs lg:text-sm'>
                             *Valid within 15 days of signup.
                         </span>
                     </div>
@@ -46,7 +47,7 @@ const Hero = () => {
                             <div className='h-4 w-4 border-5'></div>
                         </div>
                         <div>
-                            <input type="text" className='h-10 bg-gray-100 pl-12 pr-43 rounded-[7px] py-7' placeholder='Pickup Location' />
+                            <input type="text" className='h-10 bg-gray-100 pl-12 pr-43 rounded-[7px] py-7 w-full' placeholder='Pickup Location' />
                             <Navigation className='absolute top-4 left-89' />
                         </div>
                         <div>
@@ -59,7 +60,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-138 lg:w-750 w-200'>
+            <div className='h-138 lg:w-750 lg:block hidden'>
                 <img src={Page} className='object-cover'/>
             </div>
         </div>

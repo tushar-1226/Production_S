@@ -21,7 +21,7 @@ const RightNav = () => {
                 </li>
 
                 <li className='rounded-full'>
-                    <a href="" className="text-white text-sm md:text-4xl lg:text-sm">
+                    <a href="" className="text-white text-sm">
                         Log in
                     </a>
                 </li>
