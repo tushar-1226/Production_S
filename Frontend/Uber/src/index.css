@@ -8,3 +8,8 @@
 body {
   font-family: Inter, system-ui, sans-serif;
 }
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}

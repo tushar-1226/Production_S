@@ -5,7 +5,7 @@ import Line from './Line'
 
 const Question = () => {
   return (
-    <div className='pb-16 w-full h-110 flex flex-col gap-13 px-40'>
+    <div className='pb-16 w-full lg:h-110 flex flex-col gap-13 px-5 lg:px-40'>
       <div className='text-4xl font-bold text-[#333333]'>
         Frequently asked questions
       </div>

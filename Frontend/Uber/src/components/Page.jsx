@@ -4,7 +4,7 @@ import Hero from './Hero'
 
 const Page = () => {
   return (
-    <div className='w-full  pt-15'>
+    <div className='w-full bg-amber-200 pt-5 lg:pt-15'>
       <Hero/>
     </div>
   )

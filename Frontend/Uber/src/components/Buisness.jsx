@@ -11,14 +11,13 @@ const Buisness = () => {
   
 
   return (
-    <div className='px-40 h-140 w-full bg-black my-17 py-16 text-white flex items-center justify-between'>
-        <div className='h-full flex flex-col justify-between'>
-
-            <div className='text-white font-bold text-4xl w-100'>
+    <div className='px-5 lg:px-40 h-auto lg:h-140 w-full bg-black my-8 lg:my-17 py-12 lg:py-16 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-0'>
+        <div className='flex flex-col justify-between w-full lg:w-auto gap-6'>
+            <div className='text-white font-bold text-2xl sm:text-3xl lg:text-4xl w-full lg:w-100'>
                 Looking for business solutions?
             </div>
 
-            <div className='flex flex-col gap-5 w-110'>
+            <div className='flex flex-col gap-4 lg:gap-5 w-full lg:w-110'>
               <div>
                 Get information about how companies leverage <u>Uber for Business</u>: 
               </div>
@@ -37,8 +36,8 @@ const Buisness = () => {
               <u className='underline underline-offset-6'>Check out our solutions</u>
             </div>
         </div>
-        <div className=''>
-          <img className='' src={mam} alt="" />
+        <div className='w-full lg:w-auto'>
+          <img className='w-full lg:w-auto' src={mam} alt="" />
         </div>
       
     </div>

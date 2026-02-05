@@ -7,18 +7,18 @@ import Page from "../assets/page.png";
 const Hero = () => {
     
     return (
-        <div className='flex gap-50'>
-            <div className='pt-6 flex flex-col gap-15'>
+        <div className='flex flex-col lg:flex-row gap-8 lg:gap-50 w-full  lg:px-0'>
+            <div className='flex flex-col gap-15 w-full lg:w-auto'>
                 {/* Hero text */}
-                <div className='flex flex-col gap-3'>
-                    <div className='flex items-center gap-3'>
-                        <MapPinIcon className="h-5 w-5 text-black" />
-                        <span className='font-medium'>Lucknow,IN</span>
-                        <span className='text-base hover:bg-gray-100 hover:rounded-full cursor-pointer'><u>Change city</u></span>
+                <div className='flex flex-col gap-3 sm:w-full'>
+                    <div className='flex items-center gap-2 lg:gap-3 sm:w-full'>
+                        <MapPinIcon className="lg:h-5 lg:w-5 h-3 w-3 text-black" />
+                        <span className='text-sm lg:text-base lg:text-font-medium'>Lucknow, IN</span>
+                        <span className='text-base  hover:bg-gray-100 hover:rounded-full cursor-pointer'><u>Change city</u></span>
                     </div>
-                    <div className='flex flex-col gap-3' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
-                        <div className='text-5xl font-extrabold whitespace-nowrap'>Request a ride for</div>
-                        <div className='text-5xl font-extrabold'>now or later</div>
+                    <div className='flex flex-col gap-3 sm:w-full' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
+                        <div className='lg:text-5xl text-4xl font-extrabold lg:w-100  w-full'>Request a ride for now or later</div>
+                        <div className='lg:text-5xl font-extrabold sm:w-full'></div>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-138 w-750'>
+            <div className='h-138 lg:w-750 w-200'>
                 <img src={Page} className='object-cover'/>
             </div>
         </div>

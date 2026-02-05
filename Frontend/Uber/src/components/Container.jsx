@@ -11,7 +11,7 @@ const Container = () => {
   console.log("Container");
 
   return (
-    <div className='px-40'>
+    <div className='w-full bg-amber-300 lg:px-40 px-5'>
       <Page/>
       <Suggestion/>
       <Plan/>

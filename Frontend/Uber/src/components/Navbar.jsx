@@ -4,7 +4,6 @@ import { ChevronDown } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 import RightNav from "./RightNav";
 
-
 const Navbar = () => {
   console.log("hello")
   console.log("hello")
@@ -16,16 +15,15 @@ const Navbar = () => {
   console.log("hello")
   console.log("hello")
 
-
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
 
   return (
-    <div className="lg:px-22 md:px-6 w-full md:h-27 lg:h-16 h-47 flex flex-row items-center bg-black  px-14 justify-between fixed top-0 left-0 z-10">
+    <div className="lg:px-22 md:px-6 w-full h-16 flex flex-row items-center bg-black px-5 justify-between fixed top-0 left-0 z-10">
       {/* left section of navbar */}
       <div className="flex items-center gap-7">
         <a href="">
-          <div className="lg:h-15 lg:w-15 h-40 w-40 md:h-24 md:w-24 flex items-center">
+          <div className="lg:h-15 lg:w-15 h-14 w-14 flex items-center">
             <img className="object-cover w-full h-full" src={logo} alt="logo" />
           </div>
         </a>

@@ -34,7 +34,7 @@ const CardCompoTravel = () => {
 
     return (
         <div className='flex'>
-            <div className='flex justify-between gap-5 w-90'>
+            <div className='flex lg:flex-row flex-col justify-between gap-5 w-90'>
                 {
                     CardData.map((item, index) => {
                         return (
