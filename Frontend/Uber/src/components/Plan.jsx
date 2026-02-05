@@ -13,14 +13,14 @@ const Plan = () => {
 
 
     return (
-        <div className='pt-10 flex flex-col gap-26'>
+        <div className='pt-10 flex flex-col gap-26 w-full'>
             <div className='flex flex-col gap-6'>
                 <div className='text-4xl font-bold' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
                     Plan for later
                 </div>
                 <div >
                     <div className='flex flex-col lg:flex-row gap-4 lg:gap-7'>
-                        <div className='bg-[#9AD4DE] rounded-xl h-auto lg:h-100 relative w-full lg:w-192 pt-10 lg:pt-17 px-5 lg:pl-10'>
+                        <div className='bg-[#9DCDD6] rounded-xl h-auto lg:h-100 relative w-full lg:w-192 pt-10 lg:pt-17 px-5 lg:pl-10'>
                             <div className='flex flex-col gap-6 lg:gap-10 w-full lg:w-93'>
                                 <div className='text-3xl lg:text-4xl font-bold w-full lg:w-80' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>Get your ride right with Uber Reserve</div>
                                 <div className='flex flex-col gap-3 '>

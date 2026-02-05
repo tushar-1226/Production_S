@@ -5,15 +5,6 @@ import { ChevronRight } from 'lucide-react';
 import RightNav from "./RightNav";
 
 const Navbar = () => {
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
-  console.log("hello")
 
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
@@ -50,7 +41,7 @@ const Navbar = () => {
             <button onClick={() => setIsAboutOpen(!isAboutOpen)} className="text-white flex items-center gap-2">
               <span>About</span> <ChevronDown className={`${isAboutOpen ? "rotate-180" : ""}`} size={15} strokeWidth={4} />
             </button>
-            <div className={`absolute top-10.5 flex flex-col justify-between bg-white left-0  text-black w-48 z-50 ${isAboutOpen ? "h-103 pt-1 pb-1.5 overflow-visible shadow-lg" : "h-0 overflow-hidden shadow-none"} transition-all duration-[0.03s] ease-in`}>
+            <div className={`absolute top-10.5 flex flex-col justify-between bg-white left-0  text-black w-48 z-50 transition-all duration-200 ease-in ${isAboutOpen ? "h-103 pt-1 pb-1.5 overflow-visible shadow-lg opacity-100 visible" : "h-0 overflow-hidden shadow-none opacity-0 invisible"}`}>
               <a href="" className="block px-4 py-2 text-gray-500 hover:bg-gray-100 font-light">
                 About us
               </a>

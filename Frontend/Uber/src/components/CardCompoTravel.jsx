@@ -39,7 +39,7 @@ const CardCompoTravel = () => {
                     CardData.map((item, index) => {
                         return (
                             <div className='flex flex-col gap-5 w-90'>
-                                <div className='h-90 w-90 bg-amber-300'>
+                                <div className='h-90 w-90'>
                                     <img className='object-contain' src={item.image} />
                                 </div>
                                 <div className='text-lg font-medium'>

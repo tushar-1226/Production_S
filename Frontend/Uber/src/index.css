@@ -7,9 +7,23 @@
 
 body {
   font-family: Inter, system-ui, sans-serif;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html, body {
   width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }

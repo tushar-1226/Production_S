@@ -9,12 +9,9 @@ import DoMore2 from './DoMore2.jsx'
 
 
 const Container = () => {
-  console.log("Container");
-  console.log("Container");
-  console.log("Container");
 
   return (
-    <div className='w-full bg-amber-300 lg:px-40 px-5'>
+    <div className='w-full pt-10 lg:px-40 px-6 flex flex-col items-center'>
       <Page/>
       <DoMore2/>
       <Suggestion/>
