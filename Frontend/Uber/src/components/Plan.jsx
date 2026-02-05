@@ -9,6 +9,10 @@ import brian from '../assets/brian.png';
 const Plan = () => {
     console.log("Plan");
     console.log("Plan");
+    console.log("Plan");
+    console.log("Plan");
+    console.log("Plan");
+
 
 
 
