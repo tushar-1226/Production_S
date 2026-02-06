@@ -10,6 +10,7 @@ import PromoDetails from './components/PromoDetails.jsx'
 import Footer from './components/Footer.jsx'
 
 const App = () => {
+  console.log("Mobile responsiveness is completed")
   return (
     <div className='pt-16 overflow-x-hidden'>
       <Navbar/>
