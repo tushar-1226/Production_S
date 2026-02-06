@@ -9,7 +9,7 @@ import AppleStore from '../assets/AppleStore.svg';
 const Footer = () => {
     
     return (
-        <div className='h-230 w-full bg-black px-40 pt-16  text-white flex flex-col gap-20 '>
+        <div className='lg:h-230 w-full bg-black lg:px-40 px-7 pt-16  text-white flex flex-col gap-20 '>
             <div className='flex flex-col gap-5'>
                 <div>
                     <img className='h-17 w-17' src={logo} alt="" />
@@ -18,7 +18,7 @@ const Footer = () => {
                     Visit Help Center
                 </div>
             </div>
-            <div className='flex w-full gap-45'>
+            <div className='flex lg:flex-row flex-col w-full gap-20 lg:gap-45'>
                 <div className='flex flex-col gap-5'>
                     <div className='text-xl'>
                         Company
@@ -106,14 +106,14 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-between'>
-                <div className='flex items-center gap-10'>
+            <div className='flex lg:flex-row flex-col gap-10 lg:justify-between'>
+                <div className='flex items-center gap-5 lg:gap-10'>
                     <div><i className="fa-brands fa-linkedin"></i></div>
                     <div><i className="fa-brands fa-youtube font-xs h-4 w-3"></i></div>
                     <div><Instagram className='h-4 w-5' /></div>
                     <div><XLogo className='h-4 w-5' /></div>
                 </div>
-                <div className='flex gap-5 items-center'>
+                <div className='flex gap-5 lg:flex-row  items-center'>
                     <div>
                         <a href="" className="text-white flex items-center gap-2">
                             <Globe className="rotate-130" size={15} strokeWidth={3.5} /><span>English</span>
@@ -133,7 +133,7 @@ const Footer = () => {
                     <img className='h-10 w-33' src={AppleStore} alt="" />
                 </div>
             </div>
-            <div className='w-full flex justify-between text-[#AFAFAF] text-xs pb-30 items-center'>
+            <div className='lg:w-full flex lg:flex-row flex-col lg:justify-between gap-5 text-[#AFAFAF] text-xs pb-30 lg:items-center'>
                 <div>
                     © 2026 Uber Technologies Inc.
                 </div>
