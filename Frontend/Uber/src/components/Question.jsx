@@ -9,25 +9,25 @@ const Question = () => {
       <div className='text-4xl font-bold text-[#333333]'>
         Frequently asked questions
       </div>
-      <div className='flex flex-col gap-3 lg:gap-0 justify-between h-full px-5 hover:cursor-pointer'>
+      <div className='flex flex-col gap-3 lg:gap-0 justify-between h-full hover:cursor-pointer'>
         <div className=' w-full'>
-          <button className='w-full flex justify-between hover:cursor-pointer'><span className='font-semibold text-base'>Can I have a lost item delivered to me?</span> <span><ChevronDown strokeWidth={4} size={18} /></span></button>
+          <button className='w-full flex justify-between items-center hover:cursor-pointer'><span className='font-semibold text-base text-left'>Can I have a lost item delivered to me?</span> <span className='flex-shrink-0'><ChevronDown strokeWidth={4} size={18} /></span></button>
         </div>
         <Line/>
         <div className='flex w-full'>
-          <button className='w-full flex justify-between hover:cursor-pointer'><span className='font-semibold text-base'>Can I rent a car using Uber?</span> <span><ChevronDown strokeWidth={4} size={18} /></span></button>
+          <button className='w-full flex justify-between items-center hover:cursor-pointer'><span className='font-semibold text-base text-left'>Can I rent a car using Uber?</span> <span className='flex-shrink-0'><ChevronDown strokeWidth={4} size={18} /></span></button>
+        </div>
+        <Line/>
+        <div className='flex w-full h-auto'>
+          <button className='w-full flex justify-between items-center hover:cursor-pointer'><span className='font-semibold text-base text-left'> Can I request a ride that picks up a friends  in different locations?</span> <span className='flex-shrink-0'><ChevronDown strokeWidth={4} size={18} /></span></button>
         </div>
         <Line/>
         <div className='flex w-full'>
-          <button className='w-full flex justify-between hover:cursor-pointer'><span className='font-semibold text-base'>Can I request a ride that picks up a friends in different locations?</span> <span><ChevronDown strokeWidth={4} size={18} /></span></button>
+          <button className='w-full flex justify-between items-center hover:cursor-pointer'><span className='font-semibold text-base text-left'>Can I request a taxi on Uber?</span> <span className='flex-shrink-0'><ChevronDown strokeWidth={4} size={18} /></span></button>
         </div>
         <Line/>
         <div className='flex w-full'>
-          <button className='w-full flex justify-between hover:cursor-pointer'><span className='font-semibold text-base'>Can I request a taxi on Uber?</span> <span><ChevronDown strokeWidth={4} size={18} /></span></button>
-        </div>
-        <Line/>
-        <div className='flex w-full'>
-          <button className='w-full flex justify-between hover:cursor-pointer'><span className='font-semibold text-base'>Is there an Uber ride option for 5 peoples?</span> <span><ChevronDown strokeWidth={4} size={18} /></span></button>
+          <button className='w-full flex justify-between items-center hover:cursor-pointer'><span className='font-semibold text-base text-left'>Is there an Uber ride option for 5 peoples?</span> <span className='flex-shrink-0'><ChevronDown strokeWidth={4} size={18} /></span></button>
         </div>
         <Line/>
       </div>

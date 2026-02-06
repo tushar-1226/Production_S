@@ -6,10 +6,6 @@ import { MapPinIcon } from "@heroicons/react/24/solid";
 import PlayStore from '../assets/PlayStore.svg';
 import AppleStore from '../assets/AppleStore.svg';
 
-
-
-
-
 const Footer = () => {
     
     return (
