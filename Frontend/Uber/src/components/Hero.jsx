@@ -19,7 +19,7 @@ const Hero = () => {
                         <span className='text-base  hover:bg-gray-100 hover:rounded-full cursor-pointer'><u>Change city</u></span>
                     </div>
                     <div className='flex flex-col gap-3 sm:w-full' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
-                        <div className='lg:text-5xl text-4xl font-extrabold lg:w-100  w-full'>Request a ride for now or later</div>
+                        <div className='md:text-5xl  text-4xl font-extrabold lg:w-100 md:100 w-150'>Request a ride for now or later</div>
                         <div className='lg:text-5xl font-extrabold sm:w-full'></div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* Location */}
-                        <div className='flex flex-col gap-4 relative'>
+                        <div className='flex flex-col gap-4 relative lg:w-full w-100'>
                         <div className='absolute z-100000 flex flex-col items-center top-5 left-5'>
                             <div className='border-6 rounded-full h-4 w-4'></div>
                             <div className='border-[1px] h-14 '></div>

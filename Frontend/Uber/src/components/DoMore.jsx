@@ -31,9 +31,9 @@ const DoMore = () => {
                     </div>
                 </div>
 
-                {/* Card 2 */}
-                <div className='w-full border-gray-200 bg-white border-2 px-4 lg:w-auto block lg:hidden'>
-                    <div className='flex flex-row justify-between items-center lg:p-5 py-4 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-1 sm:gap-0' >
+                {/* Card 2 visible on smaller and medium screens */} 
+                <div className='w-full border-gray-200 bg-white border-2 px-4 lg:p-5 md:py-1 py-4 lg:w-auto block lg:hidden'>
+                    <div className='flex flex-row justify-between items-center h-auto sm:h-50 bg-white w-full lg:w-140 group gap-1 sm:gap-0' >
                         <div className='flex items-center gap-3 sm:gap-5 w-full '>
                             <div className='lg:h-28 h-22 lg:w-28 w-22 flex-shrink-0'>
                                 <img className='object-contain h-full w-full' src={logo} />
@@ -52,8 +52,8 @@ const DoMore = () => {
 
                 {/* Card 3 */}
 
-                <div className='w-full border-gray-200 bg-white border-2 px-4 lg:w-auto block lg:hidden'>
-                    <div className='flex flex-row justify-between items-center lg:p-5 py-4 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-1 sm:gap-0' >
+                <div className='w-full border-gray-200 bg-white border-2  px-4 lg:w-auto block lg:hidden'>
+                    <div className='flex flex-row justify-between items-center lg:p-5 md:py-1 py-4 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-1 sm:gap-0' >
                         <div className='flex items-center gap-3 sm:gap-5 w-full '>
                             <div className='lg:h-28 h-22 lg:w-28 w-22 flex-shrink-0'>
                                 <img className='object-contain h-full w-full' src={logo} />

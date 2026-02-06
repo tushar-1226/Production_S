@@ -60,7 +60,7 @@ const Plan = () => {
                             <div className='text-xl font-bold' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
                                 Benefits
                             </div>
-                            <div className='pl-6 flex flex-col gap-4 items-center'>
+                            <div className='pl-6 flex flex-col gap-4 md:w-130 lg:w-auto lg:items-center'>
                                 <div className='flex items-center gap-5'>
                                     <div className='w-8 h-5 '>
                                         <img src={CalendarIcon} alt="" className="object-cover" />

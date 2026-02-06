@@ -34,20 +34,23 @@ const CardCompoTravel = () => {
 
     return (
         <div className='flex items-center'>
-            <div className='flex lg:flex-row flex-col w-full items-center justify-between gap-5'>
+            <div className='flex md:flex-row flex-col flex-wrap w-full items-center justify-between gap-5'>
                 {
                     CardData.map((item, index) => {
                         return (
-                            <div className='flex flex-col gap-5 w-90'>
-                                <div className='h-90 w-90'>
+                            <div className='flex flex-col gap-5 md:gap-2 lg:gap-5 w-90 md:w-80 lg:w-90'>
+                                <div className=' w-[100%]'>
                                     <img className='object-contain' src={item.image} />
                                 </div>
-                                <div className='text-lg font-medium'>
+
+                                <div className='text-lg font-medium break-words'>
                                     {item.heading}
                                 </div>
-                                <div className='text-gray-700 w-90'>
+
+                                <div className='text-gray-700 w-full'>
                                     {item.description}
                                 </div>
+
                                 <div>
                                     <button className='px-8 py-3 bg-black text-white rounded-[10px] font-medium'>
                                         {item.button}

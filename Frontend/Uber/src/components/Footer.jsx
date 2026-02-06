@@ -18,7 +18,7 @@ const Footer = () => {
                     Visit Help Center
                 </div>
             </div>
-            <div className='flex lg:flex-row flex-col w-full gap-20 lg:gap-45'>
+            <div className='flex md:flex-row flex-col flex-wrap w-full gap-20 lg:gap-45'>
                 <div className='flex flex-col gap-5'>
                     <div className='text-xl'>
                         Company

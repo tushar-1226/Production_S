@@ -45,11 +45,11 @@ const SuggCards = () => {
 
 
     return (
-        <div className='flex flex-col lg:flex-row flex-wrap justify-between gap-5 '>
+        <div className='flex flex-col md:flex-row flex-wrap items-center md:justify-center lg:justify-between gap-5 w-full '>
             {
                 CardImage.map((item, index) => {
                     return (
-                        <div className={`h-40 w-92 bg-gray-100 p-4 flex justify-between items-center rounded-[10px] ${index>=3 ? "hidden md:flex":"flex"} `}>
+                        <div className={`h-40 w-92 md:w-87 xl:w-92 bg-gray-100 p-4 flex justify-between rounded-[10px] ${index>=3 ? "hidden md:flex":"flex"} `}>
                             <div className='flex flex-col gap-6'>
                                 <div className='flex flex-col gap-2'>
                                     <div className='font-semibold text-base'>{item.Heading}</div>
