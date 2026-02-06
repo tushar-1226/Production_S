@@ -11,7 +11,7 @@ import Footer from './components/Footer.jsx'
 
 const App = () => {
   return (
-    <div className='pt-16'>
+    <div className='pt-16 overflow-x-hidden'>
       <Navbar/>
       <SubNav/>
       <Container/>

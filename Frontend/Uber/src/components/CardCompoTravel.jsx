@@ -33,8 +33,8 @@ const CardCompoTravel = () => {
 
 
     return (
-        <div className='flex'>
-            <div className='flex lg:flex-row flex-col justify-between gap-5 w-90'>
+        <div className='flex items-center'>
+            <div className='flex lg:flex-row flex-col w-full items-center justify-between gap-5 lg:w-90'>
                 {
                     CardData.map((item, index) => {
                         return (

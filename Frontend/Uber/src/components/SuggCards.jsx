@@ -45,11 +45,11 @@ const SuggCards = () => {
 
 
     return (
-        <div className='flex flex-wrap justify-between gap-5'>
+        <div className='flex flex-col lg:flex-row flex-wrap justify-between gap-5 '>
             {
                 CardImage.map((item, index) => {
                     return (
-                        <div className={`h-40 w-92 bg-gray-100 p-4 flex justify-between items-center rounded-[10px] ${index>=3 ? "hidden lg:flex":"flex"} `}>
+                        <div className={`h-40 w-92 bg-gray-100 p-4 flex justify-between items-center rounded-[10px] ${index>=3 ? "hidden md:flex":"flex"} `}>
                             <div className='flex flex-col gap-6'>
                                 <div className='flex flex-col gap-2'>
                                     <div className='font-semibold text-base'>{item.Heading}</div>
@@ -68,7 +68,7 @@ const SuggCards = () => {
         </div>
         // <div className="flex flex-wrap gap-5">
         //     {CardImage.map((item, index) => (
-        //         <div key={index} className={`h-40 w-full sm:w-[48%] lg:w-[32%] bg-gray-100 p-4 flex items-center justify-between rounded-[10px] overflow-hidden ${index >= 3 ? "hidden lg:flex" : "flex"}`}>
+        //         <div key={index} className={`h-40 w-full sm:w-[48%] lg:w-[32%] bg-gray-100 p-4 flex items-center justify-between rounded-[10px] ${index >= 3 ? "hidden lg:flex" : "flex"}`}>
         //             <div className="flex flex-col gap-4 max-w-[70%]">
         //                 <div>
         //                     <div className="font-semibold text-base">

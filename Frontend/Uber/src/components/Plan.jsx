@@ -13,36 +13,33 @@ const Plan = () => {
     console.log("Plan");
     console.log("Plan");
 
-
-
-
     return (
-        <div className='pt-10 flex flex-col gap-26 w-full'>
+        <div className='py-10 h-auto flex flex-col gap-15 lg:gap-26  w-full'>
             <div className='flex flex-col gap-6'>
                 <div className='text-4xl font-bold' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
                     Plan for later
                 </div>
                 <div >
                     <div className='flex flex-col lg:flex-row gap-4 lg:gap-7'>
-                        <div className='bg-[#9DCDD6] rounded-xl h-auto lg:h-100 relative w-full lg:w-192 pt-10 lg:pt-17 px-5 lg:pl-10'>
+                        <div className='bg-[#9DCDD6] rounded-xl h-auto lg:h-100 relative w-full lg:w-192 pt-10  pb-6 lg:pb-0 lg:pt-17 px-5 lg:pl-10'>
                             <div className='flex flex-col gap-6 lg:gap-10 w-full lg:w-93'>
                                 <div className='text-3xl lg:text-4xl font-bold w-full lg:w-80' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>Get your ride right with Uber Reserve</div>
                                 <div className='flex flex-col gap-3 '>
                                     <div className='text-xl font-medium'>
                                         Choose date and time
                                     </div>
-                                    <div className='flex flex-col gap-5'>
-                                        <div className='flex gap-3 '>
-                                            <div>
+                                    <div className='flex flex-col w-full gap-5'>
+                                        <div className='flex lg:gap-3 gap-3 w-full lg:w-auto'>
+                                            <div className='w-full'>
                                                 <span className='text-sm text-gray-500'>Date</span>
-                                                <div className='h-12 w-45 bg-white rounded-[10px] flex items-center p-4 gap-5 cursor-pointer'>
-                                                    <div className='h-4 w-4 overflow-hidden'><img src={CalendarIcon} alt="" className='object-cover' /></div>
+                                                <div className='h-12 w-auto lg:w-45 bg-white rounded-[10px] flex items-center p-4 gap-5 cursor-pointer'>
+                                                    <div className='h-4 w-4'><img src={CalendarIcon} alt="" className='object-cover' /></div>
                                                     <input className='h-7 w-20 outline-none cursor-pointer' type="text" name="" id="" />
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className='w-full'>
                                                 <span className='text-sm text-gray-500'>Time</span>
-                                                <div className='h-12 w-45 bg-white rounded-[10px] flex items-center p-4 gap-5 cursor-pointer'>
+                                                <div className='h-12 w-full lg:w-45 bg-white rounded-[10px] flex items-center p-4 gap-5 cursor-pointer'>
                                                     <i className="fa-solid fa-clock"></i>
                                                     <input className='h-7 w-20 outline-none cursor-pointer' type="text" name="" id="" />
                                                 </div>
@@ -59,7 +56,7 @@ const Plan = () => {
                             </div>
                         </div>
                         {/* Benefits section */}
-                        <div className='border-1 border-gray-100 h-85 w-90 pt-4 px-4 rounded-[10px] flex flex-col gap-6'>
+                        <div className='border-1 border-gray-100 h-85 lg:w-90 w-full pt-4 px-4 rounded-[10px] flex flex-col gap-6 '>
                             <div className='text-xl font-bold' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
                                 Benefits
                             </div>
@@ -99,12 +96,12 @@ const Plan = () => {
                 </div>
             </div>
             {/* This is brian part here */}
-            <div className='pl-4 pr-10 flex justify-between items-center'>
-                <div className='h-80 w-150'>
+            <div className='lg:pl-4 lg:pr-10 flex lg:flex-row flex-col gap-10 lg:justify-between items-center'>
+                <div className='lg:h-80 lg:w-150'>
                     <img className=' object-contain' src={brian} />
                 </div>
-                <div className='h-70 w-110 flex flex-col gap-10 '>
-                    <div className='text-4xl font-bold w-70 '>
+                <div className='lg:h-70 lg:w-110 flex flex-col gap-5 lg:gap-10 '>
+                    <div className='lg:text-4xl text-2xl font-bold w-full lg:w-70 '>
                         Ride with friends seamlessly
                     </div>
                     <div className='gray'>

@@ -52,18 +52,18 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* Location */}
-                    <div className='flex flex-col gap-4 relative'>
+                        <div className='flex flex-col gap-4 relative'>
                         <div className='absolute z-100000 flex flex-col items-center top-5 left-5'>
                             <div className='border-6 rounded-full h-4 w-4'></div>
                             <div className='border-[1px] h-14 '></div>
                             <div className='h-4 w-4 border-5'></div>
                         </div>
                         <div>
-                            <input type="text" className='h-10 bg-[#EFEFEF] pl-12 pr-12 rounded-[7px] py-7 w-full relative' placeholder='Pickup Location' />
+                            <input type="text" className='h-10 bg-[#EFEFEF] pl-12 pr-12 rounded-[7px] py-7 w-full' placeholder='Pickup Location' />
                             <Navigation className='absolute top-4 right-4' />
                         </div>
                         <div>
-                            <input type="text" className='h-10 bg-[#EFEFEF] pl-12 pr-43 rounded-[7px] py-7 w-full' placeholder='Dropoff location' />
+                            <input type="text" className='h-10 bg-[#EFEFEF] pl-12 pr-12 rounded-[7px] py-7 w-full' placeholder='Dropoff location' />
                         </div>
                         <div className='flex gap-5'>
                             <button className='text-white bg-black rounded-[8px] px-6 py-3 '><span className='font-semibold'>See prices</span></button>
@@ -72,8 +72,8 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-138 lg:w-750 lg:block hidden'>
-                <img src={Page} className='object-cover' />
+            <div className='h-138 lg:max-w-[750px] lg:block hidden'>
+                <img src={Page} className='object-cover w-full h-full block' />
             </div>
         </div>
 

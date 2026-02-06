@@ -41,7 +41,7 @@ const Navbar = () => {
             <button onClick={() => setIsAboutOpen(!isAboutOpen)} className="text-white flex items-center gap-2">
               <span>About</span> <ChevronDown className={`${isAboutOpen ? "rotate-180" : ""}`} size={15} strokeWidth={4} />
             </button>
-            <div className={`absolute top-10.5 flex flex-col justify-between bg-white left-0  text-black w-48 z-50 transition-all duration-200 ease-in ${isAboutOpen ? "h-103 pt-1 pb-1.5 overflow-visible shadow-lg opacity-100 visible" : "h-0 overflow-hidden shadow-none opacity-0 invisible"}`}>
+            <div className={`absolute top-10.5 flex flex-col justify-between bg-white left-0 text-black w-48 z-50 transition-all duration-200 ease-in ${isAboutOpen ? "h-103 pt-1 pb-1.5 shadow-lg opacity-100 visible" : "h-0 shadow-none opacity-0 invisible"}`}>
               <a href="" className="block px-4 py-2 text-gray-500 hover:bg-gray-100 font-light">
                 About us
               </a>
@@ -66,7 +66,7 @@ const Navbar = () => {
                 </button>
 
                 <div
-                  className={`absolute top-0 left-full  bg-white text-black shadow-lg z-50 transition-all duration-200 ease-in-out ${isExploreOpen ? "w-48 opacity-100" : "w-0 opacity-0"}`}
+                  className={`absolute top-0 left-0 lg:left-full bg-white text-black shadow-lg z-50 transition-all duration-200 ease-in-out ${isExploreOpen ? "w-48 opacity-100" : "w-0 opacity-0"}`}
                 >
                   <a href="" className="block px-4 py-2 text-gray-500 hover:bg-gray-100 font-light">
                     About us
