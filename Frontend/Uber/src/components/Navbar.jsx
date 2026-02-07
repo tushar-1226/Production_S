@@ -18,27 +18,27 @@ const Navbar = () => {
             <img className="object-cover w-full h-full" src={logo} alt="logo" />
           </div>
         </a>
-        <ul className=" flex items-center gap-7 text-sm font-medium text-white">
+        <ul className=" flex items-center gap-2 text-sm font-medium text-white">
           <li>
-            <a href="" className="text-white hidden lg:block">
+            <a href="" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2">
               Ride
             </a>
           </li>
 
           <li>
-            <a href="" className="text-white hidden lg:block">
+            <a href="" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2">
               Drive
             </a>
           </li>
 
           <li>
-            <a href="" className="text-white hidden lg:block">
+            <a href="" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2">
               Business
             </a>
           </li>
 
-          <li className="relative hidden lg:block">
-            <button onClick={() => setIsAboutOpen(!isAboutOpen)} className="text-white flex items-center gap-2">
+          <li className="relative hidden lg:block hover:bg-white/10 cursor-pointer rounded-full px-3 py-2">
+            <button onClick={() => setIsAboutOpen(!isAboutOpen)} className="text-white flex items-center gap-2 cursor-pointer">
               <span>About</span> <ChevronDown className={`${isAboutOpen ? "rotate-180" : ""}`} size={15} strokeWidth={4} />
             </button>
             <div className={`absolute top-10.5 flex flex-col justify-between bg-white left-0 text-black w-48 z-50 transition-all duration-200 ease-in ${isAboutOpen ? "h-103 pt-1 pb-1.5 shadow-lg opacity-100 visible" : "h-0 shadow-none opacity-0 invisible"}`}>

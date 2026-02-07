@@ -8,12 +8,14 @@ import Question from './components/Question.jsx'
 import DoMore from './components/DoMore.jsx'
 import PromoDetails from './components/PromoDetails.jsx'
 import Footer from './components/Footer.jsx'
+import RideMap from './components/Ride/RideMap.jsx'
 
 const App = () => {
   console.log("Mobile responsiveness is completed")
   return (
     <div className='pt-16 overflow-x-hidden'>
-      <Navbar/>
+      <RideMap/>
+      {/* <Navbar/>
       <SubNav/>
       <Container/>
       <Buisness/>
@@ -21,7 +23,7 @@ const App = () => {
       <SeePrices/>
       <DoMore/>
       <PromoDetails/>
-      <Footer/>
+      <Footer/> */}
       </div>
   )
 }
