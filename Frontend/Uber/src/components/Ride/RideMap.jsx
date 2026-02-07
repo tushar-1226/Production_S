@@ -1,10 +1,12 @@
 import React from 'react'
 import RideMapNav from './RideMapNav'
+import RideMain from './RideMain'
 
 const RideMap = () => {
   return (
-    <div>
+    <div className='px-16'>
       <RideMapNav/>
+      <RideMain/>
     </div>
   )
 }

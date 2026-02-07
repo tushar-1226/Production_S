@@ -4,10 +4,6 @@ import car from '../../assets/car.png'
 import key from '../../assets/key.png'
 import eat from '../../assets/eat.png'
 
-
-
-
-
 const RideMapNav = () => {
   return (
     <div className='h-16 border-b-4 border-gray-200 fixed left-0 top-0 w-full overflow-hidden flex items-center px-16 justify-between'>
