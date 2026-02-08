@@ -4,6 +4,10 @@ import Page from "../assets/page.png";
 
 const Hero = () => {
     console.log("hero")
+    console.log("hero")
+    console.log("hero")
+    console.log("hero")
+
 
     return (
         <div className='flex flex-col lg:flex-row gap-8 lg:gap-50 w-full lg:px-0'>
