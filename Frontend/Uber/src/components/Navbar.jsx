@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
-import { ChevronDown } from 'lucide-react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import RightNav from "./RightNav";
 
 const Navbar = () => {
@@ -26,7 +25,7 @@ const Navbar = () => {
         </a>
         <ul className=" flex items-center gap-2 text-sm font-medium text-white">
           <li>
-            <a href="" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2">
+            <a href="/ride" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2 cursor-pointer">
               Ride
             </a>
           </li>

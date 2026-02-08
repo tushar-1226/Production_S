@@ -17,7 +17,9 @@ const CardCompoTravel = () => {
         {
             image: AirCard,
             heading: "700+ airports",
-            description: `TYou can request a ride to and from most major airports. ${<u>Schedule</u>} a ride to the airport for one less thing to worry about.`,
+            description: (
+                <>You can request a ride to and from most major airports. <u>Schedule</u> a ride to the airport for one less thing to worry about.</>
+            ),
             button: "Search airports"
         },
         {
@@ -38,7 +40,7 @@ const CardCompoTravel = () => {
                 {
                     CardData.map((item, index) => {
                         return (
-                            <div className='flex flex-col gap-5 md:gap-2 lg:gap-5 w-90 md:w-80 lg:w-90'>
+                            <div key={index} className='flex flex-col gap-5 md:gap-2 lg:gap-5 w-90 md:w-80 lg:w-90'>
                                 <div className=' w-[100%]'>
                                     <img className='object-contain' src={item.image} />
                                 </div>

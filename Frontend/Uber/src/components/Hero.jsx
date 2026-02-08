@@ -1,10 +1,6 @@
 import React from 'react'
-import { MapPinIcon } from "@heroicons/react/24/solid";
-import { TagIcon } from "@heroicons/react/24/solid";
-import { Navigation } from 'lucide-react';
+import { Navigation, ChevronDown, MapPin, Tag } from 'lucide-react';
 import Page from "../assets/page.png";
-import Clock from "../assets/clock.svg";
-import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
 
@@ -14,7 +10,7 @@ const Hero = () => {
                 {/* Hero text */}
                 <div className='flex flex-col gap-2 lg:gap-3 sm:w-full'>
                     <div className='flex items-center gap-2 lg:gap-3 sm:w-full'>
-                        <MapPinIcon className="lg:h-5 lg:w-5 h-3 w-3 text-black" />
+                        <MapPin className="lg:h-5 lg:w-5 h-3 w-3 text-black" />
                         <span className='text-sm lg:text-base lg:text-font-medium'>Lucknow, IN</span>
                         <span className='text-base  hover:bg-gray-100 hover:rounded-full cursor-pointer'><u>Change city</u></span>
                     </div>
@@ -30,7 +26,7 @@ const Hero = () => {
                         <div className=''>
                             <div className='flex items-center gap-2'>
                                 <span>
-                                    <TagIcon className="h-4 w-4 text-green-600" />
+                                    <Tag className="h-4 w-4 text-green-600" />
                                 </span>
 
                                 <span className='text-xs lg:text-sm'>

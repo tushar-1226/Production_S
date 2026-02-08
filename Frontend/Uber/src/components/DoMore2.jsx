@@ -1,10 +1,9 @@
-import Qr from '../assets/Qr.png'
 import { ArrowRight } from 'lucide-react';
 import logo from "../assets/logo.svg";
 
 const DoMore2 = () => {
     return (
-        <div className='lg:hidden block pt-10 flex flex-col gap-9 w-full'>
+        <div className='lg:hidden pt-10 flex flex-col gap-9 w-full'>
             <div className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>
                 Do more in the app
             </div>

@@ -1,8 +1,7 @@
 import React from 'react'
 import logo from "../assets/logo.svg";
-import { Instagram, Globe } from 'lucide-react';
+import { Instagram, Globe, MapPin } from 'lucide-react';
 import XLogo from './XLogo';
-import { MapPinIcon } from "@heroicons/react/24/solid";
 import PlayStore from '../assets/PlayStore.svg';
 import AppleStore from '../assets/AppleStore.svg';
 
@@ -120,7 +119,7 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className='flex gap-2 items-center'>
-                        <MapPinIcon className="h-4 w-4 text-white" />
+                        <MapPin className="h-4 w-4 text-white" />
                         <span>Luckhnow</span>
                     </div>
                 </div>

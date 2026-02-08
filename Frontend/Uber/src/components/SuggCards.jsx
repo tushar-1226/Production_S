@@ -49,7 +49,7 @@ const SuggCards = () => {
             {
                 CardImage.map((item, index) => {
                     return (
-                        <div className={`h-40 w-92 md:w-87 xl:w-92 bg-gray-100 p-4 flex justify-between rounded-[10px] ${index>=3 ? "hidden md:flex":"flex"} `}>
+                        <div key={index} className={`h-40 w-92 md:w-87 xl:w-92 bg-gray-100 p-4 flex justify-between rounded-[10px] ${index>=3 ? "hidden md:flex":"flex"} `}>
                             <div className='flex flex-col gap-6'>
                                 <div className='flex flex-col gap-2'>
                                     <div className='font-semibold text-base'>{item.Heading}</div>
@@ -66,32 +66,6 @@ const SuggCards = () => {
             }
 
         </div>
-        // <div className="flex flex-wrap gap-5">
-        //     {CardImage.map((item, index) => (
-        //         <div key={index} className={`h-40 w-full sm:w-[48%] lg:w-[32%] bg-gray-100 p-4 flex items-center justify-between rounded-[10px] ${index >= 3 ? "hidden lg:flex" : "flex"}`}>
-        //             <div className="flex flex-col gap-4 max-w-[70%]">
-        //                 <div>
-        //                     <div className="font-semibold text-base">
-        //                         {item.Heading}
-        //                     </div>
-        //                     <div className="font-light text-xs">
-        //                         {item.Description}
-        //                     </div>
-        //                 </div>
-
-        //                 <button className="bg-white rounded-full px-3 py-1 w-fit font-medium text-sm">
-        //                     Details
-        //                 </button>
-        //             </div>
-
-        //             <img
-        //                 src={item.image}
-        //                 className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
-        //                 alt={item.Heading}
-        //             />
-        //         </div>
-        //     ))}
-        // </div>
 
     )
 }

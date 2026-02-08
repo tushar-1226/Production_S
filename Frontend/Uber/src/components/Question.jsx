@@ -1,5 +1,4 @@
 import React from 'react'
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { ChevronDown } from 'lucide-react';
 import Line from './Line'
 
