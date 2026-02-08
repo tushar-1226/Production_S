@@ -7,11 +7,13 @@ import SeePrices from "./SeePrices";
 import DoMore from "./DoMore";
 import PromoDetails from "./PromoDetails";
 import Footer from "./Footer";
+import BusinessNav from "./Business/BusinessNav";
 
 const Home = () => {
   return (
     <div className="pt-16 overflow-x-hidden">
-      <Navbar />
+      <BusinessNav/>
+      {/* <Navbar />
       <SubNav />
       <Container />
       <Buisness />
@@ -19,7 +21,7 @@ const Home = () => {
       <SeePrices />
       <DoMore />
       <PromoDetails />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };

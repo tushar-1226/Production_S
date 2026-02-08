@@ -16,7 +16,6 @@ const Hero = () => {
                     </div>
                     <div className='flex flex-col gap-3 sm:w-full' style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
                         <div className='md:text-5xl  text-4xl font-extrabold lg:w-100 md:100 w-150'>Request a ride for now or later</div>
-                        <div className='lg:text-5xl font-extrabold sm:w-full'></div>
                     </div>
                 </div>
 

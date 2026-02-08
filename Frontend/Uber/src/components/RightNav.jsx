@@ -40,8 +40,6 @@ const RightNav = () => {
                     </button>
                 </li>
             </ul>
-
-
         </div>
     )
 }
