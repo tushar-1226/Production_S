@@ -7,6 +7,8 @@ const Hero = () => {
     console.log("hero")
     console.log("hero")
     console.log("hero")
+    console.log("hero")
+    console.log("hero")
 
 
     return (
