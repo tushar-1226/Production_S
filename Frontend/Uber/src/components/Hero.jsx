@@ -3,12 +3,7 @@ import { Navigation, ChevronDown, MapPin, Tag } from 'lucide-react';
 import Page from "../assets/page.png";
 
 const Hero = () => {
-    console.log("hero")
-    console.log("hero")
-    console.log("hero")
-    console.log("hero")
-    console.log("hero")
-    console.log("hero")
+    
 
 
     return (
