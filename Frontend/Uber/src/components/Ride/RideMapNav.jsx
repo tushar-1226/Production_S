@@ -6,10 +6,10 @@ import eat from '../../assets/eat.png'
 
 const RideMapNav = () => {
   return (
-    <div className='h-16 border-b-4 border-gray-200 fixed left-0 top-0 w-full overflow-hidden flex items-center px-16 justify-between'>
+    <div className='h-16 border-b-4 border-gray-200 fixed left-0 top-0 z-100000 w-full overflow-hidden flex items-center px-16 justify-between '>
       {/* Right section */}
       <div className='flex items-center gap-20'>
-        <div className='h-16 w-20'>
+        <div className='h-20 w-25'>
           <img className='object-cover h-full w-full' src={wlogo} alt="" />
         </div>
         <div className='pt-3 flex gap-3'>

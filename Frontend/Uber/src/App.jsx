@@ -14,8 +14,8 @@ const App = () => {
   console.log("Mobile responsiveness is completed")
   return (
     <div className='pt-16 overflow-x-hidden'>
-      <RideMap/>
-      {/* <Navbar/>
+      {/* <RideMap/> */}
+      <Navbar/>
       <SubNav/>
       <Container/>
       <Buisness/>
@@ -23,7 +23,7 @@ const App = () => {
       <SeePrices/>
       <DoMore/>
       <PromoDetails/>
-      <Footer/> */}
+      <Footer/>
       </div>
   )
 }

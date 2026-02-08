@@ -55,7 +55,7 @@ const Hero = () => {
                         <div className='flex flex-col gap-4 relative lg:w-full w-100'>
                         <div className='absolute z-100000 flex flex-col items-center top-5 left-5'>
                             <div className='border-6 rounded-full h-4 w-4'></div>
-                            <div className='border-[1px] h-14 '></div>
+                            <div className='w-1 h-14 '></div>
                             <div className='h-4 w-4 border-5'></div>
                         </div>
                         <div>
