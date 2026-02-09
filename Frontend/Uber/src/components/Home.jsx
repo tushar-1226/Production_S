@@ -8,11 +8,13 @@ import DoMore from "./DoMore";
 import PromoDetails from "./PromoDetails";
 import Footer from "./Footer";
 import BusinessNav from "./Business/BusinessNav";
+import BusinessHero from "./Business/BusinessHero";
 
 const Home = () => {
   return (
     <div className="pt-16 overflow-x-hidden">
       <BusinessNav/>
+      <BusinessHero/>
       {/* <Navbar />
       <SubNav />
       <Container />

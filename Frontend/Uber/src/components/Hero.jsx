@@ -4,8 +4,6 @@ import Page from "../assets/page.png";
 
 const Hero = () => {
     
-
-
     return (
         <div className='flex flex-col lg:flex-row gap-8 lg:gap-50 w-full lg:px-0'>
             <div className='flex flex-col gap-5 lg:gap-13 w-full lg:w-auto'>
