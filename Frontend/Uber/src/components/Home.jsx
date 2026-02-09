@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import BusinessNav from "./Business/BusinessNav";
 import BusinessHero from "./Business/BusinessHero";
 import BusinessNetwork from "./Business/BusinessNetwork";
+import BusinessLeverage from "./Business/BusinessLeverage";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <BusinessNav/>
       <BusinessHero/>
       <BusinessNetwork/>
+      <BusinessLeverage/>
       {/* <Navbar />
       <SubNav />
       <Container />
