@@ -9,25 +9,25 @@ const BusinessLeverage = () => {
             <div className='text-4xl font-bold w-185'>
                 How companies leverage Uber for Business
             </div>
-            <div className='flex w-full justify-between'>
-                <div className='flex flex-col gap-3 '>
-                    <div className=''>
+            <div className='flex w-full justify-between '>
+                <div className='flex flex-col gap-6 group cursor-pointer'>
+                    <div className='group-hover:scale-125 transition-all duration-200 ease-out'>
                         <img className='' src={walkingmam} alt="" />
                     </div>
                     <div className='text-2xl font-bold'>
                         Business travel
                     </div>
                 </div>
-                <div>
-                    <div className=''>
+                <div className='flex flex-col gap-6 group cursor-pointer'>
+                    <div className='group-hover:scale-125 transition-all duration-200 ease-out'>
                         <img className='' src={songsir} alt="" />
                     </div>
                     <div className='text-2xl font-bold'>
                         Courtesy rides
                     </div>
                 </div>
-                <div>
-                    <div className=''>
+                <div className='flex flex-col gap-6 group cursor-pointer'>
+                    <div className='group-hover:scale-125 transition-all duration-200 ease-out'>
                         <img className='' src={meal} alt="" />
                     </div>
                     <div className='text-2xl font-bold'>
