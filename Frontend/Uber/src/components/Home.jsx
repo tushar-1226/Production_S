@@ -12,16 +12,18 @@ import BusinessHero from "./Business/BusinessHero";
 import BusinessNetwork from "./Business/BusinessNetwork";
 import BusinessLeverage from "./Business/BusinessLeverage";
 import BusinessUpfront from "./Business/BusinessUpfront";
+import BusinessFortune from "./Business/BusinessFortune";
 
 
 const Home = () => {
   return (
-    <div className="pt-16 overflow-x-hidden">
+    <div className=" overflow-x-hidden">
       <BusinessNav/>
       <BusinessHero/>
       <BusinessNetwork/>
       <BusinessLeverage/>
       <BusinessUpfront/>
+      <BusinessFortune/>
       {/* <Navbar />
       <SubNav />
       <Container />

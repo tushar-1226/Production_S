@@ -5,7 +5,7 @@ import { Globe } from 'lucide-react';
 
 const BusinessNav = () => {
   return (
-    <div className='bg-black fixed left-0 top-0 w-full px-24 flex items-center justify-between'>
+    <div className='bg-black w-full px-24 flex items-center justify-between'>
       {/* Left section */}
       <div className='flex h-16 gap-5 items-center'>
         <div className=' w-30'>
