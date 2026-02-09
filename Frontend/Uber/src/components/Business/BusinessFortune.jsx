@@ -9,6 +9,7 @@ const BusinessFortune = () => {
     console.log("fortune")
     console.log("fortune")
     console.log("fortune")
+    console.log("fortune")
     return (
         <div className='px-40 py-15 bg-[#EFEFEF] mt-17'>
             <div className='flex flex-col gap-10'>
