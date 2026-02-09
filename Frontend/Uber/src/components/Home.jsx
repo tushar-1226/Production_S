@@ -9,12 +9,14 @@ import PromoDetails from "./PromoDetails";
 import Footer from "./Footer";
 import BusinessNav from "./Business/BusinessNav";
 import BusinessHero from "./Business/BusinessHero";
+import BusinessNetwork from "./Business/BusinessNetwork";
 
 const Home = () => {
   return (
     <div className="pt-16 overflow-x-hidden">
       <BusinessNav/>
       <BusinessHero/>
+      <BusinessNetwork/>
       {/* <Navbar />
       <SubNav />
       <Container />
