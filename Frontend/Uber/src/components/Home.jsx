@@ -11,6 +11,8 @@ import BusinessNav from "./Business/BusinessNav";
 import BusinessHero from "./Business/BusinessHero";
 import BusinessNetwork from "./Business/BusinessNetwork";
 import BusinessLeverage from "./Business/BusinessLeverage";
+import BusinessUpfront from "./Business/BusinessUpfront";
+
 
 const Home = () => {
   return (
@@ -19,6 +21,7 @@ const Home = () => {
       <BusinessHero/>
       <BusinessNetwork/>
       <BusinessLeverage/>
+      <BusinessUpfront/>
       {/* <Navbar />
       <SubNav />
       <Container />
