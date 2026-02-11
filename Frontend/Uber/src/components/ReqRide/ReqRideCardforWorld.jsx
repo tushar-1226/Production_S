@@ -1,13 +1,10 @@
 import React from 'react'
 import van from '../../assets/van.png'
 
-const ReqRideCardforWorld = ({ ArrayObject }) => {
-  console.log(ArrayObject);
-  console.log("hellow")
-  console.log("card")
-  console.log("hello2")
+const ReqRideCardforWorld = ({ ArrayObject, ScrollRef }) => {
+  
   return (
-    <div className="flex gap-15 overflow-hidden overflow-x-scroll w-full">
+    <div ref={ScrollRef} className="flex gap-15 overflow-hidden w-full">
       {ArrayObject.map((item, index) => (
         <div key={index} className='flex flex-col gap-5'>
           
