@@ -6,8 +6,7 @@ import yellowtaxi from '../../assets/yellowtaxi.png'
 import greencar from '../../assets/greeencar.png'
 import uberx from '../../assets/uberx.png'
 import hourly from '../../assets/hourly.png'
-
-
+import uberxshare from '../../assets/ubserxshare.png'
 
 const ReqRideWorld = () => {
 
@@ -63,7 +62,16 @@ const ReqRideWorld = () => {
             anchor:`Learn more about`
         },
         {
-
+            image:uberxshare,
+            heading:"UberX Share",
+            desc:"Share the ride with up to one co-rider at a time",
+            anchor:`Learn more about`
+        },
+        {
+            image:uberxshare,
+            heading:"UberX Share",
+            desc:"Share the ride with up to one co-rider at a time",
+            anchor:`Learn more about`
         }
     ] 
 
