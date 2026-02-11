@@ -3,6 +3,7 @@ import van from '../../assets/van.png'
 
 const ReqRideCardforWorld = ({ ArrayObject }) => {
   console.log(ArrayObject);
+  console.log("hellow")
   return (
     <div className="flex gap-15 overflow-hidden overflow-x-scroll w-full">
       {ArrayObject.map((item, index) => (
