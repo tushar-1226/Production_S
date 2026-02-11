@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import ReqRideCardforWorld from './ReqRideCardforWorld'
-import Card2 from '../../assets/Card2.png'
+import calwclock from '../../assets/calwclock.png'
 import carkey from '../../assets/carkey.png'
 import yellowtaxi from '../../assets/yellowtaxi.png'
-import greencar from '../../assets/greeencar.png'
+import greencar from '../../assets/greencar.png'
 import uberx from '../../assets/uberx.png'
 import hourly from '../../assets/hourly.png'
-import uberxshare from '../../assets/ubserxshare.png'
+import uberxshare from '../../assets/uberxshare.png'
+import ubertransit from '../../assets/ubertransit.png'
+import uberintercity from '../../assets/uberintercity.png'
+
 
 const ReqRideWorld = () => {
 
@@ -20,7 +23,7 @@ const ReqRideWorld = () => {
 
     const FeaturesArray = [
         {
-            image:Card2,
+            image:calwclock,
             heading:"Uber Reserve",
             desc:"Book a ride in advance",
             anchor:`Learn more about`
@@ -29,12 +32,6 @@ const ReqRideWorld = () => {
             image:carkey,
             heading:"Uber Rent",
             desc:"Pick a car. See the price. Get moving.",
-            anchor:`Learn more about`
-        },
-        {
-            image:yellowtaxi,
-            heading:"Uber Taxi",
-            desc:"Local taxi cabs at the tap of a button",
             anchor:`Learn more about`
         },
         {
@@ -68,9 +65,15 @@ const ReqRideWorld = () => {
             anchor:`Learn more about`
         },
         {
-            image:uberxshare,
-            heading:"UberX Share",
-            desc:"Share the ride with up to one co-rider at a time",
+            image:ubertransit,
+            heading:"Uber Transit",
+            desc:"Real-time public transit information in the Uber app",
+            anchor:`Learn more about`
+        },
+        {
+            image:uberintercity,
+            heading:"Uber Intercity",
+            desc:"Go city to city",
             anchor:`Learn more about`
         }
     ] 
@@ -98,9 +101,9 @@ const ReqRideWorld = () => {
                 <div className={`absolute bottom-0 z-10 h-[6px] ${moveClasses[IsActive] ?? ""} bg-black transition-all duration-400 ease-out`}></div>
                 <div className='h-[6px] w-full bg-gray-400 absolute bottom-0 left-0'></div>
             </div>
-            <div>
+            <div className=''>
                 {/* features */}
-                <ReqRideCardforWorld />
+                <ReqRideCardforWorld ArrayObject = {FeaturesArray} />
             </div>
 
         </div>

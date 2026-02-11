@@ -1,23 +1,34 @@
 import React from 'react'
 import van from '../../assets/van.png'
 
-const ReqRideCardforWorld = () => {
+const ReqRideCardforWorld = ({ ArrayObject }) => {
   return (
-    <div className='flex flex-col gap-5'>
-      <div className='w-85 bg-blue-700'>
-        <img className='object-cover h-full w-full' src={van} alt="" />
-      </div>
-      <div className='flex flex-col gap-3'>
-      <div className='text-lg font-medium '>
-        Uber Shuttle
-      </div>
-      <div className='text-[#333333] font-light text-base'>
-        Shared A/C rides at affordable prices
-      </div>
-      </div>
-      <div className='text-[#2f2f2f] font-lg font-lg'>
-        <u className='underline-offset-8 decoration-gray-300'>Learn more about Uber Shuttle</u>
-      </div>
+    <div className="flex gap-15 overflow-hidden overflow-x-scroll w-full">
+      {ArrayObject.map((item, index) => (
+        <div key={index} className='flex flex-col gap-5'>
+          
+          <div className='w-85 overflow-hidden h-43'>
+            <img className='object-cover h-full w-full' src={item.image} alt=""/>
+          </div>
+
+          <div className='flex flex-col gap-3'>
+            <div className='text-lg font-medium'>
+              {item.heading}
+            </div>
+
+            <div className='text-[#333333] font-light text-base'>
+              {item.desc}
+            </div>
+          </div>
+
+          <div className='text-[#2f2f2f] font-lg'>
+            <u className='underline-offset-8 decoration-gray-300'>
+              Learn more about {item.heading}
+            </u>
+          </div>
+
+        </div>
+      ))}
     </div>
   )
 }
