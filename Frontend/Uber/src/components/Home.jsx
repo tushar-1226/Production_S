@@ -13,17 +13,19 @@ import BusinessNetwork from "./Business/BusinessNetwork";
 import BusinessLeverage from "./Business/BusinessLeverage";
 import BusinessUpfront from "./Business/BusinessUpfront";
 import BusinessFortune from "./Business/BusinessFortune";
+import BusinessCutomer from "./Business/BusinessCutomer";
+import BusinessCards from "./Business/BusinessCards";
+import BusinessPromoInfo from "./Business/BusinessPromoInfo";
+import BusinessFooter from "./Business/BusinessFooter";
+import ReqRideHero from "./ReqRide/ReqRideHero";
+import ReqRideMain from "./ReqRide/ReqRideMain";
+
 
 
 const Home = () => {
   return (
-    <div className=" overflow-x-hidden">
-      <BusinessNav/>
-      <BusinessHero/>
-      <BusinessNetwork/>
-      <BusinessLeverage/>
-      <BusinessUpfront/>
-      <BusinessFortune/>
+    <div className="overflow-x-hidden">
+      <ReqRideMain/>
       {/* <Navbar />
       <SubNav />
       <Container />

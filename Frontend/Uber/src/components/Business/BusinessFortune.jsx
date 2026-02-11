@@ -8,8 +8,8 @@ import parachute from '../../assets/parachute.png'
 const BusinessFortune = () => {
     
     return (
-        <div className='px-40 py-15 bg-[#EFEFEF] mt-17'>
-            <div className='flex flex-col gap-10'>
+        <div className='px-40 py-15 bg-[#EFEFEF] mt-17 flex flex-col gap-30 h-full w-full'>
+            <div className='flex flex-col gap-10 w-full'>
                 <div className='text-4xl font-semibold flex flex-col items-center'>
                     <span>
                         Join over 200,000 companies working with us,
@@ -19,7 +19,7 @@ const BusinessFortune = () => {
                     </span>
                 </div>
                 <div className='flex gap-2'>
-                    <div className='h-35 flex items-center w-90 '>
+                    <div className='h-35 flex items-center w-90 justify-between'>
                         <img className='object-cover h-full w-full' src={zoom} alt="" />
                     </div>
                     <div className='h-35 flex items-center w-90 '>
@@ -30,17 +30,17 @@ const BusinessFortune = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex'>
-                <div className=''>
-                    <div className='w-76 font-medium text-[18px] text-[#333333]'>
+            <div className='flex w-full justify-between items-center'>
+                <div className='flex flex-col gap-2'>
+                    <div className='w-79 font-medium text-[18px] text-[#333333] leading-snug'>
                         “Pay and basic benefits aren’t the endgame. You need to be actively listening to what employees need and want. One of our first added benefits was providing Uber credit for rides, so people could safely get a ride for work or for fun. We encourage employees to spend the credits however they want.”
                     </div>
-                    <div>
-                        <span>Ryan Carters</span><span>, Founder and CEO, Parachute Media</span>
+                    <div className='w-65'>
+                        <span className='font-medium  text-[#333333]'>Ryan Carters</span><span>, Founder and CEO, Parachute Media</span>
                     </div>
                 </div>
-                <div>
-                    <img src={parachute} alt="" />
+                <div className='w-165 bg-green-400'>
+                    <img className='object-cover h-full w-full' src={parachute} alt="" />
                 </div>
             </div>
         </div>
