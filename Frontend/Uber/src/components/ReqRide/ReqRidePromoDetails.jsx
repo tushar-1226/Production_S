@@ -1,13 +1,6 @@
 import React from 'react'
 
 const ReqRidePromoDetails = () => {
-    console.log("ReqRidePromoDetails");
-    console.log("ReqRidePromoDetails");
-    console.log("ReqRidePromoDetails");
-    console.log("ReqRidePromoDetails");
-    console.log("ReqRidePromoDetails");
-    console.log("ReqRidePromoDetails");
-    console.log("ReqRidePromoDetails");
     
 
   return (
