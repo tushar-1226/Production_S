@@ -6,6 +6,8 @@ const ReqRidePromoDetails = () => {
     console.log("ReqRidePromoDetails");
     console.log("ReqRidePromoDetails");
     console.log("ReqRidePromoDetails");
+    console.log("ReqRidePromoDetails");
+    console.log("ReqRidePromoDetails");
     
 
   return (
