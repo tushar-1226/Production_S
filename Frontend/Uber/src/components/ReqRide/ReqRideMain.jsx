@@ -4,6 +4,7 @@ import Navbar from '../Navbar'
 import SubNav from '../SubNav'
 import Suggestion from '../Suggestion'
 import ReqRideWorld from './ReqRideWorld'
+import ReqRideWorld2 from './ReqRideWorld2'
 
 
 const ReqRideMain = () => {
@@ -14,6 +15,7 @@ const ReqRideMain = () => {
       <ReqRideHero/>
       <Suggestion/>
       <ReqRideWorld/>
+      <ReqRideWorld2/>
     </div>
   )
 }
