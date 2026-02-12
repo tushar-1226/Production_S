@@ -19,6 +19,8 @@ import uberblack from '../../assets/uberblack.png'
 import blacksuv from '../../assets/blacksuv.png'
 import uberxl from '../../assets/uberxl.png'
 import uberwav from '../../assets/uberwav.png'
+import ubersaver from '../../assets/ubersaver.png'
+import moto from '../../assets/moto.png'
 
 const ReqRideWorld = () => {
 
@@ -38,39 +40,9 @@ const ReqRideWorld = () => {
 
     const FeaturesArray = [
         {
-            image: calwclock,
-            heading: "Uber Reserve",
-            desc: "Book a ride in advance",
-            anchor: `Learn more about`
-        },
-        {
-            image: carkey,
-            heading: "Uber Rent",
-            desc: "Pick a car. See the price. Get moving.",
-            anchor: `Learn more about`
-        },
-        {
-            image: yellowtaxi,
-            heading: "Uber Taxi",
-            desc: "Local taxi cabs at the tap of a button",
-            anchor: `Learn more about`
-        },
-        {
-            image: greencar,
-            heading: "Uber Green",
-            desc: "Sustainable rides in electric vehicles and hybrid vehicles",
-            anchor: `Learn more about`
-        },
-        {
-            image: uberx,
-            heading: "UberX",
-            desc: "Affordable rides, all to yourself",
-            anchor: `Learn more about`
-        },
-        {
-            image: hourly,
-            heading: "Hourly",
-            desc: "As many stops as you need in one car",
+            image: uberxl,
+            heading: "Uber Shuttle",
+            desc: "Shared A/C rides at affordable prices",
             anchor: `Learn more about`
         },
         {
@@ -80,9 +52,45 @@ const ReqRideWorld = () => {
             anchor: `Learn more about`
         },
         {
-            image: ubertransit,
-            heading: "Uber Transit",
-            desc: "Real-time public transit information in the Uber app",
+            image: greencar,
+            heading: "Uber Green",
+            desc: "Sustainable rides in electric vehicles",
+            anchor: `Learn more about`
+        },
+        {
+            image: carkey,
+            heading: "Uber Rent",
+            desc: "Pick a car. See the price. Get moving.",
+            anchor: `Learn more about`
+        },
+        {
+            image: calwclock,
+            heading: "Uber Reserve",
+            desc: "Book a ride in advance",
+            anchor: `Learn more about`
+        },
+        {
+            image: hourly,
+            heading: "Hourly",
+            desc: "As many stops as you need in one car",
+            anchor: `Learn more about`
+        },
+        {
+            image: uberx,
+            heading: "UberX",
+            desc: "Affordable rides, all to yourself",
+            anchor: `Learn more about`
+        },
+        {
+            image: ubersaver,
+            heading: "UberX Saver",
+            desc: "Wait to save. Limited availability",
+            anchor: `Learn more about`
+        },
+        {
+            image: yellowtaxi,
+            heading: "Uber Taxi",
+            desc: "Local taxi cabs at the tap of a button",
             anchor: `Learn more about`
         },
         {
@@ -90,14 +98,15 @@ const ReqRideWorld = () => {
             heading: "Uber Intercity",
             desc: "Go city to city",
             anchor: `Learn more about`
-        }
+        },
+
     ]
 
     const WheelsArray = [
         {
-            image: bikereq,
-            heading: "Uber Bike",
-            desc: "Motorcycles for one rider",
+            image: moto,
+            heading: "Moto",
+            desc: "Affordable, convenient motorcycle rides",
             anchor: `Learn more about`
         },
         {
@@ -116,6 +125,12 @@ const ReqRideWorld = () => {
             image: yellowauto,
             heading: "Auto",
             desc: "Auto rickshaws at the tap of a button",
+            anchor: `Learn more about`
+        },
+        {
+            image: ubertransit,
+            heading: "Uber Transit",
+            desc: "Real-time public transit information in the Uber app",
             anchor: `Learn more about`
         }
     ]
@@ -261,10 +276,10 @@ const ReqRideWorld = () => {
                             {PageNum}/{TotalPage}
                         </div>
                         <div className='rounded-full bg-gray-300 h-13 w-13 flex items-center justify-center hover:bg-gray-400 duration-150 cursor-pointer' onClick={ScrollLeft} >
-                            <ChevronLeft strokeWidth={3} className={`${PageNum === 1? "text-gray-500": "text-black"}`} />
+                            <ChevronLeft strokeWidth={3} className={`${PageNum === 1 ? "text-gray-500" : "text-black"}`} />
                         </div>
                         <div className='rounded-full bg-gray-300 h-13 w-13 flex items-center justify-center cursor-pointer hover:bg-gray-400 duration-150' onClick={ScrollRight}>
-                            <ChevronRight strokeWidth={3} className={`${PageNum === TotalPage? "text-gray-500": "text-black"}`} />
+                            <ChevronRight strokeWidth={3} className={`${PageNum === TotalPage ? "text-gray-500" : "text-black"}`} />
                         </div>
                     </div>
                 </div>
