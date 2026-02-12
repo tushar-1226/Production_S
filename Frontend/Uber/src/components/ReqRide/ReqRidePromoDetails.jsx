@@ -4,6 +4,9 @@ const ReqRidePromoDetails = () => {
     console.log("ReqRidePromoDetails");
     console.log("ReqRidePromoDetails");
     console.log("ReqRidePromoDetails");
+    console.log("ReqRidePromoDetails");
+    console.log("ReqRidePromoDetails");
+    
 
   return (
     <div className=' px-5 py-16 flex flex-col gap-10 lg:justify-between bg-[#F6F6F6] mt-10 '>
