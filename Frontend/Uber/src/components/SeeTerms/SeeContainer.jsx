@@ -15,6 +15,7 @@ const SeeContainer = () => {
     console.log(ArrayObject);
     console.log(ScrollLeft);
     console.log(ScrollRight);
+    console.log(ScrollRef.current);
 
     const ScrollRef = useRef(null);
     const [PageNum, setPageNum] = useState(1);
