@@ -12,6 +12,7 @@ const SeeContainer = () => {
     console.log(PageNum);
     console.log(TotalPage);
     console.log(ScrollRef);
+    console.log(ArrayObject);
 
     const ScrollRef = useRef(null);
     const [PageNum, setPageNum] = useState(1);
