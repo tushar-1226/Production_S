@@ -1,8 +1,6 @@
 import React from 'react'
 
 const ReqRidePromoDetails = () => {
-    
-
   return (
     <div className=' px-5 py-16 flex flex-col gap-10 lg:justify-between bg-[#F6F6F6] mt-10 '>
       <div className='flex flex-col gap-5 px-40'>

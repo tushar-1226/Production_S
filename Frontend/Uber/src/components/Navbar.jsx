@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="lg:px-22 md:px-6 w-full h-16 flex flex-row items-center bg-black px-5 justify-between fixed top-0 left-0 z-10">
+    <div className="lg:px-22 md:px-6 w-full h-16 flex flex-row items-center bg-black px-5 justify-between fixed top-0 left-0 z-100000000000000000000">
       {/* left section of navbar */}
       <div className="flex items-center gap-7">
         <a href="">

@@ -4,7 +4,7 @@ import logo from "../../assets/logo.svg";
 
 const ReqRideSignUp = () => {
     return (
-        <div className='flex w-full justify-between'>
+        <div className='flex w-full justify-between gap-2'>
             <div className='w-full border-gray-200 border-b-2 px-2 md:px-3 md:py-1 lg:w-auto group cursor-pointer'>
                 <div className='flex flex-row justify-between items-center lg:p-5 lg:py-1 md:py-2 py-4 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-4 sm:gap-0' >
                     <div className='flex items-center gap-3 sm:gap-5 w-full'>

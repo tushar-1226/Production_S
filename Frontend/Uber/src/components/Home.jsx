@@ -19,13 +19,15 @@ import BusinessPromoInfo from "./Business/BusinessPromoInfo";
 import BusinessFooter from "./Business/BusinessFooter";
 import ReqRideHero from "./ReqRide/ReqRideHero";
 import ReqRideMain from "./ReqRide/ReqRideMain";
+import AirportMain from "./Airport/AirportMain";
+import SeeMain from './SeeTerms/SeeMain'
 
 
 
 const Home = () => {
   return (
     <div className="overflow-x-hidden">
-      <ReqRideMain/>
+      <SeeMain/>
       {/* <Navbar />
       <SubNav />
       <Container />
