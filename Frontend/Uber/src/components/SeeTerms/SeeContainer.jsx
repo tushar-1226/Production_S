@@ -9,13 +9,8 @@ import smallcard5 from '../../assets/smallcard5.png'
 import smallcard6 from '../../assets/smallcard6.png'
 
 const SeeContainer = () => {
-    console.log(PageNum);
-    console.log(TotalPage);
-    console.log(ScrollRef);
-    console.log(ArrayObject);
-    console.log(ScrollLeft);
-    console.log(ScrollRight);
-    console.log(ScrollRef.current);
+   
+
 
     const ScrollRef = useRef(null);
     const [PageNum, setPageNum] = useState(1);
