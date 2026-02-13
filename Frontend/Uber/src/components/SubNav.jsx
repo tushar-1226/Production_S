@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 const SubNav = () => {
   return (
     <div className="lg:px-22 w-full h-16 px-5 flex items-center  justify-between absolute top-16 left-0 z-10 bg-white">
-      <div className='font-bold text-2xl pl-1.5 w-full flex items-center gap-1' style={{ fontFamily: "Inter, system-ui, sans-serif" }} >
+      <div className='font-bold text-2xl pl-1.5 lg:w-auto w-full flex items-center gap-1' style={{ fontFamily: "Inter, system-ui, sans-serif" }} >
         <span className='font-bold text-2xl'>Ride</span>
         <ChevronDown size={20} strokeWidth={1} className='lg:hidden block'/>
       </div>

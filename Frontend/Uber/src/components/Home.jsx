@@ -21,13 +21,14 @@ import ReqRideHero from "./ReqRide/ReqRideHero";
 import ReqRideMain from "./ReqRide/ReqRideMain";
 import AirportMain from "./Airport/AirportMain";
 import SeeMain from './SeeTerms/SeeMain'
+import LearnMoreMain from "./LearnMore/LearnMoreMain";
 
 
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden">
-      <SeeMain/>
+    <div className="overflow-x-hidden pt-16">
+      <LearnMoreMain/>
       {/* <Navbar />
       <SubNav />
       <Container />

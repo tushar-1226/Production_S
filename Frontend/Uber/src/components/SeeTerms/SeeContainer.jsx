@@ -9,12 +9,9 @@ import smallcard5 from '../../assets/smallcard5.png'
 import smallcard6 from '../../assets/smallcard6.png'
 
 const SeeContainer = () => {
-   
-
-
     const ScrollRef = useRef(null);
     const [PageNum, setPageNum] = useState(1);
-    const [TotalPage, setTotalPage] = useState(3);
+    const [TotalPage, setTotalPage] = useState(2);
 
     const ArrayObject = [
         {
@@ -61,7 +58,7 @@ const SeeContainer = () => {
     }
 
     return (
-        <div className='py-30'>
+        <div className='py-30 flex flex-col gap-20'>
             <div>
                 <SeeSmallCards ArrayObject={ArrayObject} ScrollRef={ScrollRef} />
             </div>
@@ -70,12 +67,10 @@ const SeeContainer = () => {
                     <div className=''>
                         {PageNum}/{TotalPage}
                     </div>
-                    <div className='rounded-full bg-gray-300 h-13 w-13 flex items-center justify-center hover:bg-gray-400 duration-150 cursor-pointer' onClick={ScrollLeft} >
-                        <ChevronLeft strokeWidth={3} className={`${PageNum === 1 ? "text-gray-500" : "text-black"}`} />
-                        
-
+                    <div className={`rounded-full bg-gray-300 h-13 w-13 flex items-center justify-center hover:bg-gray-400 duration-150 cursor-pointer ${PageNum === TotalPage ? "text-gray-500 cursor-not-allowed" : "text-black cursor-pointer"}`} onClick={ScrollLeft} >
+                        <ChevronLeft strokeWidth={3} className={`${PageNum === 1 ? "text-gray-500 cursor-not-allowed" : "text-black"}`} />
                     </div>
-                    <div className='rounded-full bg-gray-300 h-13 w-13 flex items-center justify-center cursor-pointer hover:bg-gray-400 duration-150' onClick={ScrollRight}>
+                    <div className={`rounded-full bg-gray-300 h-13 w-13 flex items-center justify-center  hover:bg-gray-400 duration-150 ${PageNum === TotalPage ? "text-gray-500 cursor-not-allowed" : "text-black cursor-pointer"}`} onClick={ScrollRight}>
                         <ChevronRight strokeWidth={3} className={`${PageNum === TotalPage ? "text-gray-500" : "text-black"}`} />
                     </div>
                 </div>
