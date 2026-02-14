@@ -8,17 +8,7 @@ import AirportMain from "./components/Airport/AirportMain";
 import SeeMain from "./components/SeeTerms/SeeMain";
 
 const App = () => {
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-  console.log("App");
-
+ 
 
   return (
     <div>
