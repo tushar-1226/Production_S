@@ -9,6 +9,10 @@ import SeeMain from "./components/SeeTerms/SeeMain";
 
 const App = () => {
   console.log("App");
+  console.log("App");
+  console.log("App");
+  console.log("App");
+
   return (
     <div>
       <Routes>
