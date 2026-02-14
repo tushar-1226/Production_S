@@ -89,7 +89,7 @@ const Plan = () => {
                                 </div>
                             </div>
                             <div className='font-light underline decoration-dotted underline-offset-5'>
-                                See terms
+                                <a href="/see">See terms</a>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ const Plan = () => {
                         Riding with friends just got easier: set up a group ride in the Uber app, invite your friends, and arrive at your destination. Friends who ride together save together.
                     </div>
                     <div className='font-light underline decoration-dotted underline-offset-5'>
-                        Learn more
+                        <a href="/learnmore">Learn more</a>
                     </div>
                 </div>
             </div>

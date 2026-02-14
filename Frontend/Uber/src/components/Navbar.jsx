@@ -37,7 +37,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <a href="" className="text-white hidden lg:block hover:bg-white/10 cursor-pointer rounded-full px-3 py-2">
+            <a href="/business" className="text-white hidden lg:block hover:bg-white/10 cursor-pointer rounded-full px-3 py-2">
               Business
             </a>
           </li>

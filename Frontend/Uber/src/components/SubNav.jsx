@@ -9,11 +9,11 @@ const SubNav = () => {
         <ChevronDown size={20} strokeWidth={1} className='lg:hidden block'/>
       </div>
       <div className='flex flex-row text-gray-600 font-light text-sm justify-between whitespace-nowrap gap-5.5 pr-4 '>
-        <div className='cursor-pointer hover:text-black hidden lg:block'>Request a ride</div>
+        <div className='cursor-pointer hover:text-black hidden lg:block'><a href="/ride">Request a ride</a></div>
         <div className='cursor-pointer hover:text-black hidden lg:block'>Reserve a ride</div>
-        <div className='cursor-pointer hover:text-black hidden lg:block'>See prices</div>
-        <div className='cursor-pointer hover:text-black hidden lg:block'>Explore ride options</div>
-        <div className='cursor-pointer hover:text-black hidden lg:block'>Airport rides</div>
+        <div className='cursor-pointer hover:text-black hidden lg:block'><a href="/ride">See prices</a></div>
+        <div className='cursor-pointer hover:text-black hidden lg:block'><a href="/exploreride">Explore ride options</a></div>
+        <div className='cursor-pointer hover:text-black hidden lg:block'><a href="/airport">Airport rides</a></div>
       </div>
     </div>
   )

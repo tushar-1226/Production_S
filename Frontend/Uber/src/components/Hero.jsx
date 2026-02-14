@@ -3,9 +3,8 @@ import { Navigation, ChevronDown, MapPin, Tag } from 'lucide-react';
 import Page from "../assets/page.png";
 
 const Hero = () => {
-    
     return (
-        <div className='flex flex-col lg:flex-row gap-8 lg:gap-50 w-full lg:px-0'>
+        <div className='flex flex-col lg:pt-20 lg:flex-row gap-8 lg:gap-50 w-full lg:px-0'>
             <div className='flex flex-col gap-5 lg:gap-13 w-full lg:w-auto'>
                 {/* Hero text */}
                 <div className='flex flex-col gap-2 lg:gap-3 sm:w-full'>
@@ -71,7 +70,6 @@ const Hero = () => {
                 <img src={Page} className='object-cover w-full h-full block' />
             </div>
         </div>
-
     )
 }
 

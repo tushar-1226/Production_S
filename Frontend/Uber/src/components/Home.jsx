@@ -22,14 +22,12 @@ import ReqRideMain from "./ReqRide/ReqRideMain";
 import AirportMain from "./Airport/AirportMain";
 import SeeMain from './SeeTerms/SeeMain'
 import LearnMoreMain from "./LearnMore/LearnMoreMain";
-
-
+import BusinessMain from './Business/BusinessMain'
 
 const Home = () => {
   return (
     <div className="overflow-x-hidden pt-16">
-      <LearnMoreMain/>
-      {/* <Navbar />
+      <Navbar />
       <SubNav />
       <Container />
       <Buisness />
@@ -37,7 +35,7 @@ const Home = () => {
       <SeePrices />
       <DoMore />
       <PromoDetails />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };
