@@ -15,7 +15,6 @@ const App = () => {
   console.log("App");
   console.log("App");
   console.log("App");
-git add . && git commit -m "updated" && git push
 
   return (
     <div>
