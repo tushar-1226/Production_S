@@ -23,11 +23,14 @@ import AirportMain from "./Airport/AirportMain";
 import SeeMain from './SeeTerms/SeeMain'
 import LearnMoreMain from "./LearnMore/LearnMoreMain";
 import BusinessMain from './Business/BusinessMain'
+import AboutMain from './AboutUs/AboutMain'
+
 
 const Home = () => {
   return (
     <div className="overflow-x-hidden pt-16">
-      <Navbar />
+      <AboutMain/>
+      {/* <Navbar />
       <SubNav />
       <Container />
       <Buisness />
@@ -35,7 +38,7 @@ const Home = () => {
       <SeePrices />
       <DoMore />
       <PromoDetails />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };
