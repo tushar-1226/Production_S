@@ -15,7 +15,7 @@ const AboutCEOLetter = () => {
                     </div>
 
                     <div>
-                        <button className='bg-black py-3 px-6 rounded-[7px] text-white'>
+                        <button className='bg-black py-3 px-6 rounded-[7px] text-white font-medium'>
                             Read Dara's Letter
                         </button>
                     </div>
