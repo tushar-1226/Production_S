@@ -10,7 +10,7 @@ import Footer from '../Footer.jsx'
 
 const AboutMore = () => {
   console.log("hwllo")
-  console.log("hello")
+  
   return (
     <div>
       <Navbar/>
