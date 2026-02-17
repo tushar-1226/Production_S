@@ -10,6 +10,9 @@ import Footer from '../Footer.jsx'
 
 const AboutMore = () => {
   console.log("about")
+  console.log("about")
+  console.log("about")
+  console.log("about")
   
   return (
     <div>
