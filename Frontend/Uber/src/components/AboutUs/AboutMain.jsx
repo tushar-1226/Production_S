@@ -14,7 +14,8 @@ const AboutMore = () => {
   console.log("about")
   console.log("about")
   console.log("about")
-  console.log("about")
+ 
+  
   
   return (
     <div>
