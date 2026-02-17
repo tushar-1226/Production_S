@@ -9,7 +9,7 @@ import AboutComeRe from './AboutComeRe.jsx'
 import Footer from '../Footer.jsx'
 
 const AboutMore = () => {
-  
+  console.log("about")
   
   return (
     <div>
