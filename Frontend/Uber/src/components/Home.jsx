@@ -24,12 +24,13 @@ import SeeMain from './SeeTerms/SeeMain'
 import LearnMoreMain from "./LearnMore/LearnMoreMain";
 import BusinessMain from './Business/BusinessMain'
 import AboutMain from './AboutUs/AboutMain'
+import LoginMain from "./Login_SignUp/LoginMain";
 
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden pt-16">
-      <AboutMain/>
+    <div className="overflow-x-hidden">
+      <LoginMain/>
       {/* <Navbar />
       <SubNav />
       <Container />
