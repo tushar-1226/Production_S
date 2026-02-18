@@ -6,7 +6,6 @@ import { QrCode } from 'lucide-react';
 const LoginForm = () => {
   console.log("hello")
 
-  
   return (
     <div className='h-[calc(100vh_-_64px)] w-full flex items-center justify-center '>
       <div className='h-100 w-82'>
