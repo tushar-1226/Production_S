@@ -9,6 +9,7 @@ import Footer from '../Footer'
 
 const OffMain = () => {
 
+
   
   return (
     <div>
