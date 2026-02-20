@@ -8,6 +8,8 @@ import OffPromo from './OffPromo'
 import Footer from '../Footer'
 
 const OffMain = () => {
+
+  
   return (
     <div>
       <div className='pt-16 px-40'>
