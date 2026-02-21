@@ -4,6 +4,7 @@ const tempUserModel = require('../models/tempUser.model')
 const nodemailer = require('nodemailer')
 const crypto = require('crypto')
 
+
 async function sendEmailOtp(req, res) {
     try {
         const { email } = req.body
