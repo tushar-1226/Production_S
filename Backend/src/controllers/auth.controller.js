@@ -114,17 +114,23 @@ async function saveName(req, res) {
             return res.status(400).json({ message: "All fields are required" })
         }
 
-        const  tempUser = await tempUserModel.findOne({ tempToken})
+        const tempUser = await tempUserModel.findOne({ tempToken })
 
-        if(!tempUser){
-            return res.status(400).json({message:"Invalid session"})
+        if (!tempUser) {
+            return res.status(400).json({ message: "Invalid session" })
         }
 
-        if(!tempUser.isEmailVerified){
-            return res.status(400).json({message:"Email not verified"})
+        if (!tempUser.isEmailVerified) {
+            return res.status(400).json({ message: "Email not verified" })
         }
 
-        
+        tempUser.firstName = firstName
+        tempUser.lastName = lastName
+        await tempUser.save()
+
+        return res.status(200).json({
+            message: "Name saved successfully"
+        })
     }
     catch (err) {
         res.status(500).json({
@@ -135,6 +141,58 @@ async function saveName(req, res) {
 }
 
 async function termsCondition(req, res) {
+    try {
+        const { tempToken, isTermsAccepted } = req.body
+
+        if (!tempToken || typeof accepted !== "boolean") {
+            return res.status(400).json({
+                message: "Token and acceptance status required"
+            })
+        }
+
+        const tempUser = await tempUserModel.findOne({ tempToken })
+
+        if (!tempUser) {
+            return res.status(400).json({
+                message: "Invalid session"
+            })
+        }
+
+        if (!tempUser.isEmailVerified) {
+            return res.status(400).json({
+                message: "Email not verified"
+            })
+        }
+
+        if (!tempUser.firstName || !tempUser.lastName) {
+            return res.status(400).json({
+                message: "Name not completed"
+            })
+        }
+
+        if (!accepted) {
+            return res.status(400).json({
+                message: "You must accept terms and conditions"
+            })
+        }
+
+        tempUser.termsAccepted = true
+        tempUser.termsAcceptedAt = new Date()
+
+        await tempUser.save()
+
+        return res.status(200).json({
+            message: "Terms accepted successfully"
+        })
+
+
+
+    }
+    catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
 
 }
 

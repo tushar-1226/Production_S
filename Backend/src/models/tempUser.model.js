@@ -23,7 +23,7 @@ const tempUserSchema = new mongoose.Schema({
 
   emailOtpExpiry: {
     type: Date,
-    },
+  },
 
   isEmailVerified: {
     type: Boolean,
@@ -37,6 +37,15 @@ const tempUserSchema = new mongoose.Schema({
 
   phoneOtp: {
     type: String
+  },
+
+  termsAccepted: {
+    type: Boolean,
+    default: false
+  },
+  
+  termsAcceptedAt: {
+    type: Date
   },
 
   phoneOtpExpiry: {
