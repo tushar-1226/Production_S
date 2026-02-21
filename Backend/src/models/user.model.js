@@ -10,20 +10,10 @@ const userSchema = new mongoose.Schema({
         match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email']
     },
 
-    isEmailVerified: {
-        type: Boolean,
-        default: false
-    },
-
     phone: {
         type: String,
         unique: true,
-        sparse: true   // allows multiple null values
-    },
-
-    isPhoneVerified: {
-        type: Boolean,
-        default: false
+        sparse: true   
     },
 
     firstName: {
@@ -51,4 +41,6 @@ const userSchema = new mongoose.Schema({
     timestamps: true   // adds createdAt & updatedAt automatically
 })
 
-module.exports = mongoose.model('User', userSchema)
+const userModel = mongoose.models.User || mongoose.model('User', userSchema)
+
+module.exports = userModel
