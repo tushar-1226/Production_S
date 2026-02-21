@@ -144,7 +144,7 @@ async function termsCondition(req, res) {
     try {
         const { tempToken, isTermsAccepted } = req.body
 
-        if (!tempToken || typeof accepted !== "boolean") {
+        if (!tempToken || typeof isTermsAccepted !== "boolean") {
             return res.status(400).json({
                 message: "Token and acceptance status required"
             })
@@ -170,9 +170,15 @@ async function termsCondition(req, res) {
             })
         }
 
-        if (!accepted) {
+        if (!isTermsAccepted) {
             return res.status(400).json({
                 message: "You must accept terms and conditions"
+            })
+        }
+
+        if (tempUser.termsAccepted) {
+            return res.status(400).json({
+                message: "Terms already accepted"
             })
         }
 
@@ -185,15 +191,11 @@ async function termsCondition(req, res) {
             message: "Terms accepted successfully"
         })
 
-
-
-    }
-    catch (err) {
-        res.status(500).json({
+    } catch (err) {
+        return res.status(500).json({
             message: err.message
         })
     }
-
 }
 
 async function sendPhoneOtp(req, res) {
