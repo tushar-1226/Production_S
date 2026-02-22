@@ -796,15 +796,16 @@ async function sendLoginOtp(req, res) {
 </body>
 </html>
       `
-
     )
 
-    res.status(200).json({ message: "OTP sent successfully" })
+    res.status(200).json({ 
+      message: "OTP sent successfully",
+      tempToken 
+    })
 
   } catch (err) {
     res.status(500).json({
-      message: err.message,
-      tempToken
+      message: err.message
     })
   }
 }
@@ -833,15 +834,16 @@ async function verifyLoginOtp(req, res) {
       return res.status(400).json({ message: "Invalid OTP" })
     }
 
-    await otpModel.deleteOne({ email })
+    const user = await userModel.findOne({ email: otpDoc.email })
 
     const token = jwt.sign(
-      { userId: otpDoc.userId },
+      { id: user._id },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     )
 
     res.cookie("token", token)
+    await otpModel.deleteOne({ email: otpDoc.email })
 
     res.status(200).json({ message: "Login successful" })
 

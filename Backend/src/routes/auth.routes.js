@@ -8,6 +8,7 @@ router.post('/save-name', authController.saveName)
 router.post('/terms-condition',authController.termsCondition)
 router.post('/register-password', authController.registerPassword)
 router.post('/send-login-otp', authController.sendLoginOtp)
+router.post('/verify-login-otp', authController.verifyLoginOtp)
 router.get('/logout', authController.logoutUser)
 
 
