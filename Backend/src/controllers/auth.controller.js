@@ -1,9 +1,11 @@
 const userModel = require('../models/user.model')
-const bcrypt = require('bcrypt')
 const tempUserModel = require('../models/tempUser.model')
+const otpModel = require('../models/loginOtp.model')
+const bcrypt = require('bcrypt')
 const nodemailer = require('nodemailer')
 const crypto = require('crypto')
 const sendEmail = require('../utils/sendEmail')
+const jwt = require('jsonwebtoken')
 
 async function sendEmailOtp(req, res) {
   try {
@@ -401,8 +403,6 @@ async function registerPassword(req, res) {
       })
     }
 
-
-
     const hashedPassword = await bcrypt.hash(password, 10)
 
     const existingUser = await userModel.findOne({ email: tempUser.email })
@@ -413,15 +413,22 @@ async function registerPassword(req, res) {
       })
     }
 
-    await userModel.create({
+    const user = await userModel.create({
       email: tempUser.email,
       firstName: tempUser.firstName,
       lastName: tempUser.lastName,
       password: hashedPassword,
       isEmailVerified: tempUser.isEmailVerified,
       termsAccepted: tempUser.termsAccepted,
-      termsAcceptedAt: tempUser.termsAcceptedAt
+      termsAcceptedAt: tempUser.termsAcceptedAt,
+
     })
+
+    const token = jwt.sign({
+      id: user._id
+    }, process.env.JWT_SECRET)
+
+    res.cookie('token', token)
 
     // Send welcome email
     await sendEmail(
@@ -550,65 +557,37 @@ async function registerPassword(req, res) {
   }
 }
 
-async function refreshTokens(req, res) {
+async function loginUser(req, res) {
   try {
-    const incomingRefreshToken = req.cookies.refreshToken
-
-    if (!incomingRefreshToken) {
-      return res.status(401).json({ message: "No refresh token provided" })
+    const { email } = req.body
+    if (!email) {
+      return res.status(400).json({ message: "email is required" })
     }
 
-    const decoded = jwt.verify(
-      incomingRefreshToken,
-      process.env.REFRESH_SECRET
-    )
-
-    const user = await userModel.findById(decoded.id)
-
-    if (!user) {
-      return res.status(401).json({ message: "User not found" })
+    const loggedUser = await userModel.findOne({email})
+    if (!loggedUser) {
+      return res.status(400).json({ message: "User not found" })
     }
 
-    if (user.refreshToken !== incomingRefreshToken) {
-      return res.status(403).json({ message: "Invalid refresh token" })
+    const otp = Math.floor(100000 + Math.random() * 900000).toString()
+    const hashedOtp = await bcrypt.hash(otp, 10)
+  
+    await otpModel.create({
+      email,
+      emailOtp: hashedOtp,
+      emailOtpExpiry: new Date(Date.now() + 5 * 60 * 1000)
+    })
+
+    const {otpFront} = req.body
+    if (!otpFront) {
+      return res.status(400).json({ message: "otp is required" })
     }
 
-    const newAccessToken = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "15m" }
-    )
-
-    const newRefreshToken = jwt.sign(
-      { id: user._id },
-      process.env.REFRESH_SECRET,
-      { expiresIn: "7d" }
-    )
-
-    user.refreshToken = newRefreshToken
-    await user.save()
-
-    res.cookie("accessToken", newAccessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 15 * 60 * 1000
-    })
-
-    res.cookie("refreshToken", newRefreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000
-    })
-
-    return res.status(200).json({
-      message: "Tokens refreshed successfully"
-    })
-
-  } catch (error) {
-    return res.status(403).json({
-      message: "Invalid or expired refresh token"
+    if()
+  }
+  catch (err) {
+    res.status(500).json({
+      message: err.message
     })
   }
 }
@@ -619,5 +598,5 @@ module.exports = {
   saveName,
   termsCondition,
   registerPassword,
-  refreshTokens
+  loginUser
 }

@@ -10,12 +10,6 @@ const userSchema = new mongoose.Schema({
         match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email']
     },
 
-    phone: {
-        type: String,
-        unique: true,
-        sparse: true   
-    },
-
     firstName: {
         type: String,
         trim: true
@@ -25,12 +19,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-
-    authMethod: {
+     
+    password: {
         type: String,
-        enum: ['phone', 'passkey'],
-        default: 'phone'
+        required: true
     },
+
+    isEmailVerified: {
+        type: Boolean,
+        default: false
+    },
+
+    termsAccepted: {
+        type: Boolean,
+        default: false
+    },
+
+    termsAcceptedAt: {
+        type: Date
+    },
+
     roles: {
         type: [String],
         enum: ['rider', 'driver', 'admin'],
