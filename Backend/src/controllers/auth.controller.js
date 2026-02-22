@@ -552,7 +552,6 @@ async function registerPassword(req, res) {
 
 async function refreshTokens(req, res) {
   try {
-   
     const incomingRefreshToken = req.cookies.refreshToken
 
     if (!incomingRefreshToken) {
