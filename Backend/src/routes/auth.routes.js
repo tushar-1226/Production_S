@@ -8,4 +8,5 @@ router.post('/save-name', authController.saveName)
 router.post('/terms-condition',authController.termsCondition)
 router.post('/register-password', authController.registerPassword)
 
+
 module.exports = router;
