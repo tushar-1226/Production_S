@@ -9,6 +9,12 @@ const otpSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    tempToken: {
+        type: String,
+        required: true,
+        unique: true
+    },
     createdAt: {
         type: Date,
         default: Date.now,
