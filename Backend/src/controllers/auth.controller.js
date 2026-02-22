@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const tempUserModel = require('../models/tempUser.model')
 const nodemailer = require('nodemailer')
 const crypto = require('crypto')
+const { a } = require('framer-motion/m')
 
 
 
@@ -200,23 +201,54 @@ async function termsCondition(req, res) {
     }
 }
 
-async function sendPhoneOtp(req, res) {
-
-}
-
-async function verifyPhoneOtp(req, res) {
-
-}
-
 async function registerPassword(req, res) {
+    try {
+        const { tempToken, password, confirmPassword } = req.body
+        if (!tempToken || !password || !confirmPassword) {
+            return res.status(400).json({
+                message: "All fields are required"
+            })
+        }
 
+        const passwordRegex = /^(?![0-9a])(?!.*\s)(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/
+
+        if (!passwordRegex.test(password)) {
+            return res.status(400).json({
+                message: "Password must be at least 8 characters, contain one capital letter, one number, one special character, and cannot start with a number or 'a'"
+            })
+        }
+
+        const tempUser = await tempUserModel.findOne({ tempToken })
+        if (!tempUser) {
+            return res.status(400).json({
+                message: "Invalid or expired token"
+            })
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        await userModel.create({
+            email: tempUser.email,
+            firstName: tempUser.firstName,
+            lastName: tempUser.lastName,
+            password: hashedPassword,
+            isEmailVerified: tempUser.isEmailVerified,
+            termsAccepted: tempUser.termsAccepted,
+            termsAcceptedAt: tempUser.termsAcceptedAt
+        })
+
+        await tempUser.deleteOne()
+        return res.status(200).json({
+            message:"User registered successfully"
+        })
+
+    }
+    catch (err) {
+        return res.status(500).json({
+            message: err.message
+        })
+    }
 }
-
-async function verifyPassword(req, res) {
-
-}
-
-
 
 module.exports = {
     sendEmailOtp,
