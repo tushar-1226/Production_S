@@ -7,6 +7,8 @@ const crypto = require('crypto')
 const sendEmail = require('../utils/sendEmail')
 const jwt = require('jsonwebtoken')
 
+
+
 async function sendEmailOtp(req, res) {
   try {
     const { email } = req.body
