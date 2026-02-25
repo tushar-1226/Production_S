@@ -8,10 +8,6 @@ const sendEmail = require('../utils/sendEmail')
 const jwt = require('jsonwebtoken')
 
 
-
-
-
-
 async function sendEmailOtp(req, res) {
   try {
     const { email } = req.body
@@ -861,6 +857,8 @@ async function logoutUser(req, res) {
   res.clearCookie("token")
   res.status(200).json({ message: "User logged out successfully" })
 }
+
+
 
 module.exports = {
   sendEmailOtp,
