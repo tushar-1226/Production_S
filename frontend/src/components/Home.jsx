@@ -31,8 +31,7 @@ import OffMain from "./Offerings/OffMain";
 const Home = () => {
   return (
     <div className="overflow-x-hidden">
-      <OffMain/>
-      {/* <Navbar />
+      <Navbar />
       <SubNav />
       <Container />
       <Buisness />
@@ -40,7 +39,7 @@ const Home = () => {
       <SeePrices />
       <DoMore />
       <PromoDetails />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

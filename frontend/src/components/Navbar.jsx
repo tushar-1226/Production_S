@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import RightNav from "./RightNav";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -18,16 +19,16 @@ const Navbar = () => {
     <div className="lg:px-22 md:px-6 w-full h-16 flex flex-row items-center bg-black px-5 justify-between fixed top-0 left-0 z-100000000000000000000">
       {/* left section of navbar */}
       <div className="flex items-center gap-7">
-        <a href="">
+        <Link to="/">
           <div className="lg:h-15 lg:w-15 h-14 w-14 flex items-center">
             <img className="object-cover w-full h-full" src={logo} alt="logo" />
           </div>
-        </a>
+        </Link>
         <ul className=" flex items-center gap-2 text-sm font-medium text-white">
           <li>
-            <a href="/ride" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2 cursor-pointer">
+            <Link to="/ride" className="text-white hidden lg:block hover:bg-white/10 rounded-full px-3 py-2 cursor-pointer">
               Ride
-            </a>
+            </Link>
           </li>
 
           <li>
@@ -37,9 +38,9 @@ const Navbar = () => {
           </li>
 
           <li>
-            <a href="/business" className="text-white hidden lg:block hover:bg-white/10 cursor-pointer rounded-full px-3 py-2">
+            <Link to="/business" className="text-white hidden lg:block hover:bg-white/10 cursor-pointer rounded-full px-3 py-2">
               Business
-            </a>
+            </Link>
           </li>
 
           <li className="relative hidden lg:block hover:bg-white/10 cursor-pointer rounded-full px-3 py-2">

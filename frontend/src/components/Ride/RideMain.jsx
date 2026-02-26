@@ -4,8 +4,7 @@ import RideYourLocation from './RideYourLocation'
 
 const RideMain = () => {
   return (
-    <div className='pt-10 flex gap-10 '>
-      <RideLocation />
+    <div className='pt-10 flex gap-10 h-full w-full '>
       <RideYourLocation/>
     </div>
   )

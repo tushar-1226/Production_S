@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import "./App.css"; // Make sure this path points to your main CSS file
 import Home from "./components/Home";
 import RideMap from "./components/Ride/RideMap";
 import LearnMoreMain from "./components/LearnMore/LearnMoreMain";
@@ -9,7 +10,6 @@ import SeeMain from "./components/SeeTerms/SeeMain";
 
 const App = () => {
  
-
   return (
     <div>
       <Routes>
@@ -22,7 +22,6 @@ const App = () => {
         <Route path="/see" element={<SeeMain/>}/>
       </Routes>
     </div>
-
   );
 };
 
