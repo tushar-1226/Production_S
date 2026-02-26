@@ -106,8 +106,11 @@ const RideLocation = ({
 
         {/* Dropoff */}
         <div className="relative">
+          <div className="absolute  h-4 w-4 rounded full border-2 border-black">
+
+          </div>
           <input
-            className="bg-[#EFEFEF] px-4 py-3 w-full rounded-lg"
+            className="bg-[#EFEFEF] pl-15 px-4 py-3 w-full rounded-lg"
             placeholder="Dropoff Location"
             value={dropoffQuery}
             onChange={(e) => setDropoffQuery(e.target.value)}
