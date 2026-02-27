@@ -22,19 +22,39 @@ const rideSchema = new mongoose.Schema({
 
   otherPersonPhone: {
     type: String,
-    default: null
+    required: function () {
+      return this.rideType === "for_other"
+    }
   },
 
   pickup: {
-    lat: Number,
-    lng: Number,
-    address: String
+    address: String,
+    location: {
+      type: {
+        type: String,
+        enum: ["Point"],
+        default: "Point"
+      },
+      coordinates: {
+        type: [Number], // [lng, lat]
+        required: true
+      }
+    }
   },
 
   drop: {
-    lat: Number,
-    lng: Number,
-    address: String
+    address: String,
+    location: {
+      type: {
+        type: String,
+        enum: ["Point"],
+        default: "Point"
+      },
+      coordinates: {
+        type: [Number], // [lng, lat]
+        required: true
+      }
+    }
   },
 
   scheduledTime: {
@@ -43,15 +63,25 @@ const rideSchema = new mongoose.Schema({
   },
 
   fare: {
-    type: Number,
-    default: 0
+    estimated: {
+      type: Number,
+      default: 0
+    },
+    final: {
+      type: Number,
+      default: 0
+    }
   },
 
   status: {
     type: String,
     enum: ["pending", "accepted", "started", "completed", "cancelled"],
     default: "pending"
-  }
+  },
+
+  startedAt: Date,
+  completedAt: Date,
+  cancelledAt: Date
 
 }, { timestamps: true })
 
