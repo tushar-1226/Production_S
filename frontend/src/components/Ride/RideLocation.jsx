@@ -83,7 +83,8 @@ const RideLocation = ({
   };
 
   return (
-    <div className="h-100 w-80 border-2 border-gray-100 rounded-2xl flex flex-col gap-4 p-4 bg-white shadow-lg relative overflow-hidden">
+    <div className="flex gap-5 items-start">
+      <div className="h-100 w-80 border-2 border-gray-100 rounded-2xl flex flex-col gap-4 p-4 bg-white shadow-lg relative overflow-hidden">
       <style>
         {`
           @keyframes slideUp {
@@ -245,58 +246,6 @@ const RideLocation = ({
         </div>
       )}
 
-      {isVehiclePanelOpen && (
-        <div className="absolute inset-0 bg-white z-50 rounded-2xl p-4 flex flex-col gap-4" style={{ animation: 'slideUp 0.3s ease-out' }}>
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold">Choose a Ride</h3>
-            <button onClick={() => setIsVehiclePanelOpen(false)} className="p-1 hover:bg-gray-100 rounded-full">
-              <X size={20} />
-            </button>
-          </div>
-
-          <div className="flex flex-col gap-3 overflow-y-auto flex-1">
-            {/* Cab Option */}
-            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl hover:border-black cursor-pointer transition-all">
-              <div className="flex items-center gap-4">
-                <Car size={28} className="text-gray-800" />
-                <div>
-                  <div className="font-bold text-base">Cab</div>
-                  <div className="text-xs text-gray-500">{fareInfo?.distance} km • {fareInfo?.duration} min</div>
-                  <div className="text-xs text-gray-400">Comfy, AC ride</div>
-                </div>
-              </div>
-              <div className="font-bold text-lg">₹{fareInfo?.fares?.cab}</div>
-            </div>
-
-            {/* Auto Option */}
-            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl hover:border-black cursor-pointer transition-all">
-              <div className="flex items-center gap-4">
-                <div className="w-7 h-7 flex items-center justify-center font-bold text-gray-800 border-2 border-gray-800 rounded-md text-[10px]">AUTO</div>
-                <div>
-                  <div className="font-bold text-base">Auto</div>
-                  <div className="text-xs text-gray-500">{fareInfo?.distance} km • {fareInfo?.duration} min</div>
-                  <div className="text-xs text-gray-400">Affordable, compact</div>
-                </div>
-              </div>
-              <div className="font-bold text-lg">₹{fareInfo?.fares?.auto}</div>
-            </div>
-
-            {/* Rapido/Moto Option */}
-            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl hover:border-black cursor-pointer transition-all">
-              <div className="flex items-center gap-4">
-                <Bike size={28} className="text-gray-800" />
-                <div>
-                  <div className="font-bold text-base">Rapido</div>
-                  <div className="text-xs text-gray-500">{fareInfo?.distance} km • {fareInfo?.duration} min</div>
-                  <div className="text-xs text-gray-400">Fastest, cheapest</div>
-                </div>
-              </div>
-              <div className="font-bold text-lg">₹{fareInfo?.fares?.moto}</div>
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className="text-[20px] font-semibold">Get a ride</div>
 
       <form onSubmit={SubmitForm} className="flex flex-col gap-4">
@@ -411,6 +360,59 @@ const RideLocation = ({
           Search Ride
         </button>
       </form>
+      </div>
+
+      {isVehiclePanelOpen && (
+        <div className="h-100 w-80 border-2 border-gray-100 rounded-2xl flex flex-col gap-4 p-4 bg-white shadow-lg relative overflow-hidden">
+          <div className="flex justify-between items-center">
+            <h3 className="text-lg font-semibold">Choose a Ride</h3>
+            <button onClick={() => setIsVehiclePanelOpen(false)} className="p-1 hover:bg-gray-100 rounded-full">
+              <X size={20} />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-3 overflow-y-auto flex-1">
+            {/* Cab Option */}
+            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl hover:border-black cursor-pointer transition-all">
+              <div className="flex items-center gap-4">
+                <Car size={28} className="text-gray-800" />
+                <div>
+                  <div className="font-bold text-base">Cab</div>
+                  <div className="text-xs text-gray-500">{fareInfo?.distance} km • {fareInfo?.duration} min</div>
+                  <div className="text-xs text-gray-400">Comfy, AC ride</div>
+                </div>
+              </div>
+              <div className="font-bold text-lg">₹{fareInfo?.fares?.cab}</div>
+            </div>
+
+            {/* Auto Option */}
+            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl hover:border-black cursor-pointer transition-all">
+              <div className="flex items-center gap-4">
+                <div className="w-7 h-7 flex items-center justify-center font-bold text-gray-800 border-2 border-gray-800 rounded-md text-[10px]">AUTO</div>
+                <div>
+                  <div className="font-bold text-base">Auto</div>
+                  <div className="text-xs text-gray-500">{fareInfo?.distance} km • {fareInfo?.duration} min</div>
+                  <div className="text-xs text-gray-400">Affordable, compact</div>
+                </div>
+              </div>
+              <div className="font-bold text-lg">₹{fareInfo?.fares?.auto}</div>
+            </div>
+
+            {/* Rapido/Moto Option */}
+            <div className="flex items-center justify-between p-3 border border-gray-200 rounded-xl hover:border-black cursor-pointer transition-all">
+              <div className="flex items-center gap-4">
+                <Bike size={28} className="text-gray-800" />
+                <div>
+                  <div className="font-bold text-base">Rapido</div>
+                  <div className="text-xs text-gray-500">{fareInfo?.distance} km • {fareInfo?.duration} min</div>
+                  <div className="text-xs text-gray-400">Fastest, cheapest</div>
+                </div>
+              </div>
+              <div className="font-bold text-lg">₹{fareInfo?.fares?.moto}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
