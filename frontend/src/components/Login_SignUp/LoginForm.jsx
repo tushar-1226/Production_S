@@ -5,6 +5,8 @@ import { QrCode, ArrowLeft, ArrowRight } from 'lucide-react';
 import axios from 'axios';
 
 
+git add . && git commit -m "updated" && git push
+
 
 
 const LoginForm = () => {
