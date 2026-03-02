@@ -1,35 +1,32 @@
 require('dotenv').config()
 const http = require('http')
 const socketIO = require('socket.io')
-
 const app = require('./src/app')
 const connectDB = require('./src/db/db')
-const cookieParser = require('cookie-parser')
 
 connectDB()
 
 const server = http.createServer(app)
 
 const io = socketIO(server, {
-    cors: {
-        origin: "*"
-    }
+  cors: {
+    origin: "http://localhost:5173"
+  }
 })
-app.use(cookieParser())
 
-// SOCKET LOGIC 
+// SOCKET LOGIC
 io.on("connection", (socket) => {
-    console.log("User connected:", socket.id)
+  console.log("User connected:", socket.id)
 
-    socket.on("send-location", (data) => {
-        io.emit("receive-location", { id: socket.id, ...data })
-    })
+  socket.on("send-location", (data) => {
+    io.emit("receive-location", { id: socket.id, ...data })
+  })
 
-    socket.on("disconnect", () => {
-        io.emit("user-disconnected", socket.id)
-    })
+  socket.on("disconnect", () => {
+    io.emit("user-disconnected", socket.id)
+  })
 })
 
 server.listen(3003, () => {
-    console.log("Server is running on port 3003")
+  console.log("Server is running on port 3003")
 })

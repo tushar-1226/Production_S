@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken')
 async function sendEmailOtp(req, res) {
   try {
     const { email } = req.body
+    console.log(email)
     if (!email) {
       return res.status(400).json({ message: "Email is required" })
     }
@@ -425,7 +426,10 @@ async function registerPassword(req, res) {
     })
 
     const token = jwt.sign(
-      { id: user._id },
+      {
+        id: user._id,
+        roles: user.roles
+      },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     )
@@ -853,7 +857,7 @@ async function verifyLoginOtp(req, res) {
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000
     })
-    
+
     await otpModel.deleteOne({ email: otpDoc.email })
 
     res.status(200).json({ message: "Login successful" })
