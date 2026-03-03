@@ -22,6 +22,7 @@ const LoginForm = () => {
   const [timer, setTimer] = useState(0);
   const [nextLoading, setnextLoading] = useState(false);
   const [Varified, setVarified] = useState(false)
+  const [termsAccepted, serTermsAccepted] = useState('')
 
   useEffect(() => {
     if (timer === 0) return;
@@ -312,7 +313,7 @@ const LoginForm = () => {
         <div className='w-full flex-shrink-0 flex items-center justify-center h-full'>
           <div className='h-100 w-82'>
             <div className='flex flex-col gap-3'>
-              <div className='text-2xl'>Accept ubers terms & review privacy notice</div>
+              <div className='text-2xl font-semibold'>Accept ubers terms & review privacy notice</div>
               <div className='text-[#5E5E5E]'>
                 By selecting 'I Agree' below, I have reviewed and agree to the terms of use and acknowledge the privacy notice. I am at least 18 years of age.
               </div>
