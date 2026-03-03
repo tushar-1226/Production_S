@@ -254,12 +254,14 @@ async function verifyEmailOtp(req, res) {
     await tempUser.save()
 
     return res.status(200).json({
-      message: "OTP verified successfully"
+      message: "OTP verified successfully",
+      verified:true
     })
   }
   catch (err) {
     res.status(500).json({
-      message: err.message
+      message: err.message,
+      varified:false
     })
   }
 
@@ -280,6 +282,10 @@ async function saveName(req, res) {
 
     if (!tempUser.isEmailVerified) {
       return res.status(400).json({ message: "Email not verified" })
+    }
+
+    if(!firstName || !lastName){
+      return res.status(400).json({ message:"Both names are required"} )
     }
 
     tempUser.firstName = firstName
