@@ -22,7 +22,7 @@ const LoginForm = () => {
   const [timer, setTimer] = useState(0);
   const [nextLoading, setnextLoading] = useState(false);
   const [Varified, setVarified] = useState(false)
-  const [termsAccepted, serTermsAccepted] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(false)
 
   useEffect(() => {
     if (timer === 0) return;
@@ -151,6 +151,27 @@ const LoginForm = () => {
   }
 
   async function pageFourNext(e){
+    e.preventDefault()
+    setnextLoading(true)
+    try{
+      const res = await axios.post(
+        "http://localhost:3003/api/auth/terms-condition",
+        {tempToken, isTermsAccepted:termsAccepted},
+        { withCredentials:true}
+      )
+      console.log(res.data.message)
+      console.log(termsAccepted)
+      handleNext()
+    }
+    catch(err){
+      setError(handleError(err))
+    }
+    finally{
+      setnextLoading(false)
+    }
+  }
+
+  async function pageFiveNext(e){
     e.preventDefault()
     setnextLoading(true)
     try{
@@ -357,7 +378,7 @@ const LoginForm = () => {
               >
                 <ArrowLeft size={20} />
               </button>
-              <button onClick={handleNext} className='flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:opacity-85 cursor-pointer'>
+              <button type='submit' onClick={pageFourNext} disabled={nextLoading} className={`flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:opacity-85 cursor-pointer ${nextLoading ? "bg-gray-400 cursor-not-allowed" : ""}`}>
                 Next <ArrowRight size={20} />
               </button>
             </div>
