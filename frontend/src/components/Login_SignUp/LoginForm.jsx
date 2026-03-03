@@ -176,12 +176,12 @@ const LoginForm = () => {
     setnextLoading(true)
     try{
       const res = await axios.post(
-        "http://localhost:3003/api/auth/terms-condition",
-        {tempToken, isTermsAccepted:termsAccepted},
+        "http://localhost:3003/api/auth/register-password",
+        {tempToken,password,confirmPassword},
         { withCredentials:true}
       )
       console.log(res.data.message)
-      console.log(termsAccepted)
+      console.log(password, confirmPassword)
       handleNext()
     }
     catch(err){
