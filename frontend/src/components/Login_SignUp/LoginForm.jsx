@@ -150,6 +150,27 @@ const LoginForm = () => {
     }
   }
 
+  async function pageFourNext(e){
+    e.preventDefault()
+    setnextLoading(true)
+    try{
+      const res = await axios.post(
+        "http://localhost:3003/api/auth/terms-condition",
+        {tempToken, isTermsAccepted:termsAccepted},
+        { withCredentials:true}
+      )
+      console.log(res.data.message)
+      console.log(termsAccepted)
+      handleNext()
+    }
+    catch(err){
+      setError(handleError(err))
+    }
+    finally{
+      setnextLoading(false)
+    }
+  }
+
   return (
     <div className='relative h-[calc(100vh_-_64px)] w-full overflow-hidden'>
       <div
