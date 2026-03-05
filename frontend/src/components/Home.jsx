@@ -32,24 +32,9 @@ import { useEffect, useState } from "react";
 
 
 const Home = () => {
-
-  const [User, setUser] = useState('')
-
-  useEffect(() => {
-  axios.get("/api/auth/me", {
-    withCredentials: true
-  })
-  .then(res => {
-    setUser(res.data.user)
-  })
-  .catch(() => {
-    setUser(null)
-  })
-}, [])
-
   return (
     <div className="overflow-x-hidden">
-      <Navbar user = {User} />
+      <Navbar />
       <SubNav />
       <Container />
       <Buisness />

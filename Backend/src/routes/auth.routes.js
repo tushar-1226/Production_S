@@ -11,7 +11,7 @@ router.post('/register-password', authController.registerPassword)
 router.post('/send-login-otp', authController.sendLoginOtp)
 router.post('/verify-login-otp', authController.verifyLoginOtp)
 router.get('/logout', authController.logoutUser)
-router.get("/me", authMiddleware, authController.roleBasedAuth)
+router.get('/me', authMiddleware, authController.roleBasedAuth)
 
 
 module.exports = router;

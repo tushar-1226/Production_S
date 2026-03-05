@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css"; // Make sure this path points to main CSS file
-import axios from 'axios'
 import Home from "./components/Home";
 import RideMap from "./components/Ride/RideMap";
 import LearnMoreMain from "./components/LearnMore/LearnMoreMain";
@@ -12,23 +11,12 @@ import LoginMain from "./components/Login_SignUp/LoginMain";
 import AlreadyMain from "./components/Login_SignUp/AlreadyMain";
 import { useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useAuth } from "./context/AuthContext";
+import AboutMe from "./components/AboutMe";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    axios.get("/api/auth/me", { withCredentials: true })
-      .then(res => {
-        setUser(res.data.user)
-      })
-      .catch(() => {
-        setUser(null)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [])
+  const { loading } = useAuth();
 
   if (loading) return <div>Loading...</div>
 
@@ -44,6 +32,11 @@ const App = () => {
         <Route path="/see" element={<SeeMain />} />
         <Route path='/signup' element={<LoginMain />} />
         <Route path='/login' element={<AlreadyMain />} />
+        <Route path='/me' element={
+          <ProtectedRoute>
+            <AboutMe />
+          </ProtectedRoute>
+        } />
       </Routes>
     </div>
   );

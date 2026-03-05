@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import RightNav from "../pages/RiderPages/RightNavRider";
+import RightNav from "./RightNav";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -305,7 +305,7 @@ const Navbar = () => {
         </ul>
       </div>
       {/* right section of nav */}
-      <RightNavLogOut />
+      <RightNav />
     </div>
   );
 };
