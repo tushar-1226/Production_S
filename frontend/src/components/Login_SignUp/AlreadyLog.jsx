@@ -14,7 +14,7 @@ const AlreadyLog = () => {
     const [Otp, setOtp] = useState('');
     const [otpDigits, setOtpDigits] = useState(['', '', '', '', '', '']);
     const otpInputs = useRef([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (timer === 0) return;
@@ -85,7 +85,7 @@ const AlreadyLog = () => {
                 { withCredentials: true }
             )
             // Assuming successful login returns necessary data or sets cookies
-            navigate('/')
+            navigate('/');
             console.log(res.data.message)
         }
         catch (err) {

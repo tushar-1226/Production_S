@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import axios from 'axios'
 import SubNav from "./SubNav";
 import Container from "./Container";
 import Buisness from "./Buisness";
@@ -27,12 +28,28 @@ import AboutMain from './AboutUs/AboutMain'
 import LoginMain from "./Login_SignUp/LoginMain";
 import OffMain from "./Offerings/OffMain";
 import AlreadyMain from "./Login_SignUp/AlreadyMain";
+import { useEffect, useState } from "react";
 
 
 const Home = () => {
+
+  const [User, setUser] = useState('')
+
+  useEffect(() => {
+  axios.get("/api/auth/me", {
+    withCredentials: true
+  })
+  .then(res => {
+    setUser(res.data.user)
+  })
+  .catch(() => {
+    setUser(null)
+  })
+}, [])
+
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
+      <Navbar user = {User} />
       <SubNav />
       <Container />
       <Buisness />

@@ -255,13 +255,13 @@ async function verifyEmailOtp(req, res) {
 
     return res.status(200).json({
       message: "OTP verified successfully",
-      verified:true
+      verified: true
     })
   }
   catch (err) {
     res.status(500).json({
       message: err.message,
-      varified:false
+      varified: false
     })
   }
 
@@ -284,8 +284,8 @@ async function saveName(req, res) {
       return res.status(400).json({ message: "Email not verified" })
     }
 
-    if(!firstName || !lastName){
-      return res.status(400).json({ message:"Both names are required"} )
+    if (!firstName || !lastName) {
+      return res.status(400).json({ message: "Both names are required" })
     }
 
     tempUser.firstName = firstName
@@ -852,7 +852,10 @@ async function verifyLoginOtp(req, res) {
     const user = await userModel.findOne({ email: otpDoc.email })
 
     const token = jwt.sign(
-      { id: user._id },
+      {
+        id: user._id,
+        roles: user.roles
+      },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     )
@@ -878,6 +881,18 @@ async function logoutUser(req, res) {
   res.status(200).json({ message: "User logged out successfully" })
 }
 
+async function roleBasedAuth(req, res) {
+  try {
+    const user = await userModel
+      .findById(req.user.id)
+      .select("_id email firstName lastName roles")
+
+    res.status(200).json({ user })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+}
+
 
 
 module.exports = {
@@ -888,5 +903,6 @@ module.exports = {
   registerPassword,
   sendLoginOtp,
   verifyLoginOtp,
-  logoutUser
+  logoutUser,
+  roleBasedAuth
 }

@@ -25,7 +25,7 @@ const LoginForm = () => {
   const [nextLoading, setnextLoading] = useState(false);
   const [Varified, setVarified] = useState(false)
   const [termsAccepted, setTermsAccepted] = useState(false)
-
+  
   useEffect(() => {
     if (timer === 0) return;
 
@@ -131,65 +131,66 @@ const LoginForm = () => {
 
   }
 
-  async function pageThreeNext(e){
+  async function pageThreeNext(e) {
     e.preventDefault()
     setnextLoading(true)
-    try{
+    try {
       const res = await axios.post(
         "http://localhost:3003/api/auth/save-name",
-        {tempToken, firstName, lastName},
-        { withCredentials:true}
+        { tempToken, firstName, lastName },
+        { withCredentials: true }
       )
       console.log(firstName, lastName)
       console.log(res.data.message)
       handleNext()
     }
-    catch(err){
+    catch (err) {
       setError(handleError(err))
     }
-    finally{
+    finally {
       setnextLoading(false)
     }
   }
 
-  async function pageFourNext(e){
+  async function pageFourNext(e) {
     e.preventDefault()
     setnextLoading(true)
-    try{
+    try {
       const res = await axios.post(
         "http://localhost:3003/api/auth/terms-condition",
-        {tempToken, isTermsAccepted:termsAccepted},
-        { withCredentials:true}
+        { tempToken, isTermsAccepted: termsAccepted },
+        { withCredentials: true }
       )
       console.log(res.data.message)
       console.log(termsAccepted)
       handleNext()
     }
-    catch(err){
+    catch (err) {
       setError(handleError(err))
     }
-    finally{
+    finally {
       setnextLoading(false)
     }
   }
 
-  async function pageFiveNext(e){
+  async function pageFiveNext(e) {
     e.preventDefault()
     setnextLoading(true)
-    try{
+    try {
       const res = await axios.post(
         "http://localhost:3003/api/auth/register-password",
-        {tempToken,password,confirmPassword},
-        { withCredentials:true}
+        { tempToken, password, confirmPassword },
+        { withCredentials: true }
       )
       console.log(res.data.message)
       console.log(password, confirmPassword)
       handleNext()
+
     }
-    catch(err){
+    catch (err) {
       setError(handleError(err))
     }
-    finally{
+    finally {
       setnextLoading(false)
     }
   }
@@ -363,12 +364,12 @@ const LoginForm = () => {
               </div>
               <div className='h-[1px] w-full bg-gray-500'></div>
               <div className='flex items-center gap-2'>
-                <input 
-                checked = {termsAccepted}
-                onChange={(e)=>{setTermsAccepted(e.target.checked)}}
-                type='checkbox' 
-                id='agree' 
-                className='w-5 h-5 accent-black cursor-pointer' 
+                <input
+                  checked={termsAccepted}
+                  onChange={(e) => { setTermsAccepted(e.target.checked) }}
+                  type='checkbox'
+                  id='agree'
+                  className='w-5 h-5 accent-black cursor-pointer'
                 />
                 <label htmlFor='agree' className='text-base font-medium cursor-pointer'>I Agree</label>
               </div>
@@ -419,7 +420,7 @@ const LoginForm = () => {
                       placeholder='Confirm Password'
                       onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-        
+
                   </div>
                   {Error && <span className="mt-3 rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700">{Error}</span>}
                 </div>
@@ -432,7 +433,7 @@ const LoginForm = () => {
               >
                 <ArrowLeft size={20} />
               </button>
-               <button type='submit' onClick={pageFiveNext} disabled={nextLoading} className={`flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:opacity-85 cursor-pointer ${nextLoading ? "bg-gray-400 cursor-not-allowed" : ""}`}>
+              <button type='submit' onClick={pageFiveNext} disabled={nextLoading} className={`flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:opacity-85 cursor-pointer ${nextLoading ? "bg-gray-400 cursor-not-allowed" : ""}`}>
                 Done
               </button>
             </div>
