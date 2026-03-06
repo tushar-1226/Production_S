@@ -17,11 +17,12 @@ const RideMain = () => {
 
 
 
-
-
-
-
   
+
+
+
+
+
 
   useEffect(() => {
 
