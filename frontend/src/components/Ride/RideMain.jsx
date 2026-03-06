@@ -18,9 +18,10 @@ const RideMain = () => {
 
 
 
+
+
+
   
-
-
 
   useEffect(() => {
 
