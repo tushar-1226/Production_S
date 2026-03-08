@@ -237,13 +237,14 @@ async function getPendingRides(req, res) {
     }
 }
 
-async function getAcceptedRidesOfDriver(req, res) {
+async function getAcceptedRidesOfDriverAndRiderInfo(req, res) {
     try {
         const driverId = req.user.id
-        const ride = await rideModel.find(driverId)
-        if (ride) {
+        console.log(driverId)
+        const ride = await rideModel.find({driver:driverId})
+        if (!ride) {
             return res.status(401).json({
-                message: "No accepted rides found"
+                message: "No active rides found"
             })
         }
         res.status(200).json({
@@ -258,17 +259,12 @@ async function getAcceptedRidesOfDriver(req, res) {
     }
 }
 
-
-
-
-
-
 module.exports = {
     createRide,
     acceptRide,
     startRide,
     completeRide,
-    getPendingRides
-
-
+    getPendingRides,
+    getAcceptedRidesOfDriverAndRiderInfo,
 }
+

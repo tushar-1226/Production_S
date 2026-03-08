@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import AboutMe from "./components/AboutMe";
 import ProtectedRoute from "./components/ProtectedRoute";
-import DriversRideDashboard from "./components/DriversRideDashboard";
+import DriversRideDashboard from "./components/Ride/DriversRideDashboard";
 
 const App = () => {
   const { loading } = useAuth();

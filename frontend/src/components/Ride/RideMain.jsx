@@ -7,7 +7,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import socket from "../../socket/socket"
 import { Navigate } from 'react-router-dom'
-import DriversRideDashboard from '../DriversRideDashboard'
+import DriversRideDashboard from './DriversRideDashboard'
+import RidersRideDashboard from './RidersRideDashboard'
 
 const RideMain = () => {
 
@@ -15,7 +16,6 @@ const RideMain = () => {
   const [rides, setRides] = useState([])
   const [isActiveRide, setIsActiveRide] = useState(false)
   const [activeRide, setActiveRide] = useState(null)
-
 
   useEffect(() => {
     const fetchRides = async () => {
@@ -26,38 +26,49 @@ const RideMain = () => {
       setRides(res.data.rides)
     }
     fetchRides()
+    fetchActiveRidesOfDriver()
   }, [])
-
-
 
   const handleAcceptRide = async (rideId) => {
 
-  try {
+    try {
 
-    const res = await axios.patch(
-      `http://localhost:3003/api/ride/${rideId}/accept`,
-      {},
-      { withCredentials: true }
-    )
+      const res = await axios.patch(
+        `http://localhost:3003/api/ride/${rideId}/accept`,
+        {},
+        { withCredentials: true }
+      )
 
-    const ride = res.data.ride
+      const ride = res.data.ride
 
-    console.log("Ride accepted:", ride)
-    setActiveRide(ride)
+      console.log("Ride accepted:", ride)
+      setActiveRide(ride)
 
-    // join socket room
-    socket.emit("join-ride", ride._id)
-    console.log(res.data.ride.isActiveRide)
-  } catch (err) {
-    console.log(err.response?.data || err.message)
+      // join socket room
+      socket.emit("join-ride", ride._id)
+      console.log(res.data.ride.isActiveRide)
+    } catch (err) {
+      console.log(err.response?.data || err.message)
+    }
+
   }
 
-}
-console.log(isActiveRide)
+  const fetchActiveRidesOfDriver = async () => {
+    try {
+      const res = await axios.get(
+        'http://localhost:3003/api/ride/accepted-rides',
+        { withCredentials: true }
+      )
+      setActiveRide(res.data.ride[0])
+    }
+    catch (err) {
+      console.log(err.message)
+    }
+  }
 
   if (user?.roles?.[0] == "driver") {
     if (activeRide) {
-      return <DriversRideDashboard ride={rides} setActiveRide={setActiveRide} />
+      return <DriversRideDashboard ride={activeRide} setActiveRide={setActiveRide} />
     }
 
     return (
@@ -97,12 +108,16 @@ console.log(isActiveRide)
       </div>
     )
   } else {
-    return (
-      <div className='pt-10 flex gap-10 h-full w-full '>
-
-        <RideYourLocation />
-      </div>
-    )
+    console.log(activeRide)
+    if (activeRide) {
+      return <RidersRideDashboard ride={activeRide} setActiveRide={setActiveRide} />
+    } else {
+      return (
+        <div className='pt-10 flex gap-10 h-full w-full '>
+          <RideYourLocation />
+        </div>
+      )
+    }
   }
 }
 

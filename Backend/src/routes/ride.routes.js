@@ -8,6 +8,6 @@ router.patch("/:rideId/accept", authMiddleware, rideController.acceptRide)
 router.patch("/:ride/start", authMiddleware, rideController.startRide)
 router.patch("/:ride/completed", authMiddleware, rideController.completeRide)
 router.get("/pending-rides", authMiddleware, rideController.getPendingRides)
-
+router.get("/accepted-rides", authMiddleware, rideController.getAcceptedRidesOfDriverAndRiderInfo)
 
 module.exports = router;

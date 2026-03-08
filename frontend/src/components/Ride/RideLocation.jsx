@@ -134,6 +134,7 @@ const RideLocation = ({
 
 
   };
+  
 
   return (
     <div className="flex gap-5 items-start h-full">
