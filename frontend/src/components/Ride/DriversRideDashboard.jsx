@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Phone, MessageSquare, User, Navigation } from 'lucide-react'
 import L from "leaflet";
 import "leaflet-routing-machine";
@@ -21,9 +21,21 @@ const dropoffIcon = L.icon({
 const DriversRideDashboard = ({ ride, setRide }) => {
   const mapRef = useRef(null);
   const routingControlRef = useRef(null);
+  const [currentLocation, setCurrentLocation] = useState(null)
 
   useEffect(() => {
-    if (!ride || !ride.pickup || !ride.drop) return;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        setCurrentLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        })
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!ride || !ride.pickup || !ride.drop || !currentLocation) return;
 
     if (!mapRef.current) {
       mapRef.current = L.map("map", {
@@ -42,13 +54,11 @@ const DriversRideDashboard = ({ ride, setRide }) => {
 
     const pickupLat = ride.pickup.location.coordinates[1];
     const pickupLng = ride.pickup.location.coordinates[0];
-    const dropLat = ride.drop.location.coordinates[1];
-    const dropLng = ride.drop.location.coordinates[0];
 
     routingControlRef.current = L.Routing.control({
       waypoints: [
+        L.latLng(currentLocation.lat, currentLocation.lng),
         L.latLng(pickupLat, pickupLng),
-        L.latLng(dropLat, dropLng),
       ],
       routeWhileDragging: false,
       show: false,
@@ -58,15 +68,15 @@ const DriversRideDashboard = ({ ride, setRide }) => {
       },
       createMarker: function (i, wp, nWps) {
         if (i === 0) {
-          return L.marker(wp.latLng, { icon: pickupIcon }).bindPopup("Pickup");
+          return L.marker(wp.latLng, { icon: dropoffIcon }).bindPopup("Driver");
         } else if (i === nWps - 1) {
-          return L.marker(wp.latLng, { icon: dropoffIcon }).bindPopup("Dropoff");
+          return L.marker(wp.latLng, { icon: pickupIcon }).bindPopup("Pickup");
         }
         return null;
       },
     }).addTo(mapRef.current);
 
-  }, [ride]);
+  }, [ride, currentLocation]);
 
   return (
     <div className='fixed inset-0 z-50 lg:relative lg:w-full lg:h-[90vh] bg-gray-100 lg:rounded-xl overflow-hidden lg:shadow-lg lg:border lg:border-gray-200'>

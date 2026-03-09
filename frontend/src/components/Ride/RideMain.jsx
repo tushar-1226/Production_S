@@ -59,7 +59,6 @@ const RideMain = () => {
     try {
       const res = await axios.get(
         'http://localhost:3003/api/ride/accepted-rides',
-        {},
         { withCredentials: true }
       )
       setActiveRide(res.data.ride[0])
@@ -73,7 +72,6 @@ const RideMain = () => {
     try {
       const res = await axios.get(
         'http://localhost:3003/api/ride/accepted-rides-rider',
-        {},
         { withCredentials: true }
       )
       setActiveRidesOfRider(res.data.ride[0])
@@ -82,11 +80,11 @@ const RideMain = () => {
       console.log(err.message)
     }
   }
-
+  console.log(activeRide)
   if (user?.roles?.[0] == "driver") {
     if (activeRide) {
       return <DriversRideDashboard ride={activeRide} setActiveRide={setActiveRide} />
-    }
+    }else{
 
     return (
       <div className='pt-10 px-5 lg:px-20 w-full h-full flex flex-col gap-8'>
@@ -124,6 +122,7 @@ const RideMain = () => {
         </div>
       </div>
     )
+  }
   } else {
     console.log(activeRidesOfRider)
     if (activeRidesOfRider.length != 0) {
