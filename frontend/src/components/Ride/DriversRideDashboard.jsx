@@ -18,6 +18,13 @@ const pickupIcon = L.divIcon({
   iconAnchor: [12, 12],
 });
 
+const dropoffIcon = L.divIcon({
+  html: `<div style="background-color: white; border: 6px solid black; width: 24px; height: 24px;"></div>`,
+  className: '',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+});
+
 const DriversRideDashboard = ({ ride, setRide }) => {
   const mapRef = useRef(null);
   const routingControlRef = useRef(null);
@@ -54,11 +61,14 @@ const DriversRideDashboard = ({ ride, setRide }) => {
 
     const pickupLat = ride.pickup.location.coordinates[1];
     const pickupLng = ride.pickup.location.coordinates[0];
+    const dropLat = ride.drop.location.coordinates[1];
+    const dropLng = ride.drop.location.coordinates[0];
 
     routingControlRef.current = L.Routing.control({
       waypoints: [
         L.latLng(currentLocation.lat, currentLocation.lng),
         L.latLng(pickupLat, pickupLng),
+        L.latLng(dropLat, dropLng),
       ],
       routeWhileDragging: false,
       show: false,
@@ -69,8 +79,10 @@ const DriversRideDashboard = ({ ride, setRide }) => {
       createMarker: function (i, wp, nWps) {
         if (i === 0) {
           return L.marker(wp.latLng, { icon: driverIcon }).bindPopup("Driver");
-        } else if (i === nWps - 1) {
+        } else if (i === 1) {
           return L.marker(wp.latLng, { icon: pickupIcon }).bindPopup("Pickup");
+        } else if (i === nWps - 1) {
+          return L.marker(wp.latLng, { icon: dropoffIcon }).bindPopup("Dropoff");
         }
         return null;
       },
