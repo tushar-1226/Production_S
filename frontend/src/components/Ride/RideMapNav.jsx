@@ -82,7 +82,7 @@ const RideMapNav = () => {
           <Menu size={24} />
         </button>
         <Link to="/">
-          <div className={`h-8 lg:h-14 w-24 lg:w-40 shrink-0 items-center justify-start overflow-hidden ${isSidebarOpen ? 'hidden lg:flex' : 'flex'}`}>
+          <div className={`h-8 lg:h-14 w-24 lg:w-40 shrink-0 items-center justify-start overflow-hidden hidden lg:flex`}>
             <img className='max-h-full max-w-full object-contain object-left' src={wlogo} alt="logo" />
           </div>
         </Link>

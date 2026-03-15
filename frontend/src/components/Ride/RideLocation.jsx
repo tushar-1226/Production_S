@@ -327,7 +327,7 @@ const RideLocation = ({
 
           {/* Pickup */}
           <div className="relative">
-            <div className="absolute top-4 left-4 rounded-full h-4 w-4 border-5 border-black">
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 rounded-full h-4 w-4 border-5 border-black">
 
             </div>
 
@@ -353,6 +353,7 @@ const RideLocation = ({
                       });
                       setPickupQuery(s.display_name);
                       setPickupSuggestions([]);
+                      setActiveField(null);
                     }}
                   >
                     {s.display_name}
@@ -364,7 +365,7 @@ const RideLocation = ({
 
           {/* Dropoff */}
           <div className="relative">
-            <div className="absolute top-4 left-4  h-4 w-4 border-5 border-black">
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 h-4 w-4 border-5 border-black">
 
             </div>
             <input
@@ -389,6 +390,7 @@ const RideLocation = ({
                       });
                       setDropoffQuery(s.display_name);
                       setDropoffSuggestions([]);
+                      setActiveField(null);
                     }}
                   >
                     {s.display_name}
@@ -435,7 +437,7 @@ const RideLocation = ({
       </div>
 
       {isVehiclePanelOpen && (
-        <div className="fixed inset-0 lg:static z-[2000] lg:z-auto h-full lg:h-full w-full lg:w-[400px] border-none lg:border-2 lg:border-gray-100 rounded-none lg:rounded-2xl flex flex-col gap-4 p-4 bg-white shadow-none lg:shadow-lg relative overflow-hidden shrink-0" style={{ animation: 'slideIn 0.5s ease-out' }}>
+        <div className="fixed inset-0 lg:relative z-[2500] lg:z-auto h-full w-full lg:w-[400px] border-none lg:border-2 lg:border-gray-100 rounded-none lg:rounded-2xl flex flex-col gap-4 p-4 bg-white shadow-none lg:shadow-lg overflow-hidden shrink-0" style={{ animation: 'slideUp 0.3s ease-out' }}>
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-semibold">{vehiclePanelMode === 'select' ? 'Choose a Ride' : 'Confirm Ride'}</h3>
             <button onClick={() => setIsVehiclePanelOpen(false)} className="p-1 hover:bg-gray-200 rounded-full transition-colors">

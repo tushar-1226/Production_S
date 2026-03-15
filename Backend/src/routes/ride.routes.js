@@ -11,5 +11,4 @@ router.get("/pending-rides", authMiddleware, rideController.getPendingRides)
 router.get("/accepted-rides", authMiddleware, rideController.getAcceptedRidesOfDriverInfo)
 router.get("/accepted-rides-rider", authMiddleware, rideController.getAcceptedRidesOfRiderInfo)
 
-
 module.exports = router;

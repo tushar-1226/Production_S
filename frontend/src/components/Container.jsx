@@ -11,7 +11,7 @@ import DoMore2 from './DoMore2.jsx'
 const Container = () => {
 
   return (
-    <div className='w-full pt-32 lg:px-40 px-6 flex flex-col items-center'>
+    <div className='w-full pt-16 lg:px-40 px-6 flex flex-col items-center'>
       <Page/>
       <DoMore2/>
       <Suggestion/>

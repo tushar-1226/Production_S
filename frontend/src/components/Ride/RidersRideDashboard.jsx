@@ -1,27 +1,63 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Phone, MessageSquare, User, Car, Star } from 'lucide-react'
 import L from "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import socket from '../../socket/socket';
 
-const pickupIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149060.png",
+const driverIcon = L.divIcon({
+  html: `<div style="background-color: white; border: 2px solid black; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold;">D</div>`,
+  className: '',
   iconSize: [30, 30],
-  iconAnchor: [15, 30],
-  popupAnchor: [0, -30],
+  iconAnchor: [15, 15],
 });
 
-const dropoffIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-  popupAnchor: [0, -30],
+const pickupIcon = L.divIcon({
+  html: `<div style="background-color: white; border: 6px solid black; border-radius: 50%; width: 24px; height: 24px;"></div>`,
+  className: '',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+});
+
+const dropoffIcon = L.divIcon({
+  html: `<div style="background-color: white; border: 6px solid black; width: 24px; height: 24px;"></div>`,
+  className: '',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
 });
 
 const RidersRideDashboard = ({ ride }) => {
   const mapRef = useRef(null);
   const routingControlRef = useRef(null);
+  const [driverLocation, setDriverLocation] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState(null);
   console.log(ride)
+
+  useEffect(() => {
+    let watchId;
+    if (navigator.geolocation) {
+      watchId = navigator.geolocation.watchPosition(position => {
+        const loc = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        setCurrentLocation(loc);
+        if (ride?._id) {
+          socket.emit("rider-location-update", { rideId: ride._id, location: loc });
+        }
+      }, err => console.error(err), { enableHighAccuracy: true });
+    }
+    return () => {
+      if (watchId) navigator.geolocation.clearWatch(watchId);
+    }
+  }, [ride]);
+
+  useEffect(() => {
+    socket.on("driver-location-update", (data) => {
+      setDriverLocation(data.location);
+    });
+    return () => socket.off("driver-location-update");
+  }, []);
 
   useEffect(() => {
     if (!ride || !ride.pickup || !ride.drop) return;
@@ -37,16 +73,66 @@ const RidersRideDashboard = ({ ride }) => {
       }).addTo(mapRef.current);
     }
 
-    if (routingControlRef.current) {
-      mapRef.current.removeControl(routingControlRef.current);
-    }
-
-    const pickupLat = ride.pickup.location.coordinates[1];
-    const pickupLng = ride.pickup.location.coordinates[0];
+    const pickupLat = currentLocation ? currentLocation.lat : ride.pickup.location.coordinates[1];
+    const pickupLng = currentLocation ? currentLocation.lng : ride.pickup.location.coordinates[0];
     const dropLat = ride.drop.location.coordinates[1];
     const dropLng = ride.drop.location.coordinates[0];
 
-    routingControlRef.current = L.Routing.control({
+    if (routingControlRef.current && Array.isArray(routingControlRef.current)) {
+      if (driverLocation && routingControlRef.current.length === 2) {
+        routingControlRef.current[0].setWaypoints([
+          L.latLng(driverLocation.lat, driverLocation.lng),
+          L.latLng(pickupLat, pickupLng),
+        ]);
+        routingControlRef.current[1].setWaypoints([
+          L.latLng(pickupLat, pickupLng),
+          L.latLng(dropLat, dropLng),
+        ]);
+        return;
+      } else if (!driverLocation && routingControlRef.current.length === 1) {
+        routingControlRef.current[0].setWaypoints([
+          L.latLng(pickupLat, pickupLng),
+          L.latLng(dropLat, dropLng),
+        ]);
+        return;
+      }
+    }
+
+    if (routingControlRef.current) {
+      if (Array.isArray(routingControlRef.current)) {
+        routingControlRef.current.forEach(control => mapRef.current.removeControl(control));
+      } else {
+        mapRef.current.removeControl(routingControlRef.current);
+      }
+    }
+
+    const controls = [];
+
+    if (driverLocation) {
+      const driverToPickup = L.Routing.control({
+        waypoints: [
+          L.latLng(driverLocation.lat, driverLocation.lng),
+          L.latLng(pickupLat, pickupLng),
+        ],
+        routeWhileDragging: false,
+        show: false,
+        addWaypoints: false,
+        lineOptions: {
+          styles: [{ color: "#4b5563", opacity: 0.8, weight: 4 }],
+        },
+        createMarker: function (i, wp, nWps) {
+          if (i === 0) {
+            return L.marker(wp.latLng, { icon: driverIcon }).bindPopup("Driver");
+          } else if (i === nWps - 1) {
+            return L.marker(wp.latLng, { icon: pickupIcon }).bindPopup("Pickup");
+          }
+          return null;
+        },
+      }).addTo(mapRef.current);
+      controls.push(driverToPickup);
+    }
+
+    const pickupToDrop = L.Routing.control({
       waypoints: [
         L.latLng(pickupLat, pickupLng),
         L.latLng(dropLat, dropLng),
@@ -55,19 +141,23 @@ const RidersRideDashboard = ({ ride }) => {
       show: false,
       addWaypoints: false,
       lineOptions: {
-        styles: [{ color: "#000", opacity: 0.8, weight: 5 }],
+        styles: [{ color: "#2563eb", opacity: 0.8, weight: 4 }],
       },
       createMarker: function (i, wp, nWps) {
-        if (i === 0) {
+        if (i === 0 && !driverLocation) {
           return L.marker(wp.latLng, { icon: pickupIcon }).bindPopup("Pickup");
-        } else if (i === nWps - 1) {
+        }
+        if (i === nWps - 1) {
           return L.marker(wp.latLng, { icon: dropoffIcon }).bindPopup("Dropoff");
         }
         return null;
       },
     }).addTo(mapRef.current);
+    controls.push(pickupToDrop);
 
-  }, [ride]);
+    routingControlRef.current = controls;
+
+  }, [ride, driverLocation, currentLocation]);
 
   return (
     <div className='fixed inset-0 z-50 lg:relative lg:w-full lg:h-[90vh] bg-gray-100 lg:rounded-xl overflow-hidden lg:shadow-lg lg:border lg:border-gray-200'>
@@ -98,7 +188,7 @@ const RidersRideDashboard = ({ ride }) => {
                     </div>
                     <div>
                     <h2 className='text-lg font-bold text-gray-800 capitalize'>
-                        {ride.driver.firstName} {ride.driver.lastName}
+                        {ride.driverFirstName} {ride.driverLastName || ''}
                     </h2>
                     <div className='text-sm text-gray-500 font-medium flex items-center gap-1'>
                         <Star size={12} className="fill-black text-black" /> 4.8 • {ride.vehicleType}

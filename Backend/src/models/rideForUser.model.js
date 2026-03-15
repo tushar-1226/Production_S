@@ -53,7 +53,7 @@ const rideSchema = new mongoose.Schema({
         default: "Point"
       },
       coordinates: {
-        type: [Number], // [lng, lat]
+        type: [Number],
         required: true
       }
     }
@@ -73,7 +73,7 @@ const rideSchema = new mongoose.Schema({
         default: "Point"
       },
       coordinates: {
-        type: [Number], // [lng, lat]
+        type: [Number], 
         required: true
       }
     }
@@ -109,6 +109,11 @@ const rideSchema = new mongoose.Schema({
     type: String,
     enum: ["pending", "accepted", "started", "completed", "cancelled"],
     default: "pending"
+  },
+
+  otp: {
+    type: String,
+    default: null
   },
 
   startedAt: Date,

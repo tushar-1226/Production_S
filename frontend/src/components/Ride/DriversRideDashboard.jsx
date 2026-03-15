@@ -3,6 +3,7 @@ import { Phone, MessageSquare, User, Navigation } from 'lucide-react'
 import L from "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import socket from "../../socket/socket";
 
 const driverIcon = L.divIcon({
   html: `<div style="background-color: white; border: 2px solid black; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold;">D</div>`,
@@ -29,17 +30,33 @@ const DriversRideDashboard = ({ ride, setRide }) => {
   const mapRef = useRef(null);
   const routingControlRef = useRef(null);
   const [currentLocation, setCurrentLocation] = useState(null)
+  const [riderLocation, setRiderLocation] = useState(null)
 
   useEffect(() => {
+    let watchId;
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        setCurrentLocation({
+      watchId = navigator.geolocation.watchPosition(position => {
+        const loc = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
-        })
-      })
+        };
+        setCurrentLocation(loc);
+        if (ride?._id) {
+          socket.emit("driver-location-update", { rideId: ride._id, location: loc });
+        }
+      }, err => console.error(err), { enableHighAccuracy: true });
     }
-  }, [])
+    return () => {
+      if (watchId) navigator.geolocation.clearWatch(watchId);
+    }
+  }, [ride]);
+
+  useEffect(() => {
+    socket.on("rider-location-update", (data) => {
+      setRiderLocation(data.location);
+    });
+    return () => socket.off("rider-location-update");
+  }, []);
 
   useEffect(() => {
     if (!ride || !ride.pickup || !ride.drop || !currentLocation) return;
@@ -55,6 +72,24 @@ const DriversRideDashboard = ({ ride, setRide }) => {
       }).addTo(mapRef.current);
     }
 
+    const pickupLat = riderLocation ? riderLocation.lat : ride.pickup.location.coordinates[1];
+    const pickupLng = riderLocation ? riderLocation.lng : ride.pickup.location.coordinates[0];
+    const dropLat = ride.drop.location.coordinates[1];
+    const dropLng = ride.drop.location.coordinates[0];
+
+    // Smooth waypoints update without completely redrawing to avoid map flashing
+    if (routingControlRef.current && Array.isArray(routingControlRef.current)) {
+      routingControlRef.current[0].setWaypoints([
+        L.latLng(currentLocation.lat, currentLocation.lng),
+        L.latLng(pickupLat, pickupLng),
+      ]);
+      routingControlRef.current[1].setWaypoints([
+        L.latLng(pickupLat, pickupLng),
+        L.latLng(dropLat, dropLng),
+      ]);
+      return;
+    }
+
     if (routingControlRef.current) {
       if (Array.isArray(routingControlRef.current)) {
         routingControlRef.current.forEach(control => mapRef.current.removeControl(control));
@@ -62,11 +97,6 @@ const DriversRideDashboard = ({ ride, setRide }) => {
         mapRef.current.removeControl(routingControlRef.current);
       }
     }
-
-    const pickupLat = ride.pickup.location.coordinates[1];
-    const pickupLng = ride.pickup.location.coordinates[0];
-    const dropLat = ride.drop.location.coordinates[1];
-    const dropLng = ride.drop.location.coordinates[0];
 
     const driverToPickup = L.Routing.control({
       waypoints: [
@@ -110,7 +140,7 @@ const DriversRideDashboard = ({ ride, setRide }) => {
 
     routingControlRef.current = [driverToPickup, pickupToDrop];
 
-  }, [ride, currentLocation]);
+  }, [ride, currentLocation, riderLocation]);
 
   return (
     <div className='fixed inset-0 z-50 lg:relative lg:w-full lg:h-[90vh] bg-gray-100 lg:rounded-xl overflow-hidden lg:shadow-lg lg:border lg:border-gray-200'>
@@ -140,7 +170,7 @@ const DriversRideDashboard = ({ ride, setRide }) => {
             </div>
             <div>
               <h2 className='text-lg font-bold text-gray-800 capitalize'>
-                {ride?.rider?.firstName ? `${ride.rider.firstName} ${ride.rider.lastName || ''}` : "Rider"}
+                {ride?.riderFirstName ? `${ride.riderFirstName} ${ride.riderLastName || ''}` : "Rider"}
               </h2>
             </div>
           </div>
