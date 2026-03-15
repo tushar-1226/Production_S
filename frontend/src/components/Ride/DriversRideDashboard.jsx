@@ -88,6 +88,7 @@ const DriversRideDashboard = ({ ride, setRide }) => {
         L.latLng(dropLat, dropLng),
       ]);
       return;
+      
     }
 
     if (routingControlRef.current) {
