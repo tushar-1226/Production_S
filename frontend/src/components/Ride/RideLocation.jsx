@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import clock from '../../assets/clock.svg'
 import { ChevronDown, UserRound, X, Calendar, Clock, Car, Bike, MapPin, Square, Hourglass } from "lucide-react";
@@ -22,8 +23,12 @@ const RideLocation = ({
   onSearch,
   fareInfo,
 }) => {
-  const [pickupQuery, setPickupQuery] = useState("");
-  const [dropoffQuery, setDropoffQuery] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const initialState = location.state || {};
+
+  const [pickupQuery, setPickupQuery] = useState(initialState.initialPickup?.name || "");
+  const [dropoffQuery, setDropoffQuery] = useState(initialState.initialDropoff?.name || "");
   const [pickupSuggestions, setPickupSuggestions] = useState([]);
   const [dropoffSuggestions, setDropoffSuggestions] = useState([]);
   const [activeField, setActiveField] = useState(null);
@@ -32,6 +37,7 @@ const RideLocation = ({
   const [scheduleTime, setScheduleTime] = useState(new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }));
   const dateInputRef = useRef(null);
   const timeInputRef = useRef(null);
+  
   const [isRiderModalOpen, setIsRiderModalOpen] = useState(false);
   const [riderType, setRiderType] = useState("me");
   const [otherRiderDetails, setOtherRiderDetails] = useState({
@@ -43,6 +49,88 @@ const RideLocation = ({
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [vehiclePanelMode, setVehiclePanelMode] = useState('select');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isLocating, setIsLocating] = useState(false);
+
+  // Initialize state from navigation props
+  useEffect(() => {
+    if (initialState.initialPickup) {
+      setPickup(initialState.initialPickup);
+    }
+    if (initialState.initialDropoff) {
+      setDropoff(initialState.initialDropoff);
+    }
+    
+    // Automatically trigger search if both are provided from the home page
+    if (initialState.initialPickup && initialState.initialDropoff) {
+      // Small timeout to ensure state is set before searching
+      setTimeout(() => {
+        onSearch();
+        setIsVehiclePanelOpen(true);
+        setVehiclePanelMode('select');
+      }, 500);
+    }
+  }, []);
+
+  const getCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      setErrorMessage("Geolocation is not supported by your browser");
+      return;
+    }
+
+    setIsLocating(true);
+    setErrorMessage(null);
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          // Reverse geocode to get the address name using Photon API
+          const res = await axios.get("https://photon.komoot.io/reverse", {
+            params: {
+              lon: longitude,
+              lat: latitude,
+            },
+          });
+
+          if (res.data && res.data.features && res.data.features.length > 0) {
+            const props = res.data.features[0].properties;
+            const parts = [props.name, props.street, props.city, props.state, props.country].filter(Boolean);
+            const address = Array.from(new Set(parts)).join(", ");
+            
+            setPickup({
+              name: address, // Set the display name
+              lat: latitude, // Actually set the true lat coordinates
+              lng: longitude, // Actually set the true lng coordinates
+            });
+            setPickupQuery(address);
+          } else {
+            setPickup({
+              name: "Current Location",
+              lat: latitude,
+              lng: longitude,
+            });
+            setPickupQuery("Current Location");
+          }
+        } catch (err) {
+          console.error("Error reverse geocoding:", err);
+          setPickup({
+            name: "Current Location",
+            lat: latitude,
+            lng: longitude,
+          });
+          setPickupQuery("Current Location");
+        } finally {
+          setIsLocating(false);
+          setActiveField(null);
+        }
+      },
+      (error) => {
+        console.error("Error getting location:", error);
+        setErrorMessage("Could not get your location. Please check browser permissions.");
+        setIsLocating(false);
+      },
+      { enableHighAccuracy: true }
+    );
+  };
 
   const fetchSuggestions = async (query, setter) => {
     if (query.length < 3) {
@@ -52,35 +140,28 @@ const RideLocation = ({
 
     try {
       const res = await axios.get(
-        "https://photon.komoot.io/api/",
+        `http://localhost:3003/api/maps/suggestions`,
         {
-          params: {
-            q: query,
-            limit: 15, // Increased limit to ensure we have enough results after filtering
-            bbox: "68.1,6.5,97.4,35.5", // Approximate bounding box for India
-          },
+          params: { input: query },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
         }
       );
 
-      if (res.data && res.data.features) {
-        const formattedSuggestions = res.data.features
-          .filter((f) => f.properties.countrycode?.toUpperCase() === "IN") // Strict India filter
-          .slice(0, 5) // Return only the top 5 results
-          .map((f) => {
-            const props = f.properties;
-            const parts = [props.name, props.street, props.city, props.state, props.country].filter(Boolean);
-            return {
-              display_name: Array.from(new Set(parts)).join(", "),
-              lat: f.geometry.coordinates[1],
-              lon: f.geometry.coordinates[0],
-            };
-          });
+      if (res.data && Array.isArray(res.data)) {
+        const formattedSuggestions = res.data.map((f) => ({
+          display_name: f.display_name,
+          lat: parseFloat(f.lat),
+          lon: parseFloat(f.lon),
+        }));
         setter(formattedSuggestions);
       } else {
         setter([]);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Suggestions fetch error:", err);
+      setter([]);
     }
   };
 
@@ -142,7 +223,7 @@ const RideLocation = ({
       console.log("Ride created:", rideId)
 
       socket.emit("join-ride", rideId)
-      window.location.reload();
+      navigate(`/ride-tracking/${rideId}`);
 
     } catch (err) {
       console.error("Error creating ride:", err.response?.data || err.message);
@@ -332,12 +413,25 @@ const RideLocation = ({
             </div>
 
             <input
-              className="bg-[#EFEFEF] pl-10 px-4 py-2 lg:py-3 w-full rounded-lg focus:ring-2 focus:ring-black outline-none transition-all"
+              className="bg-[#EFEFEF] pl-10 pr-12 py-2 lg:py-3 w-full rounded-lg focus:ring-2 focus:ring-black outline-none transition-all"
               placeholder="Pickup Location"
               value={pickupQuery}
               onChange={(e) => setPickupQuery(e.target.value)}
               onFocus={() => setActiveField("pickup")}
             />
+
+            <button 
+              type="button"
+              onClick={getCurrentLocation}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black transition-colors"
+              title="Use current location"
+            >
+              {isLocating ? (
+                <div className="w-5 h-5 border-2 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+                <MapPin size={20} />
+              )}
+            </button>
 
             {activeField === "pickup" && pickupSuggestions.length > 0 && (
               <ul className="absolute z-10 w-full bg-white border rounded shadow max-h-88 overflow-y-auto">

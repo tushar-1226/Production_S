@@ -116,6 +116,16 @@ const rideSchema = new mongoose.Schema({
     default: null
   },
 
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+
+  awaitingRiderConfirmation: {
+    type: Boolean,
+    default: false
+  },
+
   startedAt: Date,
   completedAt: Date,
   cancelledAt: Date

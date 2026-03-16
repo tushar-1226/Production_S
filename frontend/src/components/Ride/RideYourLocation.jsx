@@ -53,6 +53,9 @@ const RideYourLocation = () => {
     }
 
     routingControlRef.current = L.Routing.control({
+      router: L.Routing.osrmv1({
+        serviceUrl: "https://routing.openstreetmap.de/routed-car/route/v1",
+      }),
       waypoints: [
         L.latLng(pickup.lat, pickup.lng),
         L.latLng(dropoff.lat, dropoff.lng),
@@ -61,7 +64,7 @@ const RideYourLocation = () => {
       show: false,
       addWaypoints: false,
       lineOptions: {
-        styles: [{ color: "#000", opacity: 0.8, weight: 5 }],
+        styles: [{ color: "#2563eb", opacity: 0.8, weight: 5 }],
       },
       createMarker: function (i, wp, nWps) {
         if (i === 0) {

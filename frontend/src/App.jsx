@@ -15,6 +15,7 @@ import { useAuth } from "./context/AuthContext";
 import AboutMe from "./components/AboutMe";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DriversRideDashboard from "./components/Ride/DriversRideDashboard";
+import RideTrackingPage from "./components/Ride/RideTrackingPage";
 
 const App = () => {
   const { loading } = useAuth();
@@ -36,6 +37,11 @@ const App = () => {
         <Route path='/me' element={
           <ProtectedRoute>
             <AboutMe />
+          </ProtectedRoute>
+        } />
+        <Route path='/ride-tracking/:rideId' element={
+          <ProtectedRoute>
+            <RideTrackingPage />
           </ProtectedRoute>
         } />
       </Routes>

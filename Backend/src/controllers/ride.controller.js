@@ -165,6 +165,49 @@ async function acceptRide(req, res) {
     }
 }
 
+async function verifyOtp(req, res) {
+    try {
+        const driverId = req.user.id
+        const { rideId } = req.params
+        const { otp } = req.body
+
+        if (!req.user.roles.includes("driver")) {
+            return res.status(403).json({
+                message: "Only drivers can verify OTP"
+            })
+        }
+
+        if (!otp) {
+            return res.status(400).json({ message: "OTP is required" })
+        }
+
+        const ride = await rideModel.findOne({
+            _id: rideId,
+            driver: driverId,
+            status: "accepted"
+        })
+
+        if (!ride) {
+            return res.status(404).json({ message: "Ride not found or not in accepted state" })
+        }
+
+        if (ride.otp !== otp.toString().trim()) {
+            return res.status(400).json({ message: "Invalid OTP. Please try again." })
+        }
+
+        ride.isVerified = true
+        await ride.save()
+
+        return res.status(200).json({
+            message: "OTP verified successfully",
+            ride
+        })
+
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 async function startRide(req, res) {
     try {
 
@@ -177,7 +220,16 @@ async function startRide(req, res) {
             })
         }
 
-        
+        // Guard: OTP must be verified before starting the ride
+        const rideCheck = await rideModel.findOne({ _id: rideId, driver: driverId })
+        if (!rideCheck) {
+            return res.status(404).json({ message: "Ride not found" })
+        }
+        if (!rideCheck.isVerified) {
+            return res.status(403).json({
+                message: "OTP not verified. Please verify the rider's OTP before starting the ride."
+            })
+        }
 
         const otp = Math.floor(1000 + Math.random() * 9000).toString()
 
@@ -374,6 +426,65 @@ async function startRide(req, res) {
     }
 }
 
+async function requestComplete(req, res) {
+    try {
+        const driverId = req.user.id
+        const { rideId } = req.params
+
+        if (!req.user.roles.includes("driver")) {
+            return res.status(403).json({ message: "Only drivers can request ride completion" })
+        }
+
+        const ride = await rideModel.findOneAndUpdate(
+            { _id: rideId, driver: driverId, status: "started" },
+            { $set: { awaitingRiderConfirmation: true } },
+            { new: true }
+        )
+
+        if (!ride) {
+            return res.status(400).json({ message: "Ride not found or not in started state" })
+        }
+
+        return res.status(200).json({ message: "Awaiting rider confirmation", ride })
+
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
+async function riderConfirmComplete(req, res) {
+    try {
+        const riderId = req.user.id
+        const { rideId } = req.params
+
+        const ride = await rideModel.findOne({
+            _id: rideId,
+            rider: riderId,
+            status: "started",
+            awaitingRiderConfirmation: true
+        })
+
+        if (!ride) {
+            return res.status(400).json({ message: "No pending completion request found for this ride" })
+        }
+
+        ride.status = "completed"
+        ride.completedAt = new Date()
+        ride.fare.final = ride.fare.estimated
+        ride.awaitingRiderConfirmation = false
+        await ride.save()
+
+        // Send response first so both clients get the completion data
+        res.status(200).json({ message: "Ride completed successfully", ride })
+
+        // Delete the ride from DB after response is sent
+        await rideModel.findByIdAndDelete(ride._id)
+
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 async function completeRide(req, res) {
     try {
 
@@ -434,11 +545,6 @@ async function getAcceptedRidesOfDriverInfo(req, res) {
     try {
         const driverId = req.user.id
         const ride = await rideModel.find({ driver: driverId })
-        if (!ride || ride.length === 0) {
-            return res.status(401).json({
-                message: "No active rides found"
-            })
-        }
         res.status(200).json({
             message: "successfully finded the active rides",
             ride
@@ -455,11 +561,6 @@ async function getAcceptedRidesOfRiderInfo(req, res) {
     try {
         const riderId = req.user.id
         const ride = await rideModel.find({ rider: riderId })
-        if (!ride || ride.length === 0) {
-            return res.status(401).json({
-                message: "No active rides found for rider"
-            })
-        }
         res.status(200).json({
             message: "successfully found the active rides for rider",
             ride
@@ -475,7 +576,10 @@ async function getAcceptedRidesOfRiderInfo(req, res) {
 module.exports = {
     createRide,
     acceptRide,
+    verifyOtp,
     startRide,
+    requestComplete,
+    riderConfirmComplete,
     completeRide,
     getPendingRides,
     getAcceptedRidesOfDriverInfo,

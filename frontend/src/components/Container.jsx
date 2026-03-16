@@ -12,11 +12,11 @@ const Container = () => {
 
   return (
     <div className='w-full pt-16 lg:px-40 px-6 flex flex-col items-center'>
-      <Page/>
-      <DoMore2/>
-      <Suggestion/>
-      <Plan/>
-      <TravelCards/>
+      <Page />
+      <DoMore2 />
+      <Suggestion />
+      <Plan />
+      <TravelCards />
     </div>
   )
 }
