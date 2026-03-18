@@ -45,7 +45,10 @@ const RidersRideDashboard = ({ ride, setRide }) => {
 
 
 
+
+
   
+
 
 
   const handleConfirmArrival = async () => {
