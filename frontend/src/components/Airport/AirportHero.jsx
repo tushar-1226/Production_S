@@ -40,7 +40,7 @@ const AirportHero = () => {
             async (position) => {
                 const { latitude, longitude } = position.coords;
                 try {
-                    const res = await axios.get("http://localhost:3003/api/maps/reverse-geocode", {
+                    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/maps/reverse-geocode`, {
                         params: { lon: longitude, lat: latitude },
                         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                     });
@@ -67,9 +67,9 @@ const AirportHero = () => {
         );
     };
 
-    const fetchSuggestions = async (query, setter) => {
+    const fetchSuggestions = async (query, setter, currentField) => {
         if (query.length < 3) {
-            if (activeField === "pickup") {
+            if (currentField === "pickup") {
                 setter([{ display_name: "Current Location", isCurrentLocation: true }]);
             } else {
                 setter([]);
@@ -78,14 +78,14 @@ const AirportHero = () => {
         }
 
         try {
-            const res = await axios.get(`http://localhost:3003/api/maps/suggestions`, {
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/maps/suggestions`, {
                 params: { input: query },
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             });
 
-            const currentLocationOption = activeField === "pickup"
+            const currentLocationOption = currentField === "pickup"
                 ? [{ display_name: "Current Location", isCurrentLocation: true }]
                 : [];
 
@@ -101,18 +101,23 @@ const AirportHero = () => {
             }
         } catch (err) {
             console.error("Suggestions fetch error:", err);
-            const fallbackOption = activeField === "pickup"
+            const fallbackOption = currentField === "pickup"
                 ? [{ display_name: "Current Location", isCurrentLocation: true }]
                 : [];
             setter(fallbackOption);
         }
     };
 
-    const debouncedFetch = useCallback(debounce(fetchSuggestions, 300), [activeField]);
+    const fetchRef = useRef(fetchSuggestions);
+    useEffect(() => {
+        fetchRef.current = fetchSuggestions;
+    });
+
+    const debouncedFetch = useCallback(debounce((...args) => fetchRef.current(...args), 300), []);
 
     useEffect(() => {
-        if (activeField === "pickup") debouncedFetch(pickupQuery, setPickupSuggestions);
-        else if (activeField === "dropoff") debouncedFetch(dropoffQuery, setDropoffSuggestions);
+        if (activeField === "pickup") debouncedFetch(pickupQuery, setPickupSuggestions, activeField);
+        else if (activeField === "dropoff") debouncedFetch(dropoffQuery, setDropoffSuggestions, activeField);
     }, [pickupQuery, dropoffQuery, activeField, debouncedFetch]);
 
     const handleSearch = () => {

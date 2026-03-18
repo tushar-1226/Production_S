@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Search, MapPin, Plane } from 'lucide-react';
 
 const AirportFinder = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+
     const popularAirports = [
         { name: "Sardar Vallabhbhai Patel International Airport (AMD)", location: "Ahmedabad, India" },
         { name: "Sri Guru Ram Das Ji International Airport (ATQ)", location: "Amritsar, India" },
@@ -43,6 +45,11 @@ const AirportFinder = () => {
         { name: "Lal Bahadur Shastri Airport (VNS)", location: "Varanasi, India" }
     ];
 
+    const filteredAirports = popularAirports.filter(airport => 
+        airport.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        airport.location.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className='w-full flex flex-col gap-10 py-10'>
             <div className='text-4xl font-semibold'>
@@ -50,7 +57,13 @@ const AirportFinder = () => {
             </div>
             <div className='flex gap-8 items-center max-w-3xl'>
                 <div className='w-full'>
-                    <input type="text" placeholder='Search for an airport' className='pl-5 py-3 rounded-lg w-full bg-[#EFEFEF] outline-none focus:ring-2 focus:ring-black transition-all' />
+                    <input 
+                        type="text" 
+                        placeholder='Search for an airport' 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className='pl-5 py-3 rounded-lg w-full bg-[#EFEFEF] outline-none focus:ring-2 focus:ring-black transition-all' 
+                    />
                 </div>
                 <button className='bg-black p-3.5 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer'>
                   <Search color="white" size={20} strokeWidth={3}/>
@@ -58,19 +71,25 @@ const AirportFinder = () => {
             </div>
             
             <div className='flex flex-col gap-6 mt-4 w-full max-w-3xl'>
-                <h3 className="text-xl font-medium">Popular Airports</h3>
+                <h3 className="text-xl font-medium">{searchQuery ? 'Search Results' : 'Popular Airports'}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {popularAirports.map((airport, index) => (
-                        <div key={index} className="flex items-center p-4 border border-gray-200 rounded-xl hover:border-black hover:bg-gray-50 transition-all cursor-pointer group">
-                            <div className="bg-gray-100 p-3 rounded-full mr-4 group-hover:bg-white group-hover:shadow-sm transition-all">
-                                <Plane size={20} className="text-black" />
+                    {filteredAirports.length > 0 ? (
+                        filteredAirports.map((airport, index) => (
+                            <div key={index} className="flex items-center p-4 border border-gray-200 rounded-xl hover:border-black hover:bg-gray-50 transition-all cursor-pointer group">
+                                <div className="bg-gray-100 p-3 rounded-full mr-4 group-hover:bg-white group-hover:shadow-sm transition-all">
+                                    <Plane size={20} className="text-black" />
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 line-clamp-1">{airport.name}</h4>
+                                    <p className="text-sm text-gray-500 mt-1">{airport.location}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 className="font-semibold text-gray-900 line-clamp-1">{airport.name}</h4>
-                                <p className="text-sm text-gray-500 mt-1">{airport.location}</p>
-                            </div>
+                        ))
+                    ) : (
+                        <div className="col-span-1 md:col-span-2 text-gray-500 py-4">
+                            No airports found matching "{searchQuery}"
                         </div>
-                    ))}
+                    )}
                 </div>
                 
                 <button className="text-black font-semibold mt-4 underline underline-offset-4 hover:text-gray-600 transition-colors w-fit">

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import axios from "axios"
+import BASE_URL from "../config/api"
 
 const AuthContext = createContext()
 
@@ -8,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   const logout = () => {
-    axios.get("http://localhost:3003/api/auth/logout", { withCredentials: true })
+    axios.get(`${BASE_URL}/api/auth/logout`, { withCredentials: true })
       .then(() => {
         setUser(null)
       })
@@ -16,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3003/api/auth/me", { withCredentials: true })
+    axios.get(`${BASE_URL}/api/auth/me`, { withCredentials: true })
       .then(res => {
         setUser(res.data.user || res.data)
       })

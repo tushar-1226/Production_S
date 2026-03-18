@@ -80,7 +80,7 @@ const DriversRideDashboard = ({ ride, setRide }) => {
     setOtpError(null);
     try {
       // Step 1: Verify OTP
-      const verifyRes = await fetch(`http://localhost:3003/api/ride/${ride._id}/verify-otp`, {
+      const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/api/ride/${ride._id}/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -97,7 +97,7 @@ const DriversRideDashboard = ({ ride, setRide }) => {
       setShowOtpPanel(false);
 
       // Step 2: Start the ride
-      const startRes = await fetch(`http://localhost:3003/api/ride/${ride._id}/start`, {
+      const startRes = await fetch(`${import.meta.env.VITE_API_URL}/api/ride/${ride._id}/start`, {
         method: 'PATCH',
         credentials: 'include'
       });
@@ -117,7 +117,7 @@ const DriversRideDashboard = ({ ride, setRide }) => {
   const handleRequestComplete = async () => {
     setIsRequestingComplete(true);
     try {
-      const res = await fetch(`http://localhost:3003/api/ride/${ride._id}/request-complete`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/ride/${ride._id}/request-complete`, {
         method: 'PATCH',
         credentials: 'include'
       });

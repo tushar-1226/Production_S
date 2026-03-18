@@ -3,6 +3,7 @@ import google from '../../assets/google.png';
 import apple from '../../assets/apple.png';
 import { QrCode, ArrowLeft, ArrowRight, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
 import axios from 'axios';
+import BASE_URL from '../../config/api';
 
 const LoginForm = () => {
   const [emailOrPhone, setEmailOrPhone] = useState('');
@@ -76,7 +77,7 @@ const LoginForm = () => {
     setLoading(true)
     try {
       const res = await axios.post(
-        "http://localhost:3003/api/auth/send-email-otp",
+        `${BASE_URL}/api/auth/send-email-otp`,
         { email: emailOrPhone },
         { withCredentials: true }
       )
@@ -96,7 +97,7 @@ const LoginForm = () => {
     setResendLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:3003/api/auth/send-email-otp",
+        `${BASE_URL}/api/auth/send-email-otp`,
         { email: emailOrPhone },
         { withCredentials: true }
       );
@@ -116,7 +117,7 @@ const LoginForm = () => {
     setnextLoading(true)
     try {
       const res = await axios.post(
-        "http://localhost:3003/api/auth/verify-email-otp",
+        `${BASE_URL}/api/auth/verify-email-otp`,
         { tempToken, tempemailOtp: tempEmailOtp },
         { withCredentials: true }
       );
@@ -136,7 +137,7 @@ const LoginForm = () => {
     setnextLoading(true)
     try {
       const res = await axios.post(
-        "http://localhost:3003/api/auth/save-name",
+        `${BASE_URL}/api/auth/save-name`,
         { tempToken, firstName, lastName },
         { withCredentials: true }
       )
@@ -157,7 +158,7 @@ const LoginForm = () => {
     setnextLoading(true)
     try {
       const res = await axios.post(
-        "http://localhost:3003/api/auth/terms-condition",
+        `${BASE_URL}/api/auth/terms-condition`,
         { tempToken, isTermsAccepted: termsAccepted },
         { withCredentials: true }
       )
@@ -178,7 +179,7 @@ const LoginForm = () => {
     setnextLoading(true)
     try {
       const res = await axios.post(
-        "http://localhost:3003/api/auth/register-password",
+        `${BASE_URL}/api/auth/register-password`,
         { tempToken, password, confirmPassword },
         { withCredentials: true }
       )

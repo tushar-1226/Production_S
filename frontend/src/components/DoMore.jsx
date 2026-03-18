@@ -2,8 +2,11 @@ import React from 'react'
 import Qr from '../assets/Qr.png'
 import { ArrowRight } from 'lucide-react';
 import logo from "../assets/logo.svg";
+import { useNavigate } from 'react-router-dom';
 
 const DoMore = () => {
+    const navigate = useNavigate();
+
     return (
         <div className='w-full h-auto lg:h-100 bg-[#F6F6F6] py-10 lg:py-14 px-5 lg:px-40 flex flex-col lg:justify-between gap-4' >
             <div className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>
@@ -12,8 +15,8 @@ const DoMore = () => {
             
             <div className='flex flex-col lg:flex-row gap-4 lg:gap-0 lg:justify-between'>
                 {/* Card 1 */}
-                <div className='w-full lg:w-auto lg:block hidden'>
-                    <div className='flex flex-col sm:flex-row justify-between items-center p-5 sm:p-8 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-4 sm:gap-0' >
+                <div onClick={() => window.open("https://www.uber.com/download", "_blank")} className='w-full lg:w-auto lg:block hidden cursor-pointer'>
+                    <div className='flex flex-col sm:flex-row justify-between items-center p-5 sm:p-8 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-4 sm:gap-0'>
                         <div className='flex items-center gap-3 sm:gap-5 w-full sm:w-auto'>
                             <div className='h-28 sm:h-38 w-28 sm:w-38 bg-blue-200 flex-shrink-0'>
                                 <img className='object-cover' src={Qr} />
@@ -32,7 +35,7 @@ const DoMore = () => {
                 </div>
 
                 {/* Card 2 visible on smaller and medium screens */} 
-                <div className='w-full border-gray-200 bg-white border-2 px-4 lg:p-5 md:py-1 py-4 lg:w-auto block lg:hidden'>
+                <div onClick={() => window.open("https://www.uber.com/download", "_blank")} className='w-full border-gray-200 bg-white border-2 px-4 lg:p-5 md:py-1 py-4 lg:w-auto block lg:hidden cursor-pointer'>
                     <div className='flex flex-row justify-between items-center h-auto sm:h-50 bg-white w-full lg:w-140 group gap-1 sm:gap-0' >
                         <div className='flex items-center gap-3 sm:gap-5 w-full '>
                             <div className='lg:h-28 h-22 lg:w-28 w-22 flex-shrink-0'>
@@ -52,7 +55,7 @@ const DoMore = () => {
 
                 {/* Card 3 */}
 
-                <div className='w-full border-gray-200 bg-white border-2  px-4 lg:w-auto block lg:hidden'>
+                <div onClick={() => navigate('/signup')} className='w-full border-gray-200 bg-white border-2  px-4 lg:w-auto block lg:hidden cursor-pointer'>
                     <div className='flex flex-row justify-between items-center lg:p-5 md:py-1 py-4 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-1 sm:gap-0' >
                         <div className='flex items-center gap-3 sm:gap-5 w-full '>
                             <div className='lg:h-28 h-22 lg:w-28 w-22 flex-shrink-0'>
@@ -71,8 +74,8 @@ const DoMore = () => {
                 </div>
 
                 {/* Card 4 */}
-                <div className='w-full lg:w-auto lg:block hidden'>
-                    <div className='flex flex-col sm:flex-row justify-between items-center p-5 sm:p-8 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-4 sm:gap-0' >
+                <div onClick={() => navigate('/signup')} className='w-full lg:w-auto lg:block hidden cursor-pointer'>
+                    <div className='flex flex-col sm:flex-row justify-between items-center p-5 sm:p-8 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-4 sm:gap-0'>
                         <div className='flex items-center gap-3 sm:gap-5 w-full sm:w-auto'>
                             <div className='h-28 sm:h-38 w-28 sm:w-38 flex-shrink-0'>
                                 <img className='object-cover h-full w-full' src={logo} alt="" />

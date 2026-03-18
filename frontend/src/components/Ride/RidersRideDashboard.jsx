@@ -45,7 +45,7 @@ const RidersRideDashboard = ({ ride, setRide }) => {
   const handleConfirmArrival = async () => {
     setIsConfirming(true);
     try {
-      const res = await fetch(`http://localhost:3003/api/ride/${ride._id}/rider-confirm-complete`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/ride/${ride._id}/rider-confirm-complete`, {
         method: 'PATCH',
         credentials: 'include'
       });

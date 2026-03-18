@@ -84,7 +84,7 @@ const RideLocation = ({
         const { latitude, longitude } = position.coords;
         try {
           // Reverse geocode to get the address name using our backend proxy
-          const res = await axios.get("http://localhost:3003/api/maps/reverse-geocode", {
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/maps/reverse-geocode`, {
             params: {
               lon: longitude,
               lat: latitude,
@@ -133,15 +133,19 @@ const RideLocation = ({
     );
   };
 
-  const fetchSuggestions = async (query, setter) => {
+  const fetchSuggestions = async (query, setter, currentField) => {
     if (query.length < 3) {
-      setter([]);
+      if (currentField === "pickup") {
+        setter([{ display_name: "Current Location", isCurrentLocation: true }]);
+      } else {
+        setter([]);
+      }
       return;
     }
 
     try {
       const res = await axios.get(
-        `http://localhost:3003/api/maps/suggestions`,
+        `${import.meta.env.VITE_API_URL}/api/maps/suggestions`,
         {
           params: { input: query },
           headers: {
@@ -150,31 +154,43 @@ const RideLocation = ({
         }
       );
 
+      const currentLocationOption = currentField === "pickup"
+        ? [{ display_name: "Current Location", isCurrentLocation: true }]
+        : [];
+
       if (res.data && Array.isArray(res.data)) {
-        const formattedSuggestions = res.data.map((f) => ({
+        const apiSuggestions = res.data.map((f) => ({
           display_name: f.display_name,
           lat: parseFloat(f.lat),
           lon: parseFloat(f.lon),
         }));
-        setter(formattedSuggestions);
+        setter([...currentLocationOption, ...apiSuggestions]);
       } else {
-        setter([]);
+        setter(currentLocationOption);
       }
     } catch (err) {
       console.error("Suggestions fetch error:", err);
-      setter([]);
+      const fallbackOption = currentField === "pickup"
+        ? [{ display_name: "Current Location", isCurrentLocation: true }]
+        : [];
+      setter(fallbackOption);
     }
   };
 
-  const debouncedFetch = useCallback(debounce(fetchSuggestions, 300), []);
+  const fetchRef = useRef(fetchSuggestions);
+  useEffect(() => {
+    fetchRef.current = fetchSuggestions;
+  });
+
+  const debouncedFetch = useCallback(debounce((...args) => fetchRef.current(...args), 300), []);
 
   useEffect(() => {
     if (activeField === "pickup") {
-      debouncedFetch(pickupQuery, setPickupSuggestions);
+      debouncedFetch(pickupQuery, setPickupSuggestions, activeField);
     } else if (activeField === "dropoff") {
-      debouncedFetch(dropoffQuery, setDropoffSuggestions);
+      debouncedFetch(dropoffQuery, setDropoffSuggestions, activeField);
     }
-  }, [pickupQuery, dropoffQuery, activeField]);
+  }, [pickupQuery, dropoffQuery, activeField, debouncedFetch]);
 
   const SubmitForm = (e) => {
     e.preventDefault();
@@ -212,7 +228,7 @@ const RideLocation = ({
     try {
 
       const res = await axios.post(
-        "http://localhost:3003/api/ride/create-rides",
+        `${import.meta.env.VITE_API_URL}/api/ride/create-rides`,
         rideData,
         {
           withCredentials: true
@@ -435,23 +451,31 @@ const RideLocation = ({
             </button>
 
             {activeField === "pickup" && pickupSuggestions.length > 0 && (
-              <ul className="absolute z-10 w-full bg-white border rounded shadow max-h-88 overflow-y-auto">
+              <ul className="absolute z-50 w-full bg-white border border-gray-200 rounded-lg shadow-xl mt-1 max-h-60 overflow-y-auto">
                 {pickupSuggestions.map((s, i) => (
                   <li
                     key={i}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => {
-                      setPickup({
-                        name: s.display_name,
-                        lat: parseFloat(s.lat),
-                        lng: parseFloat(s.lon),
-                      });
-                      setPickupQuery(s.display_name);
+                    className="px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-none text-sm"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      if (s.isCurrentLocation) {
+                        getCurrentLocation();
+                      } else {
+                        setPickup({
+                          name: s.display_name,
+                          lat: s.lat,
+                          lng: s.lon,
+                        });
+                        setPickupQuery(s.display_name);
+                      }
                       setPickupSuggestions([]);
                       setActiveField(null);
                     }}
                   >
-                    {s.display_name}
+                    <div className="flex items-center gap-2">
+                      {s.isCurrentLocation ? <Navigation size={16} className="text-blue-500" /> : <MapPin size={16} className="text-gray-500" />}
+                      <span className={s.isCurrentLocation ? "text-blue-500 font-medium" : ""}>{s.display_name}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -472,23 +496,31 @@ const RideLocation = ({
             />
 
             {activeField === "dropoff" && dropoffSuggestions.length > 0 && (
-              <ul className="absolute z-10 w-full bg-white border rounded shadow max-h-48 overflow-y-auto">
+              <ul className="absolute z-50 w-full bg-white border border-gray-200 rounded-lg shadow-xl mt-1 max-h-60 overflow-y-auto">
                 {dropoffSuggestions.map((s, i) => (
                   <li
                     key={i}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => {
-                      setDropoff({
-                        name: s.display_name,
-                        lat: parseFloat(s.lat),
-                        lng: parseFloat(s.lon),
-                      });
-                      setDropoffQuery(s.display_name);
+                    className="px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-none text-sm"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      if (s.isCurrentLocation) {
+                        getCurrentLocation();
+                      } else {
+                        setDropoff({
+                          name: s.display_name,
+                          lat: s.lat,
+                          lng: s.lon,
+                        });
+                        setDropoffQuery(s.display_name);
+                      }
                       setDropoffSuggestions([]);
                       setActiveField(null);
                     }}
                   >
-                    {s.display_name}
+                    <div className="flex items-center gap-2">
+                      {s.isCurrentLocation ? <Navigation size={16} className="text-blue-500" /> : <MapPin size={16} className="text-gray-500" />}
+                      <span className={s.isCurrentLocation ? "text-blue-500 font-medium" : ""}>{s.display_name}</span>
+                    </div>
                   </li>
                 ))}
               </ul>

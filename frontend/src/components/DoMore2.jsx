@@ -7,7 +7,7 @@ const DoMore2 = () => {
             <div className='text-2xl sm:text-3xl lg:text-4xl font-semibold'>
                 Do more in the app
             </div>
-            <div className='w-full border-gray-200 border-2 px-2 md:px-3 md:py-1 lg:w-auto '>
+            <div onClick={() => window.open("https://www.uber.com/download", "_blank")} className='w-full border-gray-200 border-2 px-2 md:px-3 md:py-1 lg:w-auto cursor-pointer'>
                 <div className='flex flex-row justify-between items-center lg:p-5 lg:py-1 md:py-2 py-4 h-auto sm:h-50 bg-white w-full lg:w-140 group gap-4 sm:gap-0' >
                     <div className='flex items-center gap-3 sm:gap-5 w-full'>
                         <div className='lg:h-28 h-22 lg:w-28 w-22 flex-shrink-0'>

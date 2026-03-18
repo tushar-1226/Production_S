@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import BASE_URL from '../../config/api';
 
 const AlreadyLog = () => {
     const [email, setEmail] = useState('');
@@ -59,7 +60,7 @@ const AlreadyLog = () => {
         setError("");
         try {
             const res = await axios.post(
-                "http://localhost:3003/api/auth/send-login-otp",
+                `${BASE_URL}/api/auth/send-login-otp`,
                 { email: email },
                 { withCredentials: true }
             )
@@ -80,7 +81,7 @@ const AlreadyLog = () => {
         setError("");
         try {
             const res = await axios.post(
-                "http://localhost:3003/api/auth/verify-login-otp",
+                `${BASE_URL}/api/auth/verify-login-otp`,
                 { tempToken, otp: Otp },
                 { withCredentials: true }
             )

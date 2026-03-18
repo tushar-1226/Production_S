@@ -24,8 +24,8 @@ const AirportReserv = () => {
   ]
 
   return (
-    <div className='py-20 flex flex-col gap-10'>
-      <div className='text-4xl font-semibold'>
+    <div className='py-20 flex flex-col gap-10 bg-blue-300'>
+      <div className='text-3xl sm:text-4xl font-semibold'>
         Reserve your airport ride in advance
       </div>
       <div className='text-gray-700'>
@@ -40,9 +40,9 @@ const AirportReserv = () => {
           {
             AirportCards.map((item, index) => {
               return (
-                <div key={index} className='flex flex-col gap-5 md:gap-2 lg:gap-5 w-90 md:w-80 lg:w-90'>
-                  <div className=' w-[100%]'>
-                    <img className='object-contain' src={item.image} />
+                <div key={index} className='flex flex-col gap-5 md:gap-2 lg:gap-5 w-full sm:w-80 lg:w-90'>
+                  <div className='w-full sm:w-[100%]'>
+                    <img className='object-cover w-full h-full' src={item.image} />
                   </div>
 
                   <div className='text-lg font-medium break-words'>

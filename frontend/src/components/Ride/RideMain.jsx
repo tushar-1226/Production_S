@@ -21,7 +21,7 @@ const RideMain = () => {
   useEffect(() => {
     const fetchRides = async () => {
       const res = await axios.get(
-        "http://localhost:3003/api/ride/pending-rides",
+        `${import.meta.env.VITE_API_URL}/api/ride/pending-rides`,
         { withCredentials: true }
       )
       setRides(res.data.rides)
@@ -36,7 +36,7 @@ const RideMain = () => {
     try {
 
       const res = await axios.patch(
-        `http://localhost:3003/api/ride/${rideId}/accept`,
+        `${import.meta.env.VITE_API_URL}/api/ride/${rideId}/accept`,
         {},
         { withCredentials: true }
       )
@@ -59,7 +59,7 @@ const RideMain = () => {
   const fetchActiveRidesOfDriver = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:3003/api/ride/accepted-rides',
+        `${import.meta.env.VITE_API_URL}/api/ride/accepted-rides`,
         { withCredentials: true }
       )
       const ride = res.data.ride[0]
@@ -77,7 +77,7 @@ const RideMain = () => {
   const fetchActiveRidesOfRider = async () =>{
     try {
       const res = await axios.get(
-        'http://localhost:3003/api/ride/accepted-rides-rider',
+        `${import.meta.env.VITE_API_URL}/api/ride/accepted-rides-rider`,
         { withCredentials: true }
       )
       const ride = res.data.ride[0]
