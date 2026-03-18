@@ -43,7 +43,9 @@ const RidersRideDashboard = ({ ride, setRide }) => {
   const [isConfirming, setIsConfirming] = useState(false);
 
 
+
   
+
   const handleConfirmArrival = async () => {
     setIsConfirming(true);
     try {
