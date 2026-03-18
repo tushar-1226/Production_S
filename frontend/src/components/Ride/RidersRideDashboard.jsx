@@ -47,13 +47,15 @@ const RidersRideDashboard = ({ ride, setRide }) => {
 
 
 
-
-
-
-
-
-
   
+
+
+
+
+
+
+
+
 
 
 
