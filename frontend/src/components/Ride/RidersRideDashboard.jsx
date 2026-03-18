@@ -53,10 +53,14 @@ const RidersRideDashboard = ({ ride, setRide }) => {
 
 
 
-
-
-
   
+
+
+
+
+
+
+
 
 
 
