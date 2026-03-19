@@ -12,7 +12,7 @@ const driverIcon = L.divIcon({
   iconAnchor: [16, 16],
 });
 console.log("hello")
-
+console.log("hello")
 console.log("hello")
 console.log("hello")
 const pickupIcon = L.divIcon({
