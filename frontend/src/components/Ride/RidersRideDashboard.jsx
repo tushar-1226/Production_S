@@ -16,6 +16,7 @@ console.log("helllo")
 console.log("helllo")
 console.log("helllo")
 console.log("helllo")
+console.log("helllo")
 const pickupIcon = L.divIcon({
   html: `<div style="background-color: white; border: 6px solid black; border-radius: 50%; width: 24px; height: 24px;"></div>`,
   className: '',
