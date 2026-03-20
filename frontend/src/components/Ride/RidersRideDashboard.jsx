@@ -11,7 +11,7 @@ const driverIcon = L.divIcon({
   iconSize: [32, 32],
   iconAnchor: [16, 16],
 });
-console.log("helllo")
+
 
 
 
