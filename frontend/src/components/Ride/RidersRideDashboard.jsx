@@ -15,8 +15,7 @@ console.log("helllo")
 console.log("helllo")
 console.log("helllo")
 console.log("helllo")
-console.log("helllo")
-console.log("helllo")
+
 
 
 const pickupIcon = L.divIcon({
