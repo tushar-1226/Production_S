@@ -12,10 +12,6 @@ const driverIcon = L.divIcon({
   iconAnchor: [16, 16],
 });
 
-conso
-
-
-
 const pickupIcon = L.divIcon({
   html: `<div style="background-color: white; border: 6px solid black; border-radius: 50%; width: 24px; height: 24px;"></div>`,
   className: '',
