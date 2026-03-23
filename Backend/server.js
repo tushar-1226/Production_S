@@ -9,7 +9,7 @@ connectDB()
 const server = http.createServer(app)
 
 // ✅ FRONTEND URL
-const FRONTEND_URL = "https://uber-2l52qy1pw-shivamk-techs-projects.vercel.app"
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://uber-zeta-henna.vercel.app"
 
 const io = socketIO(server, {
   cors: {

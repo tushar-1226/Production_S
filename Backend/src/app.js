@@ -8,17 +8,12 @@ const mapsRoutes = require('./routes/maps.routes')
 
 const app = express()
 
-const FRONTEND_URL = "https://uber-2l52qy1pw-shivamk-techs-projects.vercel.app"
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://uber-zeta-henna.vercel.app"
 
 app.use(cors({
   origin: FRONTEND_URL,
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}))
-
-app.use(cors({
-  origin: true,
-  credentials: true
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 }))
 
 app.use(express.json())
