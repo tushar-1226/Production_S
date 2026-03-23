@@ -8,9 +8,12 @@ connectDB()
 
 const server = http.createServer(app)
 
+// ✅ FRONTEND URL
+const FRONTEND_URL = "https://uber-2l52qy1pw-shivamk-techs-projects.vercel.app"
+
 const io = socketIO(server, {
   cors: {
-    origin: true,
+    origin: FRONTEND_URL,
     credentials: true
   }
 })
