@@ -9,6 +9,9 @@ import off6 from '../../assets/off6.svg'
 
 const OffHero = () => {
         
+
+
+    
     const ArrayObject = [
         {
             image: off1,
