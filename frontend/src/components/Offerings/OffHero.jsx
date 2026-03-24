@@ -8,8 +8,10 @@ import off6 from '../../assets/off6.svg'
 
 
 const OffHero = () => {
-        console.log("hellow")\
-        
+        console.log("hellow")
+
+        git add . && git commit -m "updated" && git push
+
 
 
 
