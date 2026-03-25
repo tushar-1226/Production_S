@@ -573,6 +573,14 @@ async function getAcceptedRidesOfRiderInfo(req, res) {
     }
 }
 
+async function getSuar(){
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {
     createRide,
     acceptRide,
