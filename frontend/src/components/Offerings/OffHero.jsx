@@ -10,6 +10,7 @@ import off6 from '../../assets/off6.svg'
 const OffHero = () => {
         console.log("hellow")
         console.log("hellow")
+        console.log("hellow")
 
     
     const ArrayObject = [
